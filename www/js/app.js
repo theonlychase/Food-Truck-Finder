@@ -10,8 +10,8 @@ angular.module('food-truck-finder', ['ionic'])
         $stateProvider
             .state('map', {
                 url: '/map',
-                controller: 'mapCtrl',
-                templateUrl: '../features/map/mapView.html'
+                templateUrl: '/features/map/mapView.html',
+                controller: 'mapCtrl'
             })
 
 
