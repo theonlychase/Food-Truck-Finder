@@ -5,6 +5,21 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
+    .config(function ($stateProvider, $urlRouterProvider) {
+
+        $stateProvider
+            .state('profile', {
+                url: '/profile',
+                templateUrl: '/features/profile/profileView.html',
+                controller: 'profileCtrl'
+            })
+
+        $urlRouterProvider
+            .otherwise('/');
+
+
+    })
+    
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
