@@ -1,0 +1,23 @@
+Truck Profile View
+<br>
+<input type="text" ng-model="truck.name" placeholder="Truck name">
+<br>
+<input type="text" ng-model="truck.phone" min-length="7" max-length="10" placeholder="Phone number">
+<br>
+<input type="text" ng-model="truck.website" placeholder="Website">
+<br>
+<input type="email" ng-model="truck.email" placeholder="Email">
+<br>
+
+<!--I didn't see a place for a descriptive blurb about the truck, should we have one? -->
+<textarea ng-model="truck.description" min-length="1" placeholder="Enter truck description"></textarea>
+
+<br>
+<input type="text" ng-model="truck.foodType" placeholder="Enter Food Type">
+<br>
+<input type="image" ng-model="truck.imageURL" placeholder="Image">
+<br>
+<input type="text" ng-model="truck.pricePoint" placeholder="Price Point">
+<br>
+
+<button type="button" class="btn btn-primary" ng-click="updateTruck()">Submit</button>
