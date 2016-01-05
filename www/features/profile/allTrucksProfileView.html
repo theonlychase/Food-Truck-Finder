@@ -1,0 +1,8 @@
+<div ng-repeat = "truck in trucks">
+
+    <a ui-sref="profileTruck.thisTruck({truckId: truck._id})">{{ truck.name }}</a>
+    <br>
+	Food Type: {{ truck.genre }}
+    <br>
+    
+</div>

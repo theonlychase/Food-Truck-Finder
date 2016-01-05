@@ -3,23 +3,23 @@ angular.module('food-truck-finder').controller('userProfileCtrl', function( $sco
     
 	$scope.userId = $stateParams.userId;
 	
-    $scope.getThisUser = function(){
+    $scope.getUser = function(){
 		userService.getThisUser($scope.userId).then(function(response){
-			console.log(response);
+			// console.log(response);
 			$scope.user=response;
 		})
 	}();
 		
-	$scope.udpateThisUser = function() {
+	$scope.udpateUser = function() {
 		userService.udpateUser($scope.userId).then(function(response){
-			console.log("updated user: ", response);
+			// console.log("updated user: ", response);
 			$scope.user=response;
 		})
 	};
 	
-    $scope.deleteThisUser = function(){
+    $scope.deleteUser = function(){
 		userService.deleteUser($scope.userId).then(function(response){
-			console.log(response);
+			// console.log(response);
 			$scope.user=response;
 		})
 	};    
