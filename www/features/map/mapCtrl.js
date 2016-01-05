@@ -89,24 +89,38 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
     });
     
     
-    // BROADCAST MY LOCATION (TRUCK) //
+    // TOGGLE MY LOCATION SHARING (TRUCK) //
+    $scope.locationStatus = "Inactive";
     
-    $scope.shareMyTruckLocation = function () {
-        var myTruckData = {
+    $scope.toggleTruckLocation = function () {
+        var myTruckData;
+
+        var myTruckDataShare = {
             id: '568c08e0af8606446fb10bb4',
+            status: 'Active',
             currentLocation: [currentLocation[1], currentLocation[0]],
             updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
         };
 
+        var myTruckDataStop = {
+            id: '568c08e0af8606446fb10bb4',
+            status: 'Inactive',
+            currentLocation: [undefined, undefined],
+            updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+        };
+
+        if ($scope.locationStatus === 'Active') {
+            myTruckData = myTruckDataStop
+        } else if ($scope.locationStatus === 'Inactive') {
+            myTruckData = myTruckDataShare;
+        }
+
         mapService.shareTruckLocation(myTruckData).then(function (response) {
             console.log(response);
-
-
-
-
+            $scope.locationStatus = response.status;
+            console.log($scope.locationStatus);
         })
     };
-
 
 
 

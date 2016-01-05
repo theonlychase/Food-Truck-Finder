@@ -13,6 +13,7 @@ var Truck = Schema({
     ,   updatedAt_readable: String
     ,   website: String
     ,   imgUrl: String
+    ,   status: String
 });
 
 module.exports = mongoose.model('Truck', Truck);

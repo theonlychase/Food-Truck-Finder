@@ -17,6 +17,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
             return response.data;
         });
     };
+    
 
 
 
