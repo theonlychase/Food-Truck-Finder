@@ -2,7 +2,7 @@
     "name": "foodtruckfinder",
     "version": "1.1.1",
     "description": "FoodTruckFinder: An Ionic project",
-    "main": "/server/server.js",
+    "main": "/server.js",
     "dependencies": {
         "gulp": "^3.5.6",
         "gulp-sass": "^2.0.4",
