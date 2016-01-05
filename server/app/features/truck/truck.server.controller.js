@@ -7,8 +7,17 @@ module.exports = {
           if (error) {
               res.status(500).send(error);
           }
-          res.status(200).json('yes it worked!');
+          res.status(200).json(trucks);
       })
-  }  
+  },
+  
+  postNewTruck: function(req, res, next){
+      new Truck(req.body).save(function(err, truck){
+          if(err){
+              res.status(500).send(err);
+          }
+          res.status(200).json(truck);
+      })
+  }
     
 };
