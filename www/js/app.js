@@ -5,20 +5,25 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    //already added by Blake-n-Nick // .config(function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider
-            .state('profile', {
-                url: '/profile',
-                templateUrl: '/features/profile/profileView.html',
-                controller: 'profileCtrl'
+    //     $urlRouterProvider
+    //         .otherwise('/');
+    // })
+
+
+            .state('profileUser', {
+                url: '/profile/user',
+                templateUrl: './features/profile/userProfileView.html',
+                controller: 'truckProfileCtrl'
             })
 
-        $urlRouterProvider
-            .otherwise('/');
+            .state('profileTruck', {
+                url: '/profile/truck',
+                templateUrl: './features/profile/truckProfileView.html',
+                controller: 'truckProfileCtrl'
+            })
 
-
-    })
     
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
