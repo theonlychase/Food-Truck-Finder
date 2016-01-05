@@ -28,6 +28,7 @@ app.get('/api/test', function(req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
 
+///Require Truck Routes///
 require('./app/features/truck/truck.server.routes')(app);
 
 
