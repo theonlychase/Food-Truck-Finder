@@ -4,14 +4,18 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
 
 
     var map;
+    var currentLocation = [];
 
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
+        currentLocation[1] = position.coords.latitude;
+        currentLocation[0] = position.coords.longitude;
+        console.log(currentLocation);
 
         var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         var mapOptions = {
             center: latLng,
-            zoom: 15,
+            zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -19,11 +23,12 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
 
         map = $scope.map;
 
-        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
+        google.maps.event.addListenerOnce(map, 'idle', function () {
 
             var marker = new google.maps.Marker({
                 map: map,
                 animation: google.maps.Animation.DROP,
+                icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 position: latLng
             });
 
@@ -41,7 +46,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
             mapService.getTrucks().then(function (trucks) {
 
                 console.log('trucks', trucks);
-                
+
                 for (var i = 0; i < trucks.length; i++) {
                     var truck = trucks[i];
                     locations.push({
@@ -64,17 +69,46 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
                     });
 
                     markers.push(marker);
-                    console.log('markers', markers);
                 }
+                var infowindow = new google.maps.InfoWindow({
+                    // test: 'test123'
+                });
 
+                for (var i = 0; i < markers.length; i++) {
+                    var marker = markers[i];
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(this.info);
+                        infowindow.open(map, this);
+                    })
+                }
             });
-
-
         });
-
     }, function (error) {
         console.log("Could not get location");
     });
+    
+    
+    // BROADCAST MY LOCATION (TRUCK) //
+    
+    $scope.shareMyTruckLocation = function () {
+        var myTruckData = {
+            id: '568c08e0af8606446fb10bb4',
+            currentLocation: [currentLocation[1], currentLocation[0]],
+            updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+        };
+
+        mapService.shareTruckLocation(myTruckData).then(function (response) {
+            console.log(response);
+
+
+
+
+        })
+    };
+
+
+
 
 
 
