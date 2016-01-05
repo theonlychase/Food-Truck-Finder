@@ -4,11 +4,11 @@ var bodyParser  = require('body-parser');
 var cors        = require('cors');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
-var passport	  = require('passport');
+var passport	= require('passport');
 var config      = require('./config/database'); // get db config file
 var User        = require('./app/models/user'); // get the mongoose model
-var port 	      = process.env.PORT || 8080;
-var jwt 			  = require('jwt-simple');
+var port 	    = process.env.PORT || 8100;
+var jwt 	    = require('jwt-simple');
 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,9 +24,13 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 
 // demo Route (GET http://localhost:8080)
-app.get('/', function(req, res) {
+app.get('/api/test', function(req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
+
+///Require Truck Routes///
+require('./app/features/truck/truck.server.routes')(app);
+
 
 mongoose.connect(config.database);
 
