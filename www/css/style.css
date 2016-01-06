@@ -154,4 +154,15 @@ margin-top: 0px; }
           color: #FFFFFF;
           font-weight: 500; }
         ion-side-menu .heading-item .message {
-          color: #999999;
+          color: #999999; }
+          
+.bar.app-top-bar {
+background-color: #FF4C4C; }
+.bar.app-top-bar .title {
+    color: #FFFFFF !important; }
+    .bar.app-top-bar .title * {
+    color: #FFFFFF !important; }
+.bar.app-top-bar .button {
+    color: #FFFFFF !important; }
+    .bar.app-top-bar .button * {
+    color: #FFFFFF !important; }
