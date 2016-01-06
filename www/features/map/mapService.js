@@ -1,7 +1,7 @@
-angular.module('food-truck-finder').service('mapService', function ($http, $q) {
+angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
 
     this.getTrucks = function () {
-        return $http.get('/api/trucks').then(function (trucks) {
+        return $http.get(API_ENDPOINT.url + '/trucks').then(function (trucks) {
             return trucks.data;
         });
     };
@@ -10,7 +10,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
         console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: '/api/trucks/' + myTruckData.id,
+            url: API_ENDPOINT.url + '/trucks/' + myTruckData.id,
             dataType: 'json',
             data: myTruckData
         }).then(function (response) {
