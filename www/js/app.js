@@ -50,6 +50,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             });
 
         $urlRouterProvider
+
             .otherwise('/auth/home');
     })
 
