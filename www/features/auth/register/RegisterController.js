@@ -6,6 +6,17 @@ angular.module('food-truck-finder')
         name: '',
         password: ''
       };
+      
+      $scope.truck = {
+        name: '',
+        password: ''
+      };
+      
+      $scope.selected_tab = "";
+
+      $scope.$on('my-tabs-changed', function (event, data) {
+    		$scope.selected_tab = data.title;
+    	});
 
       $scope.signup = function() {
         AuthService.register($scope.user).then(function(msg) {

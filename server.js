@@ -30,6 +30,7 @@ app.get('/api/test', function(req, res) {
 
 ///Require Truck Routes///
 require('./server/app/features/truck/truck.server.routes')(app);
+console.log('test server');
 
 
 mongoose.connect(config.database);
@@ -111,6 +112,9 @@ getToken = function(headers) {
 };
 
 app.use('/api', apiRoutes);
+
+
+app.use(express.static(__dirname + '/www'));
 
 // Start the server
 app.listen(port);
