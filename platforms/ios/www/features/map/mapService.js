@@ -19,7 +19,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
     };
 
     this.reverseGeolocate = function (pos) {
-        var deferred = $q.defer();
+        // var deferred = $q.defer();
 
         var geocoder = new google.maps.Geocoder();
 
@@ -32,10 +32,13 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
             if (status == google.maps.GeocoderStatus.OK) {
                 // console.log(results[0].formatted_address);
             }
-            deferred.resolve(results[0].formatted_address);
+            return (results[0].formatted_address);
+            // })
+            // return deferred.promise
         })
-        return deferred.promise
     };
+
+
 
 
 
