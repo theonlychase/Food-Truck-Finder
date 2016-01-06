@@ -7,6 +7,7 @@ var Truck = Schema({
     ,   password: String
     ,   phone: String
     ,   currentLocation: { type: [Number] } // --> **** NOTE **** MONGOOSE REQUIRES [LONG, LAT] FORMAT // GOOGLE MAPS REQUIRES OPPOSITE [LAT, LONG] //
+    ,   address: String
     ,   genre: {type: String, enum: ['Mexican', 'Thai', 'American', 'Other']}
     ,   price: {type: String, enum: ['$', '$$', '$$$', '$$$$']}
     ,   createdAt: {type: Date, default: Date.now}

@@ -21,6 +21,7 @@ module.exports = {
     },
 
     updateSpecificTruck: function (req, res, next) {
+        console.log(req.body);
         Truck.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedTruck) {
             if (err) {
                 res.status(500).send(err);
