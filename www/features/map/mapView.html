@@ -1,7 +1,9 @@
 <ion-view>
-    <ion-content>
-
-        <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
+  <ion-nav-title>
+    <span>Map</span>
+  </ion-nav-title>
+  <ion-content>
+    <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
 
         <a href="#/list">
             <div class="list-view-btn">
@@ -13,5 +15,5 @@
         <div id="map" data-tap-disabled="true">
 
         </div>
-    </ion-content>
+  </ion-content>
 </ion-view>

@@ -14,6 +14,17 @@ var UserSchema = new Schema({
   password: {
         type: String,
         required: true
+    },
+    truck: {
+       phone: String,
+       currentLocation: { type: [Number] }, // --> **** NOTE **** MONGOOSE REQUIRES [LONG, LAT] FORMAT // GOOGLE MAPS REQUIRES OPPOSITE [LAT, LONG] //
+       genre: {type: String, enum: ['Mexican', 'Thai', 'American', 'Other']},
+       price: {type: String, enum: ['$', '$$', '$$$', '$$$$']},
+       createdAt: {type: Date, default: Date.now},
+       updatedAt_readable: String,
+       website: String,
+       imgUrl: String,
+       status: String
     }
 });
 

@@ -1,5 +1,6 @@
 /* Empty. Add your own CSS if you like */
 
+
 .scroll {
     height: 100%;
 }
@@ -8,7 +9,6 @@
     width: 100%;
     height: 100%;
 }
-
 
 .item-toggle {
     margin: 20px 20px 0 0;
@@ -29,6 +29,160 @@
     
 }
 
-.toggle input:checked +.track {
-    background: red;
-}
+.auth-outer {
+  background-color: transparent !important; }
+  .auth-outer ion-view {
+    background-color: transparent;
+    box-shadow: none !important; }
+  .auth-outer ion-header-bar {
+    background-color: transparent; }
+    .auth-outer ion-header-bar * {
+      color: #FFFFFF; }
+
+.auth-home {
+  background-color: transparent !important; }
+
+.walkthrough-view .top-content {
+height: 75%;
+text-align: center; }
+.walkthrough-view .top-content h1 {
+  color: #FFFFFF; }
+.walkthrough-view .bottom-content {
+height: 25%;
+padding-top: 5px;
+margin-top: 0px; }
+.walkthrough-view .bottom-content .button {
+  border: none;
+  color: #FFFFFF;
+  font-weight: bolder;
+  font-size: 20px; }
+.walkthrough-view .bottom-content .login.button {
+  background-color: rgba(56, 126, 245, 0.8); }
+.walkthrough-view .bottom-content .sign-up.button {
+  background-color: #cf5231; }
+
+  .auth-view .row {
+    height: 100%; }
+  .auth-view .bottom-content {
+    padding-top: 0px;
+    border: none; }
+    .auth-view .bottom-content .button {
+      margin: 0px;
+      font-weight: bold; }
+  .auth-view .alternative-actions {
+    margin: 0px 10px; }
+    .auth-view .alternative-actions .button {
+      padding: 0px;
+      font-size: 14px; }
+    .auth-view .alternative-actions .sign-up {
+      float: right; }
+
+      .toggle-view-anchor {
+        height: 34px;
+        line-height: 34px;
+        position: absolute;
+        right: 0px;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 500;
+        color: #848484; }
+        .toggle-view-anchor * {
+          color: #848484; }
+
+      .login-view [ng\:cloak], .login-view [ng-cloak], .login-view [data-ng-cloak], .login-view [x-ng-cloak], .login-view .ng-cloak, .login-view .x-ng-cloak {
+        display: none !important; }
+      .login-view .tab-content.ng-hide {
+        display: none !important; }
+      .login-view .tab-content.ng-hide-add.ng-hide-add-active, .login-view .tab-content.ng-hide-remove.ng-hide-remove-active {
+        -webkit-transition: all 0s ease;
+        transition: all 0s ease; }
+      .login-view .tabs .tab-item {
+        font-weight: bold;
+        text-transform: uppercase;
+        background: #3E454C;
+        color: #e6e6e6;
+        -webkit-transition: all 0.1s ease;
+        transition: all 0.1s ease; }
+      .login-view .tabs .tab-item.active, .login-view .tabs .tab-item.activated {
+        margin-top: 0;
+        margin-bottom: -2px;
+        border-width: 0px 0px 4px 0px !important;
+        border-color: #387ef5 !important;
+        border-style: solid; }
+      .login-view .login-container {
+        margin-bottom: 0px; }
+        .login-view .login-container .card-heding {
+          padding: 0px;
+          height: 49px; }
+          .login-view .login-container .card-heding .tabs {
+            top: 0px;
+            padding-top: 0;
+            background-position: bottom;
+            border-top-width: 0;
+            border-bottom-width: 1px; }
+          .login-view .login-container .card-heding .tab-item {
+            max-width: none; }
+
+      .signup-view .sign-up-container {
+        margin-bottom: 0px; }
+
+      .forgot-password-view .forgot-password-container {
+        margin-bottom: 0px; }
+
+        ion-side-menu ion-content {
+          background-color: #23262a; }
+        ion-side-menu ion-item.item {
+          border-right: none;
+          border-left: none;
+          border-color: #33383e; }
+          ion-side-menu ion-item.item .item-content {
+            background-color: #23262a; }
+            ion-side-menu ion-item.item .item-content .icon:before {
+              background-color: #3E454C;
+              color: #FFFFFF;
+              border-radius: 50%;
+              font-size: 22px;
+              width: 32px;
+              height: 32px;
+              line-height: 32px; }
+          ion-side-menu ion-item.item .item-content.activated {
+            background-color: #555e68; }
+          ion-side-menu ion-item.item .menu-text {
+            color: #cccccc;
+            font-weight: 500; }
+        ion-side-menu ion-item.item:first-child {
+          border-top: none; }
+        ion-side-menu ion-item.item:last-child {
+          border-bottom: none; }
+        ion-side-menu .heading-item .item-content {
+          height: 120px;
+          padding-top: 45px;
+          padding-left: 115px;
+          background-color: #272c30;
+          padding-bottom: 0px; }
+        ion-side-menu .heading-item .user-image-container {
+          width: 90px;
+          position: absolute;
+          top: 16px;
+          left: 12px; }
+          ion-side-menu .heading-item .user-image-container .user-image {
+            border-radius: 50%;
+            padding: 8px;
+            border: 1px solid #999999;
+            width: 100%; }
+        ion-side-menu .heading-item .greeting {
+          color: #FFFFFF;
+          font-weight: 500; }
+        ion-side-menu .heading-item .message {
+          color: #999999; }
+          
+.bar.app-top-bar {
+background-color: #FF4C4C; }
+.bar.app-top-bar .title {
+    color: #FFFFFF !important; }
+    .bar.app-top-bar .title * {
+    color: #FFFFFF !important; }
+.bar.app-top-bar .button {
+    color: #FFFFFF !important; }
+    .bar.app-top-bar .button * {
+    color: #FFFFFF !important; }
