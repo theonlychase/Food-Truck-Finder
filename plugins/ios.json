@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
         }
     },
     "dependent_plugins": {}
