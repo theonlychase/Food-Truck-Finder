@@ -1,4 +1,6 @@
+
 module.exports = {
+    
   'secret': 'devdacticIsAwesome',
   'database': 'mongodb://username:password@ds039115.mongolab.com:39115/food-truck-finder'
 };
