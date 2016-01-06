@@ -4,7 +4,7 @@ angular.module('food-truck-finder').controller('userProfileCtrl', function( $sco
 	$scope.userId = $stateParams.userId;
 	
     $scope.getUser = function(){
-		userService.getThisUser($scope.userId).then(function(response){
+		userService.getUser($scope.userId).then(function(response){
 			// console.log(response);
 			$scope.user=response;
 		})

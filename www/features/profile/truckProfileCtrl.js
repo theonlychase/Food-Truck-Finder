@@ -4,7 +4,7 @@ angular.module('food-truck-finder').controller('truckProfileCtrl', function($sco
     
     
     $scope.getTruck = function(){
-		truckService.getThisTruck($scope.truckId).then(function(response){
+		truckService.getTruck($scope.truckId).then(function(response){
 			// console.log(response);
 			$scope.truck=response;
 		})
