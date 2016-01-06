@@ -104,41 +104,6 @@ margin-top: 0px; }
 
       .signup-view .sign-up-container {
         margin-bottom: 0px; }
-        .signup-view [ng\:cloak], .signup-view [ng-cloak], .signup-view [data-ng-cloak], .signup-view [x-ng-cloak], .signup-view .ng-cloak, .signup-view .x-ng-cloak {
-        display: none !important; }
-      .signup-view .tab-content.ng-hide {
-        display: none !important; }
-      .signup-view .tab-content.ng-hide-add.ng-hide-add-active, .signup-view .tab-content.ng-hide-remove.ng-hide-remove-active {
-        -webkit-transition: all 0s ease;
-        transition: all 0s ease; }
-      .signup-view .tabs .tab-item {
-        font-weight: bold;
-        text-transform: uppercase;
-        background: #3E454C;
-        color: #e6e6e6;
-        -webkit-transition: all 0.1s ease;
-        transition: all 0.1s ease; }
-      .signup-view .tabs .tab-item.active, .signup-view .tabs .tab-item.activated {
-        margin-top: 0;
-        margin-bottom: -2px;
-        border-width: 0px 0px 4px 0px !important;
-        border-color: #cf5231 !important;
-        border-style: solid; }
-      .signup-view .signup-container {
-        margin-bottom: 0px; }
-        .signup-view .signup-container .card-heding {
-          padding: 0px;
-          height: 49px; }
-          .signup-view .signup-container .card-heding .tabs {
-            top: 0px;
-            padding-top: 0;
-            background-position: bottom;
-            border-top-width: 0;
-            border-bottom-width: 1px; }
-          .signup-view .signup-container .card-heding .tab-item {
-            max-width: none; }
-          .sign-up-button {
-              background-color: #cf5231 !important; }
 
       .forgot-password-view .forgot-password-container {
         margin-bottom: 0px; }
