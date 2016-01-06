@@ -14,7 +14,11 @@ angular.module('food-truck-finder', ['ionic', 'ngCordova'])
                 controller: 'mapCtrl'
             })
 
-
+            .state('list', {
+                url: '/list',
+                templateUrl: '/features/list/listView.html',
+                controller: 'listCtrl'
+            })
 
 
         $urlRouterProvider
