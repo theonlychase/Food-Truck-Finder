@@ -13,6 +13,7 @@
 .item-toggle {
     margin: 20px 20px 0 0;
     /*height: 120px;*/
+    width: 230px;
     position: fixed;
     right: 0;
     z-index: 999;
@@ -24,11 +25,26 @@
 .toggle {
     top: 10px;
     right: 16px;
-    z-index: 99999;
-    outline: #333;
-    
+    z-index: 99999;   
+    cursor: pointer;
 }
 
-.toggle input:checked +.track {
-    background: red;
+.list-view-btn {
+    margin: 100px 20px 0 0;
+    position: fixed;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 18px;
+    z-index: 999;
+    right: 0;
+    width: 110px;
+    height: 45px;
+    cursor: pointer;
 }
+
+    .list-view-btn h5 {
+        text-align: center;
+        margin: 12px 0 0 0;
+        font-size: 16px;
+        font-weight: 400;
+    }

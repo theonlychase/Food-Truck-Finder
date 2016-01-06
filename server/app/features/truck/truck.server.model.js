@@ -14,6 +14,7 @@ var Truck = Schema({
     ,   website: String
     ,   imgUrl: String
     ,   status: String
+    ,   role: {type: String, default: 'Truck', required: true}
 });
 
 module.exports = mongoose.model('Truck', Truck);

@@ -9,7 +9,6 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
         currentLocation[1] = position.coords.latitude;
         currentLocation[0] = position.coords.longitude;
-        console.log(currentLocation);
 
         var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 

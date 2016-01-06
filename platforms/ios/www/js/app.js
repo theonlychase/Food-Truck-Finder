@@ -18,7 +18,7 @@ angular.module('food-truck-finder', ['ionic', 'ngCordova'])
 
 
         $urlRouterProvider
-            .otherwise('/');
+            .otherwise('/map');
 
 
     })
