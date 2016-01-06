@@ -10,8 +10,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
         currentLocation[0] = position.coords.longitude;
 
         $scope.pos = {
-            lat:  currentLocation[1],
-            lng:  currentLocation[0]
+            lat: currentLocation[1],
+            lng: currentLocation[0]
         }
         
         // GET ADDRESS VIA REVERSE GEOLOCATION TO SHOW IN LIST VIEW //
@@ -63,11 +63,16 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
                         latlon: new google.maps.LatLng(truck.currentLocation[1], truck.currentLocation[0]),
                         name: truck.name,
                         id: truck._id,
-                        updated: truck.updated_at_readable,
+                        updated: truck.updated_at_readable
                     })
                 };
-                console.log('locations', locations);
 
+                for (var i = 0; i < locations.length; i++) {
+                    locations[i].distanceFromCurrentUser = google.maps.geometry.spherical.computeDistanceBetween(latLng, locations[i].latlon) * .000621371;
+                }
+
+                console.log('locations array', locations); 
+                
                 for (var i = 0; i < locations.length; i++) {
                     var marker = new google.maps.Marker({
                         position: locations[i].latlon,
@@ -134,6 +139,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
             console.log($scope.locationStatus);
         })
     };
+
+
 
 
 
