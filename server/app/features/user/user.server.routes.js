@@ -2,14 +2,14 @@ var UserCtrl = require('./user.server.controller');
 
 module.exports = function (app) {
 
-    app.route('/api/users/trucks')
-        .get(UserCtrl.getAllTrucks) // get all Trucks data
-        .post(UserCtrl.postNewTruck) // post new Truck to db
+    app.route('/api/users')
+        .get(UserCtrl.getAllUsers) // get all User data
+        .post(UserCtrl.postNewUser); // post new User to db
   
     
-    app.route('/api/users/trucks/:id')
-        .put(UserCtrl.updateSpecificTruck) // update a specific Truck
-        .delete(UserCtrl.deleteSpecificTruck) // delete a specific Truck
-    
+    app.route('/api/users/:id')
+        .get(UserCtrl.getSpecificUser) // get a specific user
+        .put(UserCtrl.updateSpecificUser) // update a specific User
+        .delete(UserCtrl.deleteSpecificUser); // delete a specific User
     
 };
