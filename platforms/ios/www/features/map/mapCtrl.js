@@ -71,8 +71,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
                     locations[i].distanceFromCurrentUser = google.maps.geometry.spherical.computeDistanceBetween(latLng, locations[i].latlon) * .000621371;
                 }
 
-                console.log('locations array', locations); 
-                
+                console.log('locations array', locations);
+
                 for (var i = 0; i < locations.length; i++) {
                     var marker = new google.maps.Marker({
                         position: locations[i].latlon,
@@ -112,11 +112,13 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
         var myTruckData;
 
         var myTruckDataShare = {
-            id: '568c08e0af8606446fb10bb4',
-            status: 'Active',
-            currentLocation: [currentLocation[1], currentLocation[0]],
-            address: $scope.address,
-            updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+            truck: {
+                id: '568c08e0af8606446fb10bb4',
+                status: 'Active',
+                currentLocation: [currentLocation[1], currentLocation[0]],
+                address: $scope.address,
+                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+            }
         };
 
         var myTruckDataStop = {
