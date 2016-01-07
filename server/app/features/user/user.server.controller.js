@@ -2,7 +2,7 @@ var User = require('./user.server.model');
 
 module.exports = {
 
-    getAllUsers: function (req, res, next) {
+    getAllTrucks: function (req, res, next) {
         User.find().exists('truck.truckName', true).exec(function (error, users) {
             if (error) {
                 res.status(500).send(error);
@@ -11,8 +11,17 @@ module.exports = {
         });
     },
 
+    getAllUsers: function (req, res, next) {
+        User.find().populate('favorites').exec(function (error, users) {
+            if (error) {
+                res.status(500).send(error);
+            }
+            res.status(200).json(users);
+        });
+    },
+
     getSpecificUser: function (req, res, next) {
-        User.findById(req.params.id).exec(function (error, user) {
+        User.findById(req.params.id).populate('favorites').exec(function (error, user) {
             if (error) {
                 res.status(500).send(error);
             }
@@ -32,6 +41,21 @@ module.exports = {
     updateSpecificUser: function (req, res, next) {
         console.log(req.body);
         User.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        }, function (err, updatedUser) {
+            if (err) {
+                res.status(500).send(err);
+            }
+            res.status(200).json(updatedUser);
+        });
+    },
+
+    addFavorite: function (req, res, next) {
+        User.findByIdAndUpdate(req.params.id, {
+            $push: {
+                'favorites': req.body.id
+            }
+        }, {
             new: true
         }, function (err, updatedUser) {
             if (err) {
