@@ -86,11 +86,11 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', {session: false}), fun
       name: decoded.name
     }, function(err, user) {
       if (err) throw err;
-
+      
       if (!user) {
         return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
       } else {
-        return res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+        return res.json({success: true, user});
       }
     });
   } else {
