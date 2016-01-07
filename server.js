@@ -123,4 +123,4 @@ app.use(express.static(__dirname + '/www'));
 
 // Start the server
 app.listen(port);
-console.log('There will be dragons: http://localhost:' + port);
+console.log('Food Truck Finder Port: http://localhost:' + port);
