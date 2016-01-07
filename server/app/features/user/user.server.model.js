@@ -6,19 +6,33 @@ var bcrypt = require('bcrypt');
 
 // set up a mongoose model
 var UserSchema = new Schema({
-  name: {
+    name: {
         type: String,
         unique: true,
         required: true
     },
-  password: {
+    password: {
         type: String,
         required: true
     },
-  favorites: [{
-       type: Schema.Types.ObjectId, ref: 'Truck',
-       unique: true
-       }]
+    favorites: [{
+        type: Schema.Types.ObjectId, ref: 'Truck',
+        unique: true
+    }],
+
+    truck: {
+        truckName: String,
+        address: String,
+        phone: String,
+        currentLocation: { type: [Number] }, // --> **** NOTE **** MONGOOSE REQUIRES [LONG, LAT] FORMAT // GOOGLE MAPS REQUIRES OPPOSITE [LAT, LONG] //
+        genre: { type: String, enum: ['Mexican', 'Thai', 'American', 'Other'] },
+        price: { type: String, enum: ['$', '$$', '$$$', '$$$$'] },
+        createdAt: { type: Date, default: Date.now },
+        updatedAt_readable: String,
+        website: String,
+        imgUrl: String,
+        status: String
+    }
 });
 
 UserSchema.pre('save', function (next) {

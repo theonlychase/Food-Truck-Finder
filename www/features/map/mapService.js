@@ -1,16 +1,16 @@
-angular.module('food-truck-finder').service('mapService', function ($http, $q) {
+angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
 
     this.getTrucks = function () {
-        return $http.get('/api/trucks').then(function (trucks) {
+        return $http.get(API_ENDPOINT.url + '/users/trucks').then(function (trucks) {
             return trucks.data;
         });
     };
 
     this.shareTruckLocation = function (myTruckData) {
-        console.log('myTruckData', myTruckData);
+        // console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: '/api/trucks/' + myTruckData.id,
+            url: API_ENDPOINT.url + '/users/trucks/' + myTruckData.truck.id,
             dataType: 'json',
             data: myTruckData
         }).then(function (response) {
@@ -18,19 +18,35 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
         });
     };
     
-  
-    
-    this.addFavorite = function (userId, truckId){
+    this.addFavorite = function (userId){
         return $http({
          method: 'PUT',
          url: 'api/users/' + userId,
          dataType: 'json',
-         data: truckId,
+         data: userId.truck,
         }).then(function (response) {
             return response.data;
         });
     };
 
+    this.reverseGeolocate = function (pos) {
+        var deferred = $q.defer();
+
+        var geocoder = new google.maps.Geocoder();
+
+        var point = new google.maps.LatLng(pos.lat, pos.lng);
+        geocoder.geocode({ 'latLng': point }, function (results, status) {
+            if (status !== google.maps.GeocoderStatus.OK) {
+                console.log(status);
+            }
+            // This is checking to see if the Geoeode Status is OK before proceeding
+            if (status == google.maps.GeocoderStatus.OK) {
+                // console.log(results[0].formatted_address);
+            }
+            deferred.resolve(results[0].formatted_address);
+        })
+        return deferred.promise
+    };
 
 
 

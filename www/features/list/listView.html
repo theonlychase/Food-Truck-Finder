@@ -1,15 +1,16 @@
 <ion-view>
     <ion-content class='listView'>
-        <div class="list" ng-repeat='truck in listTrucks'>
+        <div class="list" ng-repeat='user in listTrucks'>
 
             <a class="item item-thumbnail-left listColor" href="#">
-                <img ng-src="{{truck.imageUrl}}"></img>
-                <h2>{{truck.name}}</h2>
-                <h3>Type of Food: {{truck.genre}}</h3>
+                <img ng-src="{{user.truck.imgUrl}}"></img>
+                <h2>{{user.truck.truckName}}</h2>
+                <h3>Type of Food: {{user.truck.genre}}</h3>
+                <h3>Price {{user.truck.price}}</h3>
                 <h3>Appx address:</h3>
                 <h3>Appx distance:</h3>
 
-                    <i class="icon ion-star star" ng-click="addToFavorites(truck._id)"></i>
+                    <i class="icon ion-star star" ng-click="addToFavorites(user._id)"></i>
 
             </a>
 

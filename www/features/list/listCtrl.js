@@ -12,8 +12,8 @@ angular.module('food-truck-finder').controller('listCtrl', function ($scope, $st
     
     $scope.getData();
     
-    $scope.addToFavorites = function(truckId){
-        mapService.addFavorite(userId, truckId).then( function(response){
+    $scope.addToFavorites = function(userId){
+        mapService.addFavorite(userId).then( function(response){
             console.log(response);
         });
     };

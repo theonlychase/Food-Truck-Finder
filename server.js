@@ -7,7 +7,7 @@ var mongoose    = require('mongoose');
 var passport	= require('passport');
 var config      = require('./server/config/database'); // get db config file
 var User        = require('./server/app/features/user/user.server.model'); // get the USER model
-var port 	    = process.env.PORT || 8100;
+var port 	    = process.env.PORT || 8080;
 var jwt 	    = require('jwt-simple');
 
 
@@ -30,11 +30,11 @@ app.get('/api/test', function(req, res) {
 });
 
 ///Require Truck Routes///
-require('./server/app/features/truck/truck.server.routes')(app);
-console.log('test server');
+
 
 ///Require User Routes////
 require('./server/app/features/user/user.server.routes')(app);
+console.log('test server');
 
 mongoose.connect(config.database);
 
