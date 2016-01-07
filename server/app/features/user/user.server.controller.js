@@ -1,14 +1,16 @@
-var Truck = require('./truck.server.model');
+var User = require('./user.server.model');
 
 module.exports = {
 
     getAllTrucks: function (req, res, next) {
-        Truck.find().exec(function (error, trucks) {
-            if (error) {
-                res.status(500).send(error);
-            }
-            res.status(200).json(trucks);
-        })
+        // if (User.truck) {
+            User.find().exec(function (error, trucks) {
+                if (error) {
+                    res.status(500).send(error);
+                }
+                res.status(200).json(trucks);
+            })
+        // }
     },
 
     postNewTruck: function (req, res, next) {
@@ -21,7 +23,8 @@ module.exports = {
     },
 
     updateSpecificTruck: function (req, res, next) {
-        Truck.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedTruck) {
+        console.log(req.body);
+        User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedTruck) {
             if (err) {
                 res.status(500).send(err);
             }

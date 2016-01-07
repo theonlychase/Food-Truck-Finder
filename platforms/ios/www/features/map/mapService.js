@@ -1,16 +1,16 @@
-angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
+angular.module('food-truck-finder').service('mapService', function ($http, $q) {
 
     this.getTrucks = function () {
-        return $http.get(API_ENDPOINT.url + '/users/trucks').then(function (trucks) {
+        return $http.get('/api/trucks').then(function (trucks) {
             return trucks.data;
         });
     };
 
     this.shareTruckLocation = function (myTruckData) {
-        // console.log('myTruckData', myTruckData);
+        console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: API_ENDPOINT.url + '/users/trucks/' + myTruckData.truck.id,
+            url: '/api/trucks/' + myTruckData.id,
             dataType: 'json',
             data: myTruckData
         }).then(function (response) {
@@ -19,7 +19,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
     };
 
     this.reverseGeolocate = function (pos) {
-        var deferred = $q.defer();
+        // var deferred = $q.defer();
 
         var geocoder = new google.maps.Geocoder();
 
@@ -32,10 +32,13 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
             if (status == google.maps.GeocoderStatus.OK) {
                 // console.log(results[0].formatted_address);
             }
-            deferred.resolve(results[0].formatted_address);
+            return (results[0].formatted_address);
+            // })
+            // return deferred.promise
         })
-        return deferred.promise
     };
+
+
 
 
 
