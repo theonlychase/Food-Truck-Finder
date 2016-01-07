@@ -18,6 +18,18 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
         });
     };
     
+  
+    
+    this.addFavorite = function (userId, truckId){
+        return $http({
+         method: 'PUT',
+         url: 'api/users/' + userId,
+         dataType: 'json',
+         data: truckId,
+        }).then(function (response) {
+            return response.data;
+        });
+    };
 
 
 

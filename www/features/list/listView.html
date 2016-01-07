@@ -1,29 +1,17 @@
 <ion-view>
-    <ion-content>
-        <div class="list">
+    <ion-content class='listView'>
+        <div class="list" ng-repeat='truck in listTrucks'>
 
-            <a class="item item-thumbnail-left" href="#">
-                <img src="cover.jpg">
-                <h2>Pretty Hate Machine</h2>
-                <p>Nine Inch Nails</p>
-            </a>
-             <a class="item item-thumbnail-left" href="#">
-                <img src="cover.jpg">
-                <h2>Pretty Hate Machine</h2>
-                <p>Nine Inch Nails</p>
-            </a>
-             <a class="item item-thumbnail-left" href="#">
-                <img src="cover.jpg">
-                <h2>Pretty Hate Machine</h2>
-                <p>Nine Inch Nails</p>
-            </a>
-             <a class="item item-thumbnail-left" href="#">
-                <img src="cover.jpg">
-                <h2>Pretty Hate Machine</h2>
-                <p>Nine Inch Nails</p>
-            </a>
+            <a class="item item-thumbnail-left listColor" href="#">
+                <img ng-src="{{truck.imageUrl}}"></img>
+                <h2>{{truck.name}}</h2>
+                <h3>Type of Food: {{truck.genre}}</h3>
+                <h3>Appx address:</h3>
+                <h3>Appx distance:</h3>
 
-            ...
+                    <i class="icon ion-star star" ng-click="addToFavorites(truck._id)"></i>
+
+            </a>
 
         </div>
 

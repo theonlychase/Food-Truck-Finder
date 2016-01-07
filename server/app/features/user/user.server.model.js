@@ -14,7 +14,11 @@ var UserSchema = new Schema({
   password: {
         type: String,
         required: true
-    }
+    },
+  favorites: [{
+       type: Schema.Types.ObjectId, ref: 'Truck',
+       unique: true
+       }]
 });
 
 UserSchema.pre('save', function (next) {

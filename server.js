@@ -10,6 +10,7 @@ var User        = require('./server/app/features/user/user.server.model'); // ge
 var port 	    = process.env.PORT || 8100;
 var jwt 	    = require('jwt-simple');
 
+
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -32,6 +33,8 @@ app.get('/api/test', function(req, res) {
 require('./server/app/features/truck/truck.server.routes')(app);
 console.log('test server');
 
+///Require User Routes////
+require('./server/app/features/user/user.server.routes')(app);
 
 mongoose.connect(config.database);
 
@@ -112,6 +115,8 @@ getToken = function(headers) {
 };
 
 app.use('/api', apiRoutes);
+
+
 
 
 app.use(express.static(__dirname + '/www'));
