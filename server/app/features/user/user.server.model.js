@@ -15,6 +15,11 @@ var UserSchema = new Schema({
         type: String,
         required: true
     },
+    favorites: [{
+        type: Schema.Types.ObjectId, ref: 'Truck',
+        unique: true
+    }],
+
     truck: {
         truckName: String,
         address: String,
