@@ -10,6 +10,7 @@ var User = require('./server/app/features/user/user.server.model'); // get the U
 var port = process.env.PORT || 8080;
 var jwt = require('jwt-simple');
 
+
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -33,9 +34,11 @@ app.get('/api/test', function (req, res) {
 });
 
 ///Require Truck Routes///
+
+
+///Require User Routes////
 require('./server/app/features/user/user.server.routes')(app);
 console.log('test server');
-
 
 mongoose.connect(config.database);
 
@@ -94,7 +97,7 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false }), f
             if (!user) {
                 return res.status(403).send({ success: false, msg: 'Authentication failed. User not found.' });
             } else {
-                return res.json({ success: true, msg: 'Welcome in the member area ' + user.name + '!' });
+                return res.json({ success: true, user });
             }
         });
     } else {
@@ -117,7 +120,6 @@ getToken = function (headers) {
 
 app.use('/api', apiRoutes);
 
-
 // SOCKET.IO //
 io.on('connection', function (socket) {
     console.log('User connected to socket');
@@ -127,11 +129,9 @@ io.on('connection', function (socket) {
     });
 });
 
-
 app.use(express.static(__dirname + '/www'));
 
 // Start the server
 http.listen(port, function () {
-    console.log('There will be dragons: http://localhost:' + port);
+    console.log('Food Truck Finder Port: http://localhost:' + port);
 });
-

@@ -1,7 +1,7 @@
 angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
 
     this.getTrucks = function () {
-        return $http.get(API_ENDPOINT.url + '/users/trucks').then(function (trucks) {
+        return $http.get(API_ENDPOINT.url + '/users').then(function (trucks) {
             return trucks.data;
         });
     };
@@ -10,9 +10,20 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
         // console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: API_ENDPOINT.url + '/users/trucks/' + myTruckData.truck.id,
+            url: API_ENDPOINT.url + '/users' + myTruckData.truck.id,
             dataType: 'json',
             data: myTruckData
+        }).then(function (response) {
+            return response.data;
+        });
+    };
+    
+    this.addFavorite = function (userId){
+        return $http({
+         method: 'PUT',
+         url: API_ENDPOINT.url + '/users' + userId,
+         dataType: 'json',
+         data: userId.truck,
         }).then(function (response) {
             return response.data;
         });

@@ -20,19 +20,18 @@
               <img class="user-image" ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" spinner-on-load>
           	</pre-img>
           </div>
-          <h2 class="greeting">Hi Brynn</h2>
+          <h3 class="greeting">Hi {{authedUser.user.name}}</h3>
           <p class="message">Welcome back</p>
         </ion-item>
         <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps">
           <i class="icon ion-map"></i>
           <h2 class="menu-text">Map</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="" ng-click="logout()">
-          <i class="icon ion-arrow-return-right"></i>
+        <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ng-click="logout()">
+          <i class="icon ion-arrow-return-right icon-bg-color"></i>
           <h2 class="menu-text">Logout</h2>
         </ion-item>
-
-    </ion-list>
+      </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

@@ -2,42 +2,52 @@ var User = require('./user.server.model');
 
 module.exports = {
 
-    getAllTrucks: function (req, res, next) {
-        // if (User.truck) {
-            User.find().exec(function (error, trucks) {
-                if (error) {
-                    res.status(500).send(error);
-                }
-                res.status(200).json(trucks);
-            })
-        // }
+    getAllUsers: function (req, res, next) {
+        User.find().exists('truck.truckName', true).exec(function (error, users) {
+            if (error) {
+                res.status(500).send(error);
+            }
+            res.status(200).json(users);
+        });
     },
 
-    postNewTruck: function (req, res, next) {
-        new Truck(req.body).save(function (err, truck) {
+    getSpecificUser: function (req, res, next) {
+        User.findById(req.params.id).exec(function (error, user) {
+            if (error) {
+                res.status(500).send(error);
+            }
+            res.status(200).json(user);
+        });
+    },
+
+    postNewUser: function (req, res, next) {
+        new User(req.body).save(function (err, user) {
             if (err) {
                 res.status(500).send(err);
             }
-            res.status(200).json(truck);
-        })
+            res.status(200).json(user);
+        });
     },
 
-    updateSpecificTruck: function (req, res, next) {
-        User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedTruck) {
+    updateSpecificUser: function (req, res, next) {
+        console.log(req.body);
+        User.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        }, function (err, updatedUser) {
             if (err) {
                 res.status(500).send(err);
             }
-            res.status(200).json(updatedTruck);
-        })
+            res.status(200).json(updatedUser);
+        });
     },
 
-    deleteSpecificTruck: function (req, res, next) {
-        Truck.findByIdAndRemove(req.params.id, function (err, deletedTruck) {
+    deleteSpecificUser: function (req, res, next) {
+        User.findByIdAndRemove(req.params.id, function (err, deletedUser) {
             if (err) {
                 res.status(500).send(err);
             }
-            res.status(200).json(deletedTruck);
-        })
+            res.status(200).json(deletedUser);
+        });
     }
 
 };
