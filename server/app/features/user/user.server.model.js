@@ -31,6 +31,7 @@ var UserSchema = new Schema({
         updatedAt_readable: String,
         website: String,
         imgUrl: String,
+        description: String, 
         status: String
     }
 });
