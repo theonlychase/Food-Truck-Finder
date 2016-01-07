@@ -1,16 +1,16 @@
-angular.module('food-truck-finder').service('mapService', function ($http, $q) {
+angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
 
     this.getTrucks = function () {
-        return $http.get('/api/trucks').then(function (trucks) {
+        return $http.get(API_ENDPOINT.url + '/users/trucks').then(function (trucks) {
             return trucks.data;
         });
     };
 
     this.shareTruckLocation = function (myTruckData) {
-        console.log('myTruckData', myTruckData);
+        // console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: '/api/trucks/' + myTruckData.id,
+            url: API_ENDPOINT.url + '/users/trucks/' + myTruckData.truck.id,
             dataType: 'json',
             data: myTruckData
         }).then(function (response) {

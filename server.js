@@ -29,7 +29,7 @@ app.get('/api/test', function(req, res) {
 });
 
 ///Require Truck Routes///
-require('./server/app/features/truck/truck.server.routes')(app);
+require('./server/app/features/user/user.server.routes')(app);
 console.log('test server');
 
 
