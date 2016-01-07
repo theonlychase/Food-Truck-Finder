@@ -13,14 +13,11 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
             lat: currentLocation[1],
             lng: currentLocation[0]
         };
-        console.log($scope.pos);
-        
         
         // GET ADDRESS VIA REVERSE GEOLOCATION TO SHOW IN LIST VIEW //
         mapService.reverseGeolocate($scope.pos).then(function (address) {
             // SET CURRENT LOCATION TO SEND TO DB WHEN LOCATION IS BROADCAST //
             $scope.address = address;
-            console.log($scope.address);
         });
 
         var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -64,14 +61,14 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
                     var truck = users[i].truck;
                     locations.push({
                         latlon: new google.maps.LatLng(truck.currentLocation[0], truck.currentLocation[1]),
-                        name: truck.name,
+                        name: truck.truckName,
                         id: truck._id,
-                        updated: truck.updated_at_readable
+                        updated: truck.updatedAt_readable
                     })
                 };
 
                 for (var i = 0; i < locations.length; i++) {
-                    locations[i].distanceFromCurrentUser = google.maps.geometry.spherical.computeDistanceBetween(latLng, locations[i].latlon) * .000621371;
+                    locations[i].distanceFromCurrentUser = (google.maps.geometry.spherical.computeDistanceBetween(latLng, locations[i].latlon) * .000621371).toFixed(2);
                 }
 
                 console.log('locations array', locations);
@@ -83,7 +80,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($scope, $sta
                         title: locations[i].name,
                         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
                         id: locations[i].id,
-                        info: "<p>" + locations[i].name + " has been here since " + locations[i].updated + "</p>"
+                        distanceFromUser: locations[i].distanceFromCurrentUser,
+                        info: "<p>" + locations[i].name + " has been here since " + locations[i].updated + "</p> <p>" + locations[i].distanceFromCurrentUser + " miles from your current location.</p>"
                     });
 
                     markers.push(marker);
