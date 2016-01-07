@@ -47,6 +47,15 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
                     controller: 'mapCtrl'
                   }
                 }
+            })
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                  'menuContent': {
+                    templateUrl: 'features/profile/profile.html',
+                    controller: 'ProfileController'
+                  }
+                }
             });
 
         $urlRouterProvider
