@@ -1,0 +1,46 @@
+<ion-view>
+    <ion-nav-title>
+    <span>Food Trucks By Me</span>
+  </ion-nav-title>
+    <ion-content>
+    <div class="list card" ng-repeat='user in listTrucks'>
+
+        <div class="item item-avatar listView">
+            <img ng-src="{{user.truck.imgUrl}}">
+            <h2 class="list-font-color">{{user.truck.truckName}}</h2>
+            <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
+            <p class="list-font-color">Price: {{user.truck.price}}</p>
+        </div>
+
+        <div class="item item-body">
+            <img class="full-image" ng-src="{{user.truck.imgUrl}}">
+            <h3>Appx address:</h3>
+            <h3>Appx distance:</h3>
+            <p>
+            This is where the description of the Food Truck will be
+            {{user.truck.description}}
+            </p>
+            <p>
+            <a href="#" class="subdued">1 Favorite</a>
+            <a href="#" class="subdued">5 Comments</a>
+            </p>
+        </div>
+
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+            <i class="icon ion-star"></i>
+            Favorite
+            </a>
+            <a class="tab-item" href="#">
+            <i class="icon ion-chatbox"></i>
+            Comment
+            </a>
+            <a class="tab-item" href="#">
+            <i class="icon ion-share"></i>
+            Share
+            </a>
+        </div>
+
+    </div>
+    <ion-content>
+</ion-view>
