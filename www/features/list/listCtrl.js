@@ -1,18 +1,25 @@
-angular.module('food-truck-finder').controller('listCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService) {
-
+angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService) {
+    
     $scope.getData = function () {
 
         mapService.getTrucks().then(function (trucks) {
             $scope.listTrucks = trucks;
         });
     };
-
-    console.log($rootScope.authedUser._id);
     
     $scope.getData();
+    
+    var getAuthedUser = function() {
+            $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
+            $scope.authedUser = result.data;
+            console.log("This is the authed user ", $scope.authedUser);
+            });
+        };
+    
+    console.log($scope.authedUser.user._id);
 
-    $scope.addToFavorites = function (fav) {
-        mapService.addFavorite($rootScope.authedUser._id, fav).then(function (response) {
+    $scope.addToFavorites = function (id) {
+        mapService.addFavorite($scope.authedUser.user._id, id).then(function (response) {
             console.log(response);
         });
     };

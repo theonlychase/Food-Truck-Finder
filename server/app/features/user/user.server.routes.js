@@ -16,6 +16,6 @@ module.exports = function (app) {
         .delete(UserCtrl.deleteSpecificUser); // delete a specific User
     
     app.route('/api/users/favs/:id')
-        .put(UserCtrl.addFavorite) // get a specific user
+        .put(UserCtrl.addFavorite) // add trucks to favorites array
     
 };

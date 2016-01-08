@@ -29,8 +29,8 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
     //        });
     //    };
 
-    this.addFavorite = function (userId, fav) {
-        return $http.put(API_ENDPOINT.url + '/users/fav/' + userId, fav).then(function (result) {
+    this.addFavorite = function (userId, id) {
+        return $http.put(API_ENDPOINT.url + '/users/favs/' + userId, {id: id}).then(function (result) {
             console.log(result);
         });
     };
