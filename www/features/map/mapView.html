@@ -1,5 +1,19 @@
 <ion-view>
-    <ion-content>
-        <div id="map" data-tap-disabled="true"></div>
-    </ion-content>
+  <ion-nav-title>
+    <span>Map</span>
+  </ion-nav-title>
+  <ion-content>
+    <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
+
+        <a href="#/app/list">
+            <div class="list-view-btn">
+                <h5>List View</h5>
+            </div>
+        </a>
+
+
+        <div id="map" data-tap-disabled="true">
+
+        </div>
+  </ion-content>
 </ion-view>

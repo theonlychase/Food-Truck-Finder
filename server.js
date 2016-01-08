@@ -7,8 +7,9 @@ var mongoose    = require('mongoose');
 var passport	= require('passport');
 var config      = require('./server/config/database'); // get db config file
 var User        = require('./server/app/features/user/user.server.model'); // get the USER model
-var port 	    = process.env.PORT || 8100;
+var port 	    = process.env.PORT || 8080;
 var jwt 	    = require('jwt-simple');
+
 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,14 +30,29 @@ app.get('/api/test', function(req, res) {
 });
 
 ///Require Truck Routes///
-require('./server/app/features/truck/truck.server.routes')(app);
 
+
+///Require User Routes////
+require('./server/app/features/user/user.server.routes')(app);
+console.log('test server');
 
 mongoose.connect(config.database);
 
 require('./server/config/passport')(passport);
 
 var apiRoutes = express.Router();
+
+apiRoutes.put('/truckprofile/:id', function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+   User.findByIdAndUpdate(req.params.id, {truck: req.body}, function(err, response) {
+           if(err) {
+               res.json({succes: false, msg: 'Failed.'});
+           } else {
+               res.json({succes: true, msg: 'Profile Settings Saved!'});
+           }
+       });
+   });
 
 apiRoutes.post('/signup', function(req, res) {
   if (!req.body.name || !req.body.password) {
@@ -85,11 +101,11 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', {session: false}), fun
       name: decoded.name
     }, function(err, user) {
       if (err) throw err;
-
+      
       if (!user) {
         return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
       } else {
-        return res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+        return res.json({success: true, user});
       }
     });
   } else {
@@ -112,6 +128,11 @@ getToken = function(headers) {
 
 app.use('/api', apiRoutes);
 
+
+
+
+app.use(express.static(__dirname + '/www'));
+
 // Start the server
 app.listen(port);
-console.log('There will be dragons: http://localhost:' + port);
+console.log('Food Truck Finder Port: http://localhost:' + port);
