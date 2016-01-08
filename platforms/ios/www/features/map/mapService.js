@@ -1,16 +1,16 @@
-angular.module('food-truck-finder').service('mapService', function ($http, $q) {
+angular.module('food-truck-finder').service('mapService', function ($http, $q, API_ENDPOINT) {
 
     this.getTrucks = function () {
-        return $http.get('/api/trucks').then(function (trucks) {
+        return $http.get(API_ENDPOINT.url + '/users/trucks').then(function (trucks) {
             return trucks.data;
         });
     };
 
     this.shareTruckLocation = function (myTruckData) {
-        console.log('myTruckData', myTruckData);
+        // console.log('myTruckData', myTruckData);
         return $http({
             method: 'PUT',
-            url: '/api/trucks/' + myTruckData.id,
+            url: API_ENDPOINT.url + '/users' + myTruckData.truck.id,
             dataType: 'json',
             data: myTruckData
         }).then(function (response) {
@@ -18,13 +18,32 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
         });
     };
 
+    //    this.addFavorite = function (userId){
+    //        return $http({
+    //         method: 'PUT',
+    //         url: API_ENDPOINT.url + '/users/favs/' + userId,
+    //         dataType: 'json',
+    //         data: userId,
+    //        }).then(function (response) {
+    //            return response.data;
+    //        });
+    //    };
+
+    this.addFavorite = function (userId, fav) {
+        return $http.put(API_ENDPOINT.url + '/users/fav/' + userId, fav).then(function (result) {
+            console.log(result);
+        });
+    };
+
     this.reverseGeolocate = function (pos) {
-        // var deferred = $q.defer();
+        var deferred = $q.defer();
 
         var geocoder = new google.maps.Geocoder();
 
         var point = new google.maps.LatLng(pos.lat, pos.lng);
-        geocoder.geocode({ 'latLng': point }, function (results, status) {
+        geocoder.geocode({
+            'latLng': point
+        }, function (results, status) {
             if (status !== google.maps.GeocoderStatus.OK) {
                 console.log(status);
             }
@@ -32,13 +51,10 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q) {
             if (status == google.maps.GeocoderStatus.OK) {
                 // console.log(results[0].formatted_address);
             }
-            return (results[0].formatted_address);
-            // })
-            // return deferred.promise
+            deferred.resolve(results[0].formatted_address);
         })
+        return deferred.promise
     };
-
-
 
 
 
