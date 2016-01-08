@@ -1,4 +1,4 @@
-angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService) {
+angular.module('food-truck-finder').controller('listCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService) {
 
     $scope.getData = function () {
 
@@ -7,10 +7,12 @@ angular.module('food-truck-finder').controller('listCtrl', function ($scope, $st
         });
     };
 
+    console.log($rootScope.authedUser._id);
+    
     $scope.getData();
 
-    $scope.addToFavorites = function (userId) {
-        mapService.addFavorite(userId).then(function (response) {
+    $scope.addToFavorites = function (fav) {
+        mapService.addFavorite($rootScope.authedUser._id, fav).then(function (response) {
             console.log(response);
         });
     };

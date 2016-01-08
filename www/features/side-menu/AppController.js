@@ -1,6 +1,19 @@
+(function() {
+    'use strict';
+
 angular.module('food-truck-finder')
 
-    .controller('AppController', function($scope, $state, $ionicPopup, AuthService, AUTH_EVENTS) {
+    .controller('AppController', function($rootScope, $scope, $state, $http, $ionicPopup, AuthService, AUTH_EVENTS, API_ENDPOINT) {
+        
+        var getAuthedUser = function() {
+            $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
+            $scope.authedUser = result.data;
+            $rootScope.authedUser = $scope.authedUser;
+            console.log("This is the authed user on AppController ", $scope.authedUser, $rootScope.authedUser);
+            });
+        };
+        
+        getAuthedUser();
         
        $scope.logout = function() {
          AuthService.logout();
@@ -16,3 +29,5 @@ angular.module('food-truck-finder')
         });
       });
     });
+})();
+

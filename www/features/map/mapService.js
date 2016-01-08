@@ -17,15 +17,21 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
             return response.data;
         });
     };
-    
-    this.addFavorite = function (userId){
-        return $http({
-         method: 'PUT',
-         url: API_ENDPOINT.url + '/users/favs/' + userId,
-         dataType: 'json',
-         data: userId,
-        }).then(function (response) {
-            return response.data;
+
+    //    this.addFavorite = function (userId){
+    //        return $http({
+    //         method: 'PUT',
+    //         url: API_ENDPOINT.url + '/users/favs/' + userId,
+    //         dataType: 'json',
+    //         data: userId,
+    //        }).then(function (response) {
+    //            return response.data;
+    //        });
+    //    };
+
+    this.addFavorite = function (userId, fav) {
+        return $http.put(API_ENDPOINT.url + '/users/fav/' + userId, fav).then(function (result) {
+            console.log(result);
         });
     };
 
@@ -35,7 +41,9 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
         var geocoder = new google.maps.Geocoder();
 
         var point = new google.maps.LatLng(pos.lat, pos.lng);
-        geocoder.geocode({ 'latLng': point }, function (results, status) {
+        geocoder.geocode({
+            'latLng': point
+        }, function (results, status) {
             if (status !== google.maps.GeocoderStatus.OK) {
                 console.log(status);
             }
