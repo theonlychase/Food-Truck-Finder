@@ -30,7 +30,6 @@ module.exports = {
     },
 
     updateSpecificUser: function (req, res, next) {
-        console.log(req.body);
         User.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         }, function (err, updatedUser) {

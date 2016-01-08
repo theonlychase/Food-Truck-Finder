@@ -124,7 +124,7 @@ app.use('/api', apiRoutes);
 io.on('connection', function (socket) {
     console.log('User connected to socket');
     socket.on('broadcastChange', function (data) {
-        console.log('BROADCAST CHANGE COMING TO SERVER ', data);
+        // console.log('BROADCAST CHANGE COMING TO SERVER ', data);
         io.emit('updateBroadcastChange', data);
     });
 });
