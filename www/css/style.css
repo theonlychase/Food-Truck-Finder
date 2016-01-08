@@ -273,7 +273,11 @@ background-color: #FF4C4C; }
 }
 
 .listView{
-    background-color: #ff3802;
+    background-color: #ff4c4c;
+}
+
+.list-font-color {
+    color: #fff !important;
 }
 
 
