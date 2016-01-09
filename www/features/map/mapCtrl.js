@@ -305,6 +305,17 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 })
                 $scope.markers.push(newMarker);
             }
+            
+            // Create info windows for each marker // 
+            var infowindow = new google.maps.InfoWindow;
+
+            for (var i = 0; i < $scope.markers.length; i++) {
+
+                google.maps.event.addListener($scope.markers[i], 'click', function () {
+                    infowindow.setContent(this.info);
+                    infowindow.open($scope.map, this);
+                })
+            }
 
             console.log('After looping through and creating markers, the new locations array is now this: ', $scope.locations);
             console.log('And the new markers array looks like this: ', $scope.markers);
