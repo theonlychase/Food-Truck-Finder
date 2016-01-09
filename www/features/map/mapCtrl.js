@@ -247,6 +247,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
         mapService.getOneTruckData(truckToUpdateId).then(function (truck) {
             console.log('Ok, I got you the new data: ', truck);
             console.log('Here are the current items in locations array: ', $scope.locations);
+            console.log('Here is the current markers array: ', $scope.markers);
+
             for (var i = 0; i < $scope.locations.length; i++) {
                 if ($scope.locations[i].id === truck._id) {
                     if (truck.truck.status === 'Inactive') {
@@ -255,6 +257,14 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                         i--;
                     }
                     console.log('New locations array after item removed: ', $scope.locations);
+                    for (var j = 0; j < $scope.markers.length; j++) {
+                        if ($scope.markers[j].id === truck._id) {
+                            console.log('Found the marker I need to set at null');
+                            $scope.markers[j].setMap(null);
+                            $scope.markers = [];
+                            console.log('Set markers to [] and see result: ', $scope.markers);
+                        }
+                    }
                     return false;
 
                 } else {
@@ -274,6 +284,30 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             $scope.locations.push(updatedLocation);
             console.log('The new location object is in: ', $scope.locations);
 
+            console.log('This is the current markers array: ', $scope.markers);
+
+            for (var i = 0; i < $scope.markers.length; i++) {
+                $scope.markers[i].setMap(null);
+            }
+            console.log('This is now the markers array after setting markers to null: ', $scope.markers);
+            $scope.markers = [];
+            console.log('This is now the markers array after setting markers to an empty array: ', $scope.markers);
+
+            for (var i = 0; i < $scope.locations.length; i++) {
+                var newMarker = new google.maps.Marker({
+                    position: $scope.locations[i].latlon,
+                    map: $scope.map,
+                    title: $scope.locations[i].name,
+                    icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+                    id: $scope.locations[i].id,
+                    distanceFromUser: $scope.locations[i].distanceFromCurrentUser,
+                    info: "<p>" + $scope.locations[i].name + " has been here since " + $scope.locations[i].updated + "</p> <p>" + $scope.locations[i].distanceFromCurrentUser + " miles from your current location.</p>"
+                })
+                $scope.markers.push(newMarker);
+            }
+
+            console.log('After looping through and creating markers, the new locations array is now this: ', $scope.locations);
+            console.log('And the new markers array looks like this: ', $scope.markers);
         })
     });
 
