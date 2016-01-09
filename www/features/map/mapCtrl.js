@@ -1,11 +1,10 @@
 angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService) {
 
+
     var options = { timeout: 10000, enableHighAccuracy: true };
 
-    var map;
     var currentLocation = [];
-    console.log($scope.locationStatus);
-    $scope.locationStatus === 'Inactive'
+    $scope.myStatus = false;
 
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
@@ -33,12 +32,10 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
         $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-        map = $scope.map;
-
-        google.maps.event.addListenerOnce(map, 'idle', function () {
+        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
 
             var marker = new google.maps.Marker({
-                map: map,
+                map: $scope.map,
                 animation: google.maps.Animation.DROP,
                 icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 position: $scope.latLng
@@ -52,85 +49,29 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 infoWindow.open($scope.map, marker);
             });
 
-            $scope.updateMapWithNewData();
+            $scope.updateMapOnLoad();
         });
 
     }, function (error) {
         console.log("Could not get location");
     });
     
-    
-    // TOGGLE MY LOCATION SHARING (TRUCK) //
-    $scope.locationStatus = "Inactive";
-
-    $scope.toggleTruckLocation = function () {
-        var myTruckData;
-        var myTruckDataShare = {
-            truck: {
-                truckName: $rootScope.authedUser.truck.truckName,
-                id: $rootScope.authedUser._id,
-                status: 'Active',
-                currentLocation: [currentLocation[1], currentLocation[0]],
-                address: $scope.address,
-                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
-            }
-        };
-
-        var myTruckDataStop = {
-            truck: {
-                truckName: $rootScope.authedUser.truck.truckName,
-                id: $rootScope.authedUser._id,
-                status: 'Inactive',
-                currentLocation: [undefined, undefined],
-                address: null,
-                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
-            }
-        };
-
-        if ($scope.locationStatus === 'Active') {
-            myTruckData = myTruckDataStop
-        } else if ($scope.locationStatus === 'Inactive') {
-            myTruckData = myTruckDataShare;
-        }
-        // SOCKET --> EMIT BROADCAST START/STOP //
-        socketService.emit('broadcastChange', myTruckData);
-        console.log($scope.locationStatus);
-
-        mapService.shareTruckLocation(myTruckData).then(function (response) {
-            // console.log(response);
-            $scope.locationStatus = response.truck.status;
-            console.log($scope.locationStatus);
-        })
-    };
-    
-    // SOCKET --> LISTEN FOR NEW BROADCAST START/STOP INFO //
-    socketService.on('updateBroadcastChange', function (data) {
-        // console.log('NEW BROADCAST DATA COMING FROM SERVER: ', data);
-        $scope.updateSingleTruck(data);
-    });
-
-
-
-    // POPULATE THE MAP ON PAGE LOAD WITH TRUCKS THAT ARE BROADCASTING LOCATION //
-    $scope.updateMapWithNewData = function () {
-        if ($scope.markers) {
-            for (var i = 0; i < $scope.markers.length; i++) {
-                $scope.markers[i].setMap(null);
-            }
-        }
+    // POPULATE MAP W/ TRUCKS THAT ARE BROADCASTING LOCATION //
+    $scope.updateMapOnLoad = function () {
 
         $scope.locations = [];
         $scope.markers = [];
-        console.log('ding');
-        mapService.getTrucks().then(function (users) {
 
-            // console.log('users', users);
+        mapService.getActiveTrucks().then(function (activeTrucks) {
 
-            for (var i = 0; i < users.length; i++) {
-                var truck = users[i];
+            console.log('activeTrucks', activeTrucks);
+
+            for (var i = 0; i < activeTrucks.length; i++) {
+                var truck = activeTrucks[i];
                 if (truck.truck.status === "Active") {
                     $scope.locations.push({
-                        latlon: new google.maps.LatLng(truck.truck.currentLocation[0], truck.truck.currentLocation[1]),
+                        status: truck.truck.status,
+                        latlon: new google.maps.LatLng(truck.truck.currentLocation[1], truck.truck.currentLocation[0]),
                         name: truck.truck.truckName,
                         id: truck._id,
                         updated: truck.truck.updatedAt_readable
@@ -147,7 +88,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             for (var i = 0; i < $scope.locations.length; i++) {
                 var marker = new google.maps.Marker({
                     position: $scope.locations[i].latlon,
-                    map: map,
+                    // map: map,
                     title: $scope.locations[i].name,
                     icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
                     id: $scope.locations[i].id,
@@ -164,84 +105,177 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             for (var i = 0; i < $scope.markers.length; i++) {
                 var marker = $scope.markers[i];
 
+                marker.setMap(null);
+                marker.setMap($scope.map);
+
                 google.maps.event.addListener(marker, 'click', function () {
                     infowindow.setContent(this.info);
-                    infowindow.open(map, this);
+                    infowindow.open($scope.map, this);
                 })
             }
         });
     };
     
-    // UPDATE MAP WITH CHANGE FROM SOCKET.IO //
-    $scope.updateSingleTruck = function (updatedTruckData) {
-        if (updatedTruckData.truck.id === $rootScope.authedUser._id) {
-            console.log('me');
-        }
-        console.log($scope.locations.length);
-        for (var i = 0; i < $scope.locations.length; i++) {
-            if (updatedTruckData.truck.id === $scope.locations[i].id) {
-                console.log(true);
-                $scope.locations.splice(i, 1);
-                i--;
-            }
-        }
-        console.log($scope.locations.length);
+    // TOGGLE MY LOCATION SHARING (TRUCK) //
+    $scope.toggleTruckLocation = function () {
 
-        for (var i = 0; i < $scope.markers.length; i++) {
-            if (updatedTruckData.truck.id !== $rootScope.authedUser._id) {
-                console.log('me again');
-                if (updatedTruckData.truck.id === $scope.markers[i].id) {
-                    $scope.markers[i].setMap(null);
+        var myTruckData = {
+            truck: {
+                truckName: $rootScope.authedUser.truck.truckName,
+                id: $rootScope.authedUser._id,
+                address: $scope.address,
+                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+            }
+        };
+
+        // console.log($scope.myStatus);
+        if ($scope.myStatus === false) {
+            myTruckData.truck.status = 'Active';
+            myTruckData.truck.address = $scope.address;
+            myTruckData.truck.currentLocation = [currentLocation[0], currentLocation[1]];
+
+        } else if ($scope.myStatus === true) {
+            myTruckData.truck.status = 'Inactive';
+            myTruckData.truck.address = null;
+            myTruckData.truck.currentLocation = [undefined, undefined];
+        }
+
+        console.log('sending auth user data to db for update ', myTruckData);
+        mapService.shareTruckLocation(myTruckData).then(function (response) {
+            $scope.myUserId = response._id;
+            console.log('my data coming back from db', response);
+            console.log('NEW auth user status after update ', response.truck.status);
+            if (response.truck.status === 'Active') {
+                $scope.myStatus = true;
+            } else {
+                $scope.myStatus = false;
+            }
+            console.log($scope.myStatus);
+            
+            // SOCKET --> NEED TO SEND NOTICE THAT I UPDATED!
+            socketService.emit('notifyUpdatedTruck', $scope.myUserId);
+            console.log('I sent a notice that I updated');
+            console.log('End Toggle Slide Function');
+        })
+    };
+    
+    
+
+
+
+    
+
+    // UPDATE MAP WITH CHANGE FROM SOCKET.IO //
+    // $scope.updateSingleTruck = function (updatedTruckData) {
+    //     $scope.$on('$destroy', function (event) {
+    //         socketService.removeAllListeners();
+    //         console.log('$Destroy triggered!');
+    //     });
+
+
+    //     console.log('locations', $scope.locations);
+    //     for (var i = 0; i < $scope.locations.length; i++) {
+    //         if (updatedTruckData.truck.id === $scope.locations[i].id) {
+    //             console.log('splice!');
+    //             $scope.locations.splice(i, 1);
+    //             i--;
+    //         }
+    //     }
+    //     console.log('locations after splice', $scope.locations);
+
+    //     for (var i = 0; i < $scope.markers.length; i++) {
+    //         if (updatedTruckData.truck.id === $scope.markers[i].id) {
+    //             $scope.markers[i].setMap(null);
+
+    //         }
+    //     }
+    //     $scope.markers.length = 0;
+    //     $scope.markers = [];
+
+    //     if (updatedTruckData.truck.status === "Active") {
+    //         var temp = [];
+    //         temp.push({
+    //             latlon: new google.maps.LatLng(updatedTruckData.truck.currentLocation[0], updatedTruckData.truck.currentLocation[1]),
+    //             name: updatedTruckData.truck.truckName,
+    //             id: updatedTruckData.truck.id,
+    //             updated: updatedTruckData.truck.updatedAt_readable
+    //         });
+
+    //         temp[0].distanceFromCurrentUser = (google.maps.geometry.spherical.computeDistanceBetween($scope.latLng, temp[0].latlon) * .000621371).toFixed(2);
+    //         $scope.locations.push(temp[0]);
+    //         console.log('temp! ', temp);
+    //         console.log($scope.locations.length);
+    //         temp = undefined;
+    //     }
+
+    //     for (var i = 0; i < $scope.locations.length; i++) {
+    //         var marker = new google.maps.Marker({
+    //             position: $scope.locations[i].latlon,
+    //             // map: map,
+    //             title: $scope.locations[i].name,
+    //             icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+    //             id: $scope.locations[i].id,
+    //             distanceFromUser: $scope.locations[i].distanceFromCurrentUser,
+    //             info: "<p>" + $scope.locations[i].name + " has been here since " + $scope.locations[i].updated + "</p> <p>" + $scope.locations[i].distanceFromCurrentUser + " miles from your current location.</p>"
+    //         });
+
+    //         $scope.markers.push(marker);
+    //     }
+    //     var infowindow = new google.maps.InfoWindow({
+    //         // test: 'test123'
+    //     });
+
+    //     for (var i = 0; i < $scope.markers.length; i++) {
+    //         var marker = $scope.markers[i];
+    //         marker.setMap(map);
+
+    //         google.maps.event.addListener(marker, 'click', function () {
+    //             infowindow.setContent(this.info);
+    //             infowindow.open(map, this);
+    //         })
+    //     }
+    //     console.log('locations after any change ', $scope.locations);
+    //     console.log('markers after any change ', $scope.markers);
+    // };
+    
+    
+    // SOCKET --> LISTENING FOR NOTICE OF A TRUCK CHANGE //
+    socketService.on('updateThisTruck', function (truckToUpdateId) {
+        console.log('Get new data for this truck: ', truckToUpdateId);
+        console.log('Ok, I will go get new data...');
+        // --> Go get new data for the updated truck //
+        mapService.getOneTruckData(truckToUpdateId).then(function (truck) {
+            console.log('Ok, I got you the new data: ', truck);
+            console.log('Here are the current items in locations array: ', $scope.locations);
+            for (var i = 0; i < $scope.locations.length; i++) {
+                if ($scope.locations[i].id === truck._id) {
+                    if (truck.truck.status === 'Inactive') {
+                        console.log('The new truck is in locations array, but the new status is INACTIVE --> I am going to splice it.');
+                        $scope.locations.splice(i, 1);
+                        i--;
+                    }
+                    console.log('New locations array after item removed: ', $scope.locations);
+                    return false;
+
+                } else {
+                    console.log('The new truck is not in the locations array. I will create a new location object and push it in...');
                 }
             }
-        }
+            var updatedLocation = {
+                status: truck.truck.status,
+                latlon: new google.maps.LatLng(truck.truck.currentLocation[1], truck.truck.currentLocation[0]),
+                name: truck.truck.truckName,
+                id: truck._id,
+                updated: truck.truck.updatedAt_readable
+            };
+            // Adding in the 'distanceFromCurrentUser' property //
+            updatedLocation.distanceFromCurrentUser = (google.maps.geometry.spherical.computeDistanceBetween($scope.latLng, updatedLocation.latlon) * .000621371).toFixed(2);
 
-        $scope.markers = [];
+            $scope.locations.push(updatedLocation);
+            console.log('The new location object is in: ', $scope.locations);
 
-        if (updatedTruckData.truck.status === "Active" && updatedTruckData.truck.id !== $rootScope.authedUser._id) {
-            var temp = [];
-            temp.push({
-                latlon: new google.maps.LatLng(updatedTruckData.truck.currentLocation[0], updatedTruckData.truck.currentLocation[1]),
-                name: updatedTruckData.truck.truckName,
-                id: updatedTruckData.truck.id,
-                updated: updatedTruckData.truck.updatedAt_readable
-            });
-
-            temp[0].distanceFromCurrentUser = (google.maps.geometry.spherical.computeDistanceBetween($scope.latLng, temp[0].latlon) * .000621371).toFixed(2);
-            $scope.locations.push(temp[0]);
-            console.log('temp! ', temp);
-            console.log($scope.locations.length);
-            temp = undefined;
-        }
-
-        for (var i = 0; i < $scope.locations.length; i++) {
-            var marker = new google.maps.Marker({
-                position: $scope.locations[i].latlon,
-                map: map,
-                title: $scope.locations[i].name,
-                icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-                id: $scope.locations[i].id,
-                distanceFromUser: $scope.locations[i].distanceFromCurrentUser,
-                info: "<p>" + $scope.locations[i].name + " has been here since " + $scope.locations[i].updated + "</p> <p>" + $scope.locations[i].distanceFromCurrentUser + " miles from your current location.</p>"
-            });
-
-            $scope.markers.push(marker);
-        }
-        var infowindow = new google.maps.InfoWindow({
-            // test: 'test123'
-        });
-
-        for (var i = 0; i < $scope.markers.length; i++) {
-            var marker = $scope.markers[i];
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent(this.info);
-                infowindow.open(map, this);
-            })
-        }
-        console.log('locations after any change ', $scope.locations);
-        console.log('markers after any change ', $scope.markers);
-    };
+        })
+    });
 
 
 

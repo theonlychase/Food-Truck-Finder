@@ -122,10 +122,10 @@ app.use('/api', apiRoutes);
 
 // SOCKET.IO //
 io.on('connection', function (socket) {
-    console.log('User connected to socket');
-    socket.on('broadcastChange', function (data) {
-        // console.log('BROADCAST CHANGE COMING TO SERVER ', data);
-        io.emit('updateBroadcastChange', data);
+    console.log('User connected to socket', socket.id);
+    socket.on('notifyUpdatedTruck', function (truckToUpdateId) {
+        console.log('Id of truck that needs to be updated by others ', truckToUpdateId);
+        socket.broadcast.emit('updateThisTruck', truckToUpdateId);
     });
 });
 

@@ -6,6 +6,18 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
         });
     };
 
+    this.getActiveTrucks = function () {
+        return $http.get(API_ENDPOINT.url + '/active').then(function (trucks) {
+            return trucks.data;
+        });
+    };
+
+    this.getOneTruckData = function (truckToUpdateId) {
+        return $http.get(API_ENDPOINT.url + '/users/truck/' + truckToUpdateId).then(function (truck) {
+            return truck.data;
+        });
+    };
+
     this.shareTruckLocation = function (myTruckData) {
         return $http({
             method: 'PUT',
@@ -16,13 +28,13 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
             return response.data;
         });
     };
-    
-    this.addFavorite = function (userId){
+
+    this.addFavorite = function (userId) {
         return $http({
-         method: 'PUT',
-         url: API_ENDPOINT.url + '/users' + userId,
-         dataType: 'json',
-         data: userId.truck,
+            method: 'PUT',
+            url: API_ENDPOINT.url + '/users' + userId,
+            dataType: 'json',
+            data: userId.truck,
         }).then(function (response) {
             return response.data;
         });

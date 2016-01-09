@@ -11,5 +11,11 @@ module.exports = function (app) {
         .get(UserCtrl.getSpecificUser) // get a specific user
         .put(UserCtrl.updateSpecificUser) // update a specific User
         .delete(UserCtrl.deleteSpecificUser); // delete a specific User
+        
+    app.route('/api/active')
+        .get(UserCtrl.getActiveTrucks) // get only ACTIVE truck data
+            
+    app.route('/api/users/truck/:id')
+        .get(UserCtrl.getOneTruckData) // get data for only one truck
     
 };
