@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-angular.module('starter')
-=======
 angular.module('food-truck-finder')
->>>>>>> master
 
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated'

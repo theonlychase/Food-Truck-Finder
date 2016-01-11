@@ -17,7 +17,10 @@
     </div>
     <div class="bottom-content">
       <div class="user-bio">
-        <ul class="list">
+          <button class="button button-block button-positive profile-button" ng-click="submitProfile()">
+            Upload Your Logo
+        </button>
+        <ul class="list list-padding">
             <div class="item item-divider profile-header-color">Food Truck Profile</div>
 
             <label class="item item-input item-floating-label">
@@ -47,11 +50,11 @@
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Website</span>
-                <input type="text" name="website" required placeholder="Enter Your website (If applicable)" ng-model="truck.website">
+                <input type="text" name="website" required placeholder="Enter your website (If applicable)" ng-model="truck.website">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Business Logo</span>
-                <input type="text" name="image" required placeholder="Enter Your Logo" ng-model="truck.imgUrl">
+                <input type="text" name="business logo" required placeholder="Enter the URL of your Business logo" ng-model="truck.imgUrl">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Short Description</span>

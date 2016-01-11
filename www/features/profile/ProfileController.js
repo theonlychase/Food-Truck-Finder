@@ -1,6 +1,6 @@
 angular.module('food-truck-finder')
 
-    .controller('ProfileController', function($scope, $state, $http, API_ENDPOINT, $ionicPopup, ProfileService, AUTH_EVENTS) {
+    .controller('ProfileController', function($scope, $state, $http, API_ENDPOINT, $ionicPopup, ProfileService, AUTH_EVENTS, $cordovaFileTransfer) {
         
        var getAuthedUser = function() {
             $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
