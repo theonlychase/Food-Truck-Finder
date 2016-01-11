@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService) {
+    angular.module('food-truck-finder').controller('listCtrl', function ($http, $scope, $state, $cordovaGeolocation, mapService, API_ENDPOINT) {
 
         $scope.getData = function () {
 

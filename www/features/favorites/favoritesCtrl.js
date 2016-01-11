@@ -11,7 +11,5 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($scope
     };
 
     getAuthedUser();
-    
-    
 
 });
