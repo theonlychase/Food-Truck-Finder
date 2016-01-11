@@ -1,4 +1,4 @@
-angular.module('food-truck-finder').controller('favoritesCtrl', function ($scope, $http, $stateParams, favoritesService, API_ENDPOINT) {
+angular.module('food-truck-finder').controller('favoritesCtrl', function ($scope, userService, favoritesService, $http, API_ENDPOINT) {
 
     var getAuthedUser = function () {
         $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
@@ -11,6 +11,15 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($scope
     };
 
     getAuthedUser();
+    
+    // userService.getAuthedUser().then(function(data) {
+    //     $scope.user = data.user;
+    //     console.log("this is the user ", $scope.user);
+    // });
+    
+    // favoritesService.getSpecificUser($scope.user._id).then(function (user) {
+    //             $scope.user = user;
+    // });
     
     
 
