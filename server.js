@@ -46,22 +46,34 @@ require('./server/config/passport')(passport);
 
 var apiRoutes = express.Router();
 
-apiRoutes.post('/signup', function (req, res) {
-    if (!req.body.name || !req.body.password) {
-        res.json({ succes: false, msg: 'Please pass name and password.' });
-    } else {
-        var newUser = new User({
-            name: req.body.name,
-            password: req.body.password
-        });
-        newUser.save(function (err) {
-            if (err) {
-                res.json({ succes: false, msg: 'Username already exists.' });
-            } else {
-                res.json({ succes: true, msg: 'Successful created user!' });
-            }
-        });
-    }
+apiRoutes.put('/truckprofile/:id', function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+   User.findByIdAndUpdate(req.params.id, {truck: req.body}, function(err, response) {
+           if(err) {
+               res.json({succes: false, msg: 'Failed.'});
+           } else {
+               res.json({succes: true, msg: 'Profile Settings Saved!'});
+           }
+       });
+   });
+
+apiRoutes.post('/signup', function(req, res) {
+  if (!req.body.name || !req.body.password) {
+    res.json({succes: false, msg: 'Please pass name and password.'});
+  } else {
+    var newUser = new User({
+      name: req.body.name,
+      password: req.body.password
+    });
+    newUser.save(function(err) {
+      if (err) {
+        res.json({succes: false, msg: 'Username already exists.'});
+      } else {
+        res.json({succes: true, msg: 'Successful created user!'});
+      }
+    });
+  }
 });
 
 apiRoutes.post('/authenticate', function (req, res) {

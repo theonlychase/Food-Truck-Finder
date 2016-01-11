@@ -3,8 +3,11 @@ var UserCtrl = require('./user.server.controller');
 module.exports = function (app) {
 
     app.route('/api/users')
-        .get(UserCtrl.getAllUsers) // get all User data
+        .get(UserCtrl.getAllUsers) // get all Users
         .post(UserCtrl.postNewUser); // post new User to db
+    
+    app.route('/api/users/trucks')
+        .get(UserCtrl.getAllTrucks) // get all Users that contain a Food Truck (truck.truckName)
   
     
     app.route('/api/users/:id')
@@ -17,5 +20,8 @@ module.exports = function (app) {
             
     app.route('/api/users/truck/:id')
         .get(UserCtrl.getOneTruckData) // get data for only one truck
+    
+    app.route('/api/users/favs/:id')
+        .put(UserCtrl.addFavorite) // add trucks to favorites array
     
 };

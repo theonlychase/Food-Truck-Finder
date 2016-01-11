@@ -22,23 +22,23 @@
 
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Food Truck Name</span>
-                <input type="text" placeholder="Enter The Name Of Your Food Truck">
+                <input type="text" name="truckName" required placeholder="Enter The Name Of Your Food Truck" ng-model="truck.truckName">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Address</span>
-                <input type="text" placeholder="Enter Your Address">
+                <input type="text" name="address" required placeholder="Enter Your Address" ng-model="truck.address">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Business Phone</span>
-                <input type="tel" placeholder="Enter Your Business Telephone Number">
+                <input type="tel" name="phone" required placeholder="Enter Your Business Telephone Number" ng-model="truck.phone">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Food Category</span>
-                <input type="tel" placeholder="Enter Your Food Category (Italian, Mexican, Ice Cream etc.)">
+                <input type="text" name="genre" required placeholder="Enter Your Food Category (Italian, Mexican, Ice Cream etc.)" ng-model="truck.genre">
             </label>
             <label class="item item-input item-select">
                 <div class="input-label input-padding">Price Point</div>
-                <select>
+                <select name="price" required ng-model="truck.price">
                     <option>$</option>
                     <option selected>$$</option>
                     <option>$$$</option>
@@ -47,13 +47,20 @@
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Website</span>
-                <input type="url" placeholder="Enter Your website (If applicable)">
+                <input type="text" name="website" required placeholder="Enter Your website (If applicable)" ng-model="truck.website">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Business Logo</span>
-                <input type="url" placeholder="Enter Your Logo">
+                <input type="text" name="image" required placeholder="Enter Your Logo" ng-model="truck.imgUrl">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label input-padding-left">Short Description</span>
+                <input type="text" name="description" required placeholder="Enter a short description about your Food Truck" ng-model="truck.description">
             </label>
          </ul>
+         <button class="button button-block button-positive profile-button" ng-click="submitProfile()">
+            Submit
+        </button>
       </div>
     </div>
   </ion-content>

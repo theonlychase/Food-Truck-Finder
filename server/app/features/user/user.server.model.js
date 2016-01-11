@@ -16,7 +16,7 @@ var UserSchema = new Schema({
         required: true
     },
     favorites: [{
-        type: Schema.Types.ObjectId, ref: 'Truck',
+        type: Schema.Types.ObjectId, ref: 'User',
         unique: true
     }],
 
@@ -31,7 +31,8 @@ var UserSchema = new Schema({
         updatedAt_readable: String,
         website: String,
         imgUrl: String,
-        status: String,
+        description: String, 
+        status: String
     }
 });
 
