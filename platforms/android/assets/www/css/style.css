@@ -1,5 +1,4 @@
 /* Empty. Add your own CSS if you like */
-<<<<<<< HEAD
 .scroll {
   height: 100%;
 }
@@ -132,8 +131,8 @@ margin-top: 0px; }
             font-weight: 500; }
         ion-side-menu ion-item.item:first-child {
           border-top: none; }
-        ion-side-menu ion-item.item:last-child {
-          border-bottom: none; }
+        /*ion-side-menu ion-item.item:last-child {
+          border-bottom: none; }*/
         ion-side-menu .heading-item .item-content {
           height: 120px;
           padding-top: 45px;
@@ -156,6 +155,73 @@ margin-top: 0px; }
         ion-side-menu .heading-item .message {
           color: #999999; }
           
+.profile-view {
+  background-color: #FFFFFF !important; }
+  .profile-view .profile-container {
+    margin: 0px auto;
+    margin-top: 6vh;
+    text-align: center; }
+  .profile-view .user-image-container {
+    width: 46vw; }
+    .profile-view .user-image-container .user-image {
+      border-top: 1px solid #444444;
+      padding: 8px;
+      background-color: #FFFFFF;
+      width: 100%;
+      border-radius: 50%; }
+  .profile-view .user-name {
+    font-size: 20px; }
+  .profile-view .user-twitter {
+    margin-top: 5px; }
+  .profile-view .top-content {
+    border-bottom: 1px solid #444444;
+    position: relative;
+    height: 20vh;
+    margin-bottom: 25vh; }
+  .profile-view .user-background-image-outer {
+    height: 20vh;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0; }
+  .profile-view .bottom-content {
+    padding: 0px;
+    background-color: #FFFFFF;
+    min-height: 55vh;
+    position: relative; }
+    .profile-view .bottom-content .user-bio {
+      text-align: center;
+      margin: 6px 30px;
+      padding: 50px 0px; }
+.profile-header-color {
+    background-color: #ff4c4c;
+    color: #fff;
+}
+.profile-button {
+    background-color: #FF4C4C !important;
+}
+      
+.forms-view ion-content {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important; }
+          
+#sm-bg-color {
+    background-color: #23262a;
+}
+
+.icon-bg-color {
+    color: #fff !important;
+}
+
+.input-padding-left {
+    width: 0 !important;
+}
+
+.input-padding {
+    width: 0 !important;
+    padding: 20px 0 20px 0;
+}
+          
 .bar.app-top-bar {
 background-color: #FF4C4C; }
 .bar.app-top-bar .title {
@@ -166,3 +232,62 @@ background-color: #FF4C4C; }
     color: #FFFFFF !important; }
     .bar.app-top-bar .button * {
     color: #FFFFFF !important; }
+
+.item-toggle {
+    margin: 20px 20px 0 0;
+    /*height: 120px;*/
+    width: 230px;
+    position: fixed;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 20px;
+}
+
+.toggle {
+    top: 10px;
+    right: 16px;
+    z-index: 99999;   
+    cursor: pointer;
+}
+
+.list-view-btn {
+    margin: 100px 20px 0 0;
+    position: fixed;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 18px;
+    z-index: 999;
+    right: 0;
+    width: 110px;
+    height: 45px;
+    cursor: pointer;
+}
+
+/*///////////////LIST VIEW PAGE/////////////////*/
+.star{
+   position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 40px;
+    height: 50px;
+
+}
+
+.listView{
+    background-color: #ff4c4c;
+}
+
+.list-font-color {
+    color: #fff !important;
+}
+
+
+    .list-view-btn h5 {
+        text-align: center;
+        margin: 12px 0 0 0;
+        font-size: 16px;
+        font-weight: 400;
+    }
+

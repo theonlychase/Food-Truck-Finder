@@ -41,6 +41,10 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		BDBE30CBCE224E1C8592A10B /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8533243A6E243BAA9E0196D /* CDVLocation.m */; };
 		FAB92187901045C6968EABB7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1760A26FDFC4B59B4EC32CD /* CoreLocation.framework */; };
+		EFABDEDBC1DE4575838F7A94 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 97166C4622974D64B0DF79B4 /* CDVFile.m */; };
+		E8159658822E42F8B5A42009 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 265187A7F60449869DBE2F8C /* CDVLocalFilesystem.m */; };
+		B7F7DDEBB15048C2A90081B4 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A00E4028F94FD59643C4A1 /* CDVAssetLibraryFilesystem.m */; };
+		FA1DAE145B1E48CEBA2DA4C1 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D273CB08AF6478D98EE9B19 /* CDVFileTransfer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +113,14 @@
 		C8533243A6E243BAA9E0196D /* CDVLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		D7C4EF1FBCCA4EF985120B7A /* CDVLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		F1760A26FDFC4B59B4EC32CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		97166C4622974D64B0DF79B4 /* CDVFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFile.m"; path = "cordova-plugin-file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		265187A7F60449869DBE2F8C /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocalFilesystem.m"; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		76A00E4028F94FD59643C4A1 /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVAssetLibraryFilesystem.m"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		7FC1CF83385346C0BAF36AD6 /* CDVFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFile.h"; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C7A67A96D39F4971A9FDF4DE /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocalFilesystem.h"; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		6E2DDD06D2EE46C2913826A5 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		6D273CB08AF6478D98EE9B19 /* CDVFileTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFileTransfer.m"; path = "cordova-plugin-file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		C16A55D83C1D4B218C686258 /* CDVFileTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFileTransfer.h"; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +223,14 @@
 			children = (
 				C8533243A6E243BAA9E0196D /* CDVLocation.m */,
 				D7C4EF1FBCCA4EF985120B7A /* CDVLocation.h */,
+				97166C4622974D64B0DF79B4 /* CDVFile.m */,
+				265187A7F60449869DBE2F8C /* CDVLocalFilesystem.m */,
+				76A00E4028F94FD59643C4A1 /* CDVAssetLibraryFilesystem.m */,
+				7FC1CF83385346C0BAF36AD6 /* CDVFile.h */,
+				C7A67A96D39F4971A9FDF4DE /* CDVLocalFilesystem.h */,
+				6E2DDD06D2EE46C2913826A5 /* CDVAssetLibraryFilesystem.h */,
+				6D273CB08AF6478D98EE9B19 /* CDVFileTransfer.m */,
+				C16A55D83C1D4B218C686258 /* CDVFileTransfer.h */,
 			);
 			name = Plugins;
 			path = "FoodTruckFinder/Plugins";
@@ -396,6 +416,10 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				BDBE30CBCE224E1C8592A10B /* CDVLocation.m in Sources */,
+				EFABDEDBC1DE4575838F7A94 /* CDVFile.m in Sources */,
+				E8159658822E42F8B5A42009 /* CDVLocalFilesystem.m in Sources */,
+				B7F7DDEBB15048C2A90081B4 /* CDVAssetLibraryFilesystem.m in Sources */,
+				FA1DAE145B1E48CEBA2DA4C1 /* CDVFileTransfer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
