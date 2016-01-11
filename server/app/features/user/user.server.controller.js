@@ -39,7 +39,9 @@ module.exports = {
     },
 
     updateSpecificUser: function (req, res, next) {
+
         console.log("this is id", req.params.id);
+
         User.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         }, function (err, updatedUser) {
@@ -72,6 +74,24 @@ module.exports = {
             }
             res.status(200).json(deletedUser);
         });
-    }
+    },
+
+    getActiveTrucks: function (req, res, next) {
+        User.find().exists('truck.truckName', true).where('truck.status').equals('Active').select('truck').exec(function (error, trucks) {
+            if (error) {
+                res.status(500).send(error);
+            }
+            res.status(200).json(trucks);
+        });
+    },
+
+    getOneTruckData: function (req, res, next) {
+        User.findById(req.params.id).select('truck').exec(function (error, truck) {
+            if (error) {
+                res.status(500).send(error);
+            }
+            res.status(200).json(truck);
+        });
+    },
 
 };
