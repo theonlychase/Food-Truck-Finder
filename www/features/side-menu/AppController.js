@@ -17,7 +17,9 @@ angular.module('food-truck-finder')
         
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
+            $rootScope.authedUser = data.user;
             console.log("This is the authedUser", $scope.authedUser);
+            // console.log("This is the root authedUser", $rootScope.authedUser);
         });
         
        $scope.logout = function() {

@@ -59,7 +59,8 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             }
         })
         .state('app.favorites', {
-            url: '/favorites',
+            url: '/favorites/:id',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: '/features/favorites/favoritesView.html',
