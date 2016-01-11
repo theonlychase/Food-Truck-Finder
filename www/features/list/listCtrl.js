@@ -1,19 +1,11 @@
-angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, $http, API_ENDPOINT) {
+(function() {
+    'use strict';
 
-    $scope.getData = function () {
-
-        mapService.getTrucks().then(function (trucks) {
-            console.log(trucks);
-            $scope.listTrucks = trucks;
-
-        });
-    };
-
-    $scope.getData();
-
-    var getAuthedUser = function () {
-        $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
-            $scope.authedUser = result.data.user;
+angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService) {
+    
+        userService.getAuthedUser().then(function(data) {
+            $scope.authedUser = data;
+            
             console.log("This is the authed user ", $scope.authedUser);
             $scope.myFavorites = $scope.authedUser.favorites;
             console.log('myfaves', $scope.myFavorites);
@@ -28,13 +20,14 @@ angular.module('food-truck-finder').controller('listCtrl', function ($scope, $st
             })
             console.log('listTrucks ', $scope.listTrucks);
         });
-    };
+            
 
+        mapService.getTrucks().then(function (response) {
+            $scope.listTrucks = response;
+            console.log("These are the list of trucks", $scope.listTrucks);
+        });
 
-    getAuthedUser();
-
-
-    $scope.toggleFavorites = function (favId, favStatus, index) {
+     $scope.toggleFavorites = function (favId, favStatus, index) {
         $scope.listTrucks[index].favStatus = favStatus;
         if (favStatus) {
             console.log('remove');
@@ -46,7 +39,6 @@ angular.module('food-truck-finder').controller('listCtrl', function ($scope, $st
 
         }
     };
-
 
     $scope.addToFavorites = function (favId, index) {
 
@@ -74,7 +66,5 @@ angular.module('food-truck-finder').controller('listCtrl', function ($scope, $st
         };
     }
 
-
-
-
 });
+})();

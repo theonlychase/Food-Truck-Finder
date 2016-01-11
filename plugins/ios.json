@@ -12,7 +12,14 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
+        }
+    }
 }

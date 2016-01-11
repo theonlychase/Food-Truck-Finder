@@ -14,7 +14,7 @@
   <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
     <ion-content>
       <ion-list>
-        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile">
+        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile({ id: authedUser.user._id })">
           <div class="user-image-container">
             <pre-img ratio="_1_1" helper-class="rounded-image">
               <img class="user-image" ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" spinner-on-load>
@@ -27,11 +27,11 @@
           <i class="icon ion-map"></i>
           <h2 class="menu-text">Map</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.list">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.list({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
           <i class="icon ion-pinpoint"></i>
           <h2 class="menu-text">Food Trucks By Me</h2>
         </ion-item>
-        <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ui-sref="app.favorites">
+        <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ui-sref="app.favorites({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
           <i class="icon ion-star"></i>
           <h2 class="menu-text">Favorites</h2>
         </ion-item>

@@ -47,8 +47,6 @@ require('./server/config/passport')(passport);
 var apiRoutes = express.Router();
 
 apiRoutes.put('/truckprofile/:id', function(req, res) {
-    console.log(req.body);
-    console.log(req.params.id);
    User.findByIdAndUpdate(req.params.id, {truck: req.body}, function(err, response) {
            if(err) {
                res.json({succes: false, msg: 'Failed.'});
