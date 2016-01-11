@@ -58,13 +58,28 @@ module.exports = {
                 'favorites': req.body.id
             }
         }, {
-            new: true
-        }, function (err, updatedUser) {
-            if (err) {
-                res.status(500).send(err);
+                new: true
+            }, function (err, updatedUser) {
+                if (err) {
+                    res.status(500).send(err);
+                }
+                res.status(200).json(updatedUser);
+            });
+    },
+
+    removeFavorite: function (req, res, next) {
+        User.findByIdAndUpdate(req.params.id, {
+            $pull: {
+                'favorites': req.body.id
             }
-            res.status(200).json(updatedUser);
-        });
+        }, {
+                new: true
+            }, function (err, updatedUser) {
+                if (err) {
+                    res.status(500).send(err);
+                }
+                res.status(200).json(updatedUser);
+            });
     },
 
     deleteSpecificUser: function (req, res, next) {

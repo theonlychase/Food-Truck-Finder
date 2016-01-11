@@ -22,6 +22,8 @@ module.exports = function (app) {
         .get(UserCtrl.getOneTruckData) // get data for only one truck
     
     app.route('/api/users/favs/:id')
-        .put(UserCtrl.addFavorite) // add trucks to favorites array
+        .put(UserCtrl.addFavorite) // add truck to favorites array
     
+    app.route('/api/users/favs/remove/:id')
+        .put(UserCtrl.removeFavorite) // remove truck from favorites array
 };

@@ -290,4 +290,14 @@ background-color: #FF4C4C; }
         font-size: 16px;
         font-weight: 400;
     }
+    
+    
+    
+.favoriteStar {
+   color: goldenrod;
+}
+
+.notFavoriteStar {
+   color: none;
+}
 
