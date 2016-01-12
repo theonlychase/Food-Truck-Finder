@@ -14,6 +14,7 @@ angular.module('food-truck-finder')
         // };
         
         // getAuthedUser();
+       
         
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
