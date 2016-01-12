@@ -20,7 +20,5 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($scope
     // favoritesService.getSpecificUser($scope.user._id).then(function (user) {
     //             $scope.user = user;
     // });
-    
-    
 
 });

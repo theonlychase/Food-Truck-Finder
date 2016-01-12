@@ -40,7 +40,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             controller: 'AppController'
         })
         .state('app.maps', {
-            url: '/map',
+            url: '/map/:id',
             views: {
                 'menuContent': {
                     templateUrl: 'features/map/mapView.html',
