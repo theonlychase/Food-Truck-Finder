@@ -84,7 +84,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             }
 
             console.log('locations array', $scope.locations);
-
+            $rootScope.truckInfo = $scope.locations;
             for (var i = 0; i < $scope.locations.length; i++) {
                 var marker = new google.maps.Marker({
                     position: $scope.locations[i].latlon,
