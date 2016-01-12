@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.route('/api/users/:id')
         .get(UserCtrl.getSpecificUser) // get a specific user
         .put(UserCtrl.updateSpecificUser) // update a specific User
+        .put(UserCtrl.updateSpecificUser) // update a specific User
         .delete(UserCtrl.deleteSpecificUser); // delete a specific User
         
     app.route('/api/active')

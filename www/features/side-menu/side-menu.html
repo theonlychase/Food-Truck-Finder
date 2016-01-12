@@ -23,7 +23,7 @@
           <h3 class="greeting">Hi {{authedUser.user.name}}</h3>
           <p class="message">Welcome back</p>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps({ id: authedUser.user._id })">
           <i class="icon ion-map"></i>
           <h2 class="menu-text">Map</h2>
         </ion-item>

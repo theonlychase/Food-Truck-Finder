@@ -1,7 +1,10 @@
-angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService) {
+angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService) {
 
 
-    var options = { timeout: 10000, enableHighAccuracy: true };
+    var options = {
+        timeout: 10000,
+        enableHighAccuracy: true
+    };
 
     var currentLocation = [];
     $scope.myStatus = false;
@@ -15,7 +18,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             lat: currentLocation[1],
             lng: currentLocation[0]
         };
-        
+
         // GET ADDRESS VIA REVERSE GEOLOCATION TO SHOW IN LIST VIEW //
         mapService.reverseGeolocate($scope.pos).then(function (address) {
             // SET CURRENT LOCATION TO SEND TO DB WHEN LOCATION IS BROADCAST //
@@ -55,7 +58,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     }, function (error) {
         console.log("Could not get location");
     });
-    
+
     // POPULATE MAP W/ TRUCKS THAT ARE BROADCASTING LOCATION //
     $scope.updateMapOnLoad = function () {
 
@@ -115,16 +118,23 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             }
         });
     };
-    
+
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
-
+        
         var myTruckData = {
             truck: {
                 truckName: $rootScope.authedUser.truck.truckName,
                 id: $rootScope.authedUser._id,
                 address: $scope.address,
-                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma'),
+                imgUrl: $rootScope.authedUser.truck.imgUrl,
+                price: $rootScope.authedUser.truck.price,
+                genre: $rootScope.authedUser.truck.genre,
+                phone: $rootScope.authedUser.truck.phone,
+                createdAt: $rootScope.authedUser.truck.createdAt,
+                website: $rootScope.authedUser.truck.website,
+                description: $rootScope.authedUser.truck.description
             }
         };
 
@@ -151,14 +161,14 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 $scope.myStatus = false;
             }
             console.log($scope.myStatus);
-            
+
             // SOCKET --> NEED TO SEND NOTICE THAT I UPDATED!
             socketService.emit('notifyUpdatedTruck', $scope.myUserId);
             console.log('I sent a notice that I updated');
             console.log('End Toggle Slide Function');
         })
     };
-    
+
     // SOCKET --> LISTENING FOR NOTICE OF A TRUCK CHANGE //
     socketService.on('updateThisTruck', function (truckToUpdateId) {
         console.log('Get new data for this truck: ', truckToUpdateId);
@@ -225,7 +235,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 })
                 $scope.markers.push(newMarker);
             }
-            
+
             // Create info windows for each marker // 
             var infowindow = new google.maps.InfoWindow;
 
