@@ -53,7 +53,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             cache: false,
             views: {
                 'menuContent': {
-                    templateUrl: '/features/list/listView2.html',
+                    templateUrl: '/features/list/listView.html',
                     controller: 'listCtrl'
                 }
             }
