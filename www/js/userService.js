@@ -1,8 +1,14 @@
 angular.module('food-truck-finder')	
-.service('userService', function( $http ) {
+.service('userService', function( $http, API_ENDPOINT ) {
 
 
-	this.getUser = function(user) {
+	this.getAuthedUser = function(user) {
+        return  $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
+            return result.data;
+        });
+    }
+    
+    this.getUser = function(user) {
 		//using post here as a "get""
 		return $http.post('/api/getUser', user).then(function( response ) {
 			return response.data[0];
