@@ -4,6 +4,10 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
         userService.getAuthedUser().then(function(response){
             console.log('authed user: ', response.user);
             $scope.authedUser = response.user;
+            console.log('status of authed user: ', $scope.authedUser)
+            if($scope.authedUser.truck.status === 'inactive'){
+                $scope.myStatus = true;
+            }
             
         })
     };
@@ -17,7 +21,6 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     };
 
     var currentLocation = [];
-    $scope.myStatus = false;
 
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
