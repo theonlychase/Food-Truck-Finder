@@ -33,6 +33,3 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
 
 
 });
-
-
-//              $rootScope.truckInfo = $scope.locations;
