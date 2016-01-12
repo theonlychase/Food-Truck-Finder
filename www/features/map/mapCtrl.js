@@ -1,4 +1,14 @@
-angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService) {
+angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
+    
+    $scope.getAuthedUserInfo = function(){
+        userService.getAuthedUser().then(function(response){
+            console.log('authed user: ', response.user);
+            $scope.authedUser = response.user;
+            
+        })
+    };
+    
+    $scope.getAuthedUserInfo();
 
 
     var options = {
@@ -124,17 +134,17 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
         
         var myTruckData = {
             truck: {
-                truckName: $rootScope.authedUser.truck.truckName,
-                id: $rootScope.authedUser._id,
+                truckName: $scope.authedUser.truck.truckName,
+                id: $scope.authedUser._id,
                 address: $scope.address,
                 updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma'),
-                imgUrl: $rootScope.authedUser.truck.imgUrl,
-                price: $rootScope.authedUser.truck.price,
-                genre: $rootScope.authedUser.truck.genre,
-                phone: $rootScope.authedUser.truck.phone,
-                createdAt: $rootScope.authedUser.truck.createdAt,
-                website: $rootScope.authedUser.truck.website,
-                description: $rootScope.authedUser.truck.description
+                imgUrl: $scope.authedUser.truck.imgUrl,
+                price: $scope.authedUser.truck.price,
+                genre: $scope.authedUser.truck.genre,
+                phone: $scope.authedUser.truck.phone,
+                createdAt: $scope.authedUser.truck.createdAt,
+                website: $scope.authedUser.truck.website,
+                description: $scope.authedUser.truck.description
             }
         };
 
