@@ -1,3 +1,6 @@
+(function() {
+    'use strict';
+
 angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService) {
 
 
@@ -245,3 +248,4 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
 
 });
+})();
