@@ -47,36 +47,37 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
                     templateUrl: 'features/map/mapView.html',
                     controller: 'mapCtrl'
                 }
-            })
-            .state('app.list', {
-                url: '/list/:id',
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: '/features/list/listView.html',
-                        controller: 'listCtrl'
-                    }
+            }
+        })
+        .state('app.list', {
+            url: '/list/:id',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: '/features/list/listView.html',
+                    controller: 'listCtrl'
                 }
-            })
-            .state('app.favorites', {
-                url: '/favorites/:id',
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: '/features/favorites/favoritesView.html',
-                        controller: 'favoritesCtrl'
-                    }
+            }
+        })
+        .state('app.favorites', {
+            url: '/favorites/:id',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: '/features/favorites/favoritesView.html',
+                    controller: 'favoritesCtrl'
                 }
-            })
-            .state('app.profile', {
-                url: '/profile/:id',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'features/profile/profile.html',
-                        controller: 'ProfileController'
-                    }
+            }
+        })
+        .state('app.profile', {
+            url: '/profile/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'features/profile/profile.html',
+                    controller: 'ProfileController'
                 }
-            });
+            }
+        });
 
         $urlRouterProvider
 
