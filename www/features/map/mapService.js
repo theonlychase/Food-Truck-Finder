@@ -29,9 +29,17 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
         });
     };
 
-    this.addFavorite = function (userId, id) {
-        return $http.put(API_ENDPOINT.url + '/users/favs/' + userId, {id: id}).then(function (result) {
-            console.log(result);
+    this.addFavorite = function (userId, truckId) {
+        // console.log(truckId);
+        return $http.put(API_ENDPOINT.url + '/users/favs/' + userId, truckId).then(function (result) {
+            return result.data;
+        });
+    };
+
+    this.removeFavorite = function (userId, truckId) {
+        // console.log('id to remove from faves, in service --sending', truckId);
+        return $http.put(API_ENDPOINT.url + '/users/favs/remove/' + userId, truckId).then(function (result) {
+            return result.data;
         });
     };
 
