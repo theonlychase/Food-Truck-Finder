@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService, $rootScope) {
+    angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService) {
 
         userService.getAuthedUser().then(function (data) {
             $scope.authedUser = data.user;
@@ -12,7 +12,7 @@
             console.log('myfaves', $scope.myFavorites);
 
             $scope.listTrucks.forEach(function (element) {
-                console.log(element._id);
+                // console.log(element._id);
                 if ($scope.myFavorites.indexOf(element._id) !== -1) {
                     element.favStatus = true;
                 } else {
@@ -46,17 +46,32 @@
         });
 
         $scope.toggleFavorites = function (favId, favStatus, index) {
-            $scope.listTrucks[index].favStatus = favStatus;
-            if (favStatus) {
-                console.log('remove');
-                $scope.removeFromFavorites(favId, index);
 
-            } else {
+            $scope.listTrucks[index].favStatus = !favStatus;
+            if ($scope.listTrucks[index].favStatus === true) {
                 console.log('add');
                 $scope.addToFavorites(favId, index);
 
+            } else {
+                console.log('remove');
+                $scope.removeFromFavorites(favId, index);
+
+
             }
         };
+
+        $scope.addToFavorites = function (favId, index) {
+
+            var truckId = {
+                id: favId
+            };
+            mapService.addFavorite($scope.authedUser._id, truckId).then(function (response) {
+                console.log(response);
+                $scope.listTrucks[index].favStatus = true;
+            }, function (err) {
+                $scope.listTrucks[index].favStatus = false;
+            });
+        }
 
         $scope.addToFavorites = function (favId, index) {
 
@@ -83,6 +98,10 @@
                 });
             };
         }
+        };
 
     });
 })();
+
+
+
