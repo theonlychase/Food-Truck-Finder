@@ -18,24 +18,7 @@
                 } else {
                     element.favStatus = false;
                 }
-            });
-
-            console.log('truckInfo', $rootScope.truckInfo);
-
-            var truckIds = $rootScope.truckInfo.map(function (element) {
-                return element.id;
-            });
-
-            $scope.listTrucks.forEach(function (element) {
-                var i = truckIds.indexOf(element._id);
-                if (i !== -1) {
-                    element.distanceFromCurrentUser = $rootScope.truckInfo[i].distanceFromCurrentUser;
-                } else{
-                    console.log('truckId not found in listTrucks');
-                }
-
-            });
-
+            })
             console.log('listTrucks ', $scope.listTrucks);
         });
 
@@ -46,7 +29,6 @@
         });
 
         $scope.toggleFavorites = function (favId, favStatus, index) {
-
             $scope.listTrucks[index].favStatus = !favStatus;
             if ($scope.listTrucks[index].favStatus === true) {
                 console.log('add');
@@ -73,35 +55,19 @@
             });
         }
 
-        $scope.addToFavorites = function (favId, index) {
-
+        $scope.removeFromFavorites = function (favId, index) {
             var truckId = {
                 id: favId
             };
-            mapService.addFavorite($scope.authedUser._id, truckId).then(function (response) {
+            mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
                 console.log(response);
-                $scope.listTrucks[index].favStatus = true;
-            }, function (err) {
                 $scope.listTrucks[index].favStatus = false;
+
+            }, function (err) {
+                $scope.listTrucks[index].favStatus = true;
             });
-
-            $scope.removeFromFavorites = function (favId, index) {
-                var truckId = {
-                    id: favId
-                };
-                mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
-                    console.log(response);
-                    $scope.listTrucks[index].favStatus = false;
-
-                }, function (err) {
-                    $scope.listTrucks[index].favStatus = true;
-                });
-            };
-        }
         };
+
 
     });
 })();
-
-
-
