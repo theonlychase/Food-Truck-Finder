@@ -1,13 +1,17 @@
+(function() {
+    'use strict';
+
 angular.module('food-truck-finder')
 
 // <<<<<<< HEAD
-    .controller('ProfileController', function ($scope, $state, $ionicPopup, ProfileService, AUTH_EVENTS, userService) {
+    .controller('ProfileController', function ($rootScope, $scope, $state, $ionicPopup, ProfileService, AUTH_EVENTS, userService) {
 
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
             $scope.truck = $scope.authedUser.user.truck;
-            $scope.id = $scope.authedUser.user._id;
+            $scope.id = $scope.authedUser.user._id; 
         });
+        
         
 //         var getAuthedUser = function () {
 //             $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
@@ -37,8 +41,6 @@ angular.module('food-truck-finder')
         //     description: ''
         // };
         
-
-        
         $scope.submitProfile = function () {
             ProfileService.submitProfile($scope.id, $scope.truck).then(function (msg) {
                 var alertPopup = $ionicPopup.alert({
@@ -53,3 +55,4 @@ angular.module('food-truck-finder')
             });
         };
     });
+})();
