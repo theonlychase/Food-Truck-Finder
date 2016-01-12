@@ -37,7 +37,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
     };
 
     this.removeFavorite = function (userId, truckId) {
-        // console.log(truckId);
+        // console.log('id to remove from faves, in service --sending', truckId);
         return $http.put(API_ENDPOINT.url + '/users/favs/remove/' + userId, truckId).then(function (result) {
             return result.data;
         });
