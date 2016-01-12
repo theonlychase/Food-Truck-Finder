@@ -1,17 +1,17 @@
 angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
-    
-    $scope.getAuthedUserInfo = function(){
-        userService.getAuthedUser().then(function(response){
+
+    $scope.getAuthedUserInfo = function () {
+        userService.getAuthedUser().then(function (response) {
             console.log('authed user: ', response.user);
             $scope.authedUser = response.user;
             console.log('status of authed user: ', $scope.authedUser)
-            if($scope.authedUser.truck.status === 'inactive'){
-                $scope.myStatus = true;
-            }
+            // if($scope.authedUser.truck.status === 'inactive'){
+            //     $scope.myStatus = true;
+            // }
             
         })
     };
-    
+
     $scope.getAuthedUserInfo();
 
 
@@ -21,7 +21,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     };
 
     var currentLocation = [];
-
+    $scope.myStatus = false;
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
         currentLocation[1] = position.coords.latitude;
@@ -134,7 +134,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
-        
+
         var myTruckData = {
             truck: {
                 truckName: $scope.authedUser.truck.truckName,
