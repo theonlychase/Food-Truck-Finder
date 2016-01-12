@@ -63,6 +63,13 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
         })
         return deferred.promise
     };
+    
+    
+    this.getAuthedUser = function(user) {
+        return  $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
+            return result.data;
+        });
+    }
 
 
 

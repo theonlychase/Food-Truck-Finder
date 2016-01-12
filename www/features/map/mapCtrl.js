@@ -1,10 +1,24 @@
 (function() {
     'use strict';
 
-angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService) {
+angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
+    
+    $scope.getAuthedUserInfo = function(){
+        userService.getAuthedUser().then(function(response){
+            console.log('authed user: ', response.user);
+            $scope.authedUser = response.user;
+            
+        })
+    };
+    
+    $scope.getAuthedUserInfo();
 
 
-    var options = { timeout: 10000, enableHighAccuracy: true };
+
+    var options = {
+        timeout: 10000,
+        enableHighAccuracy: true
+    };
 
     var currentLocation = [];
     $scope.myStatus = false;
@@ -18,7 +32,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             lat: currentLocation[1],
             lng: currentLocation[0]
         };
-        
+
         // GET ADDRESS VIA REVERSE GEOLOCATION TO SHOW IN LIST VIEW //
         mapService.reverseGeolocate($scope.pos).then(function (address) {
             // SET CURRENT LOCATION TO SEND TO DB WHEN LOCATION IS BROADCAST //
@@ -58,7 +72,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     }, function (error) {
         console.log("Could not get location");
     });
-    
+
     // POPULATE MAP W/ TRUCKS THAT ARE BROADCASTING LOCATION //
     $scope.updateMapOnLoad = function () {
 
@@ -87,7 +101,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             }
 
             console.log('locations array', $scope.locations);
-
+            $rootScope.truckInfo = $scope.locations;
             for (var i = 0; i < $scope.locations.length; i++) {
                 var marker = new google.maps.Marker({
                     position: $scope.locations[i].latlon,
@@ -118,16 +132,23 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
             }
         });
     };
-    
+
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
-
+        
         var myTruckData = {
             truck: {
-                truckName: $rootScope.authedUser.truck.truckName,
-                id: $rootScope.authedUser._id,
+                truckName: $scope.authedUser.truck.truckName,
+                id: $scope.authedUser._id,
                 address: $scope.address,
-                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma')
+                updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma'),
+                imgUrl: $scope.authedUser.truck.imgUrl,
+                price: $scope.authedUser.truck.price,
+                genre: $scope.authedUser.truck.genre,
+                phone: $scope.authedUser.truck.phone,
+                createdAt: $scope.authedUser.truck.createdAt,
+                website: $scope.authedUser.truck.website,
+                description: $scope.authedUser.truck.description
             }
         };
 
@@ -154,14 +175,14 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 $scope.myStatus = false;
             }
             console.log($scope.myStatus);
-            
+
             // SOCKET --> NEED TO SEND NOTICE THAT I UPDATED!
             socketService.emit('notifyUpdatedTruck', $scope.myUserId);
             console.log('I sent a notice that I updated');
             console.log('End Toggle Slide Function');
         })
     };
-    
+
     // SOCKET --> LISTENING FOR NOTICE OF A TRUCK CHANGE //
     socketService.on('updateThisTruck', function (truckToUpdateId) {
         console.log('Get new data for this truck: ', truckToUpdateId);
@@ -228,7 +249,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
                 })
                 $scope.markers.push(newMarker);
             }
-            
+
             // Create info windows for each marker // 
             var infowindow = new google.maps.InfoWindow;
 

@@ -5,12 +5,6 @@
   <ion-content>
     <ion-toggle ng-model="myStatus" ng-checked="myStatus" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
 
-        <a ui-sref="app.list({ id: authedUser.user._id })"" ui-sref-opts="{reload: true}">
-            <div class="list-view-btn">
-                <h5>List View</h5>
-            </div>
-        </a>
-
 
         <div id="map" data-tap-disabled="true">
 
