@@ -48,10 +48,12 @@ var apiRoutes = express.Router();
 
 apiRoutes.put('/truckprofile/:id', function(req, res) {
    User.findByIdAndUpdate(req.params.id, {truck: req.body}, function(err, response) {
+       console.log("req.params.id is ", req.params.id);
+       console.log("req.body is ", req.body);
            if(err) {
-               res.json({succes: false, msg: 'Failed.'});
+               res.json({success: false, msg: 'Updated Profile Settings Failed.'});
            } else {
-               res.json({succes: true, msg: 'Profile Settings Saved!'});
+               res.json({success: true, msg: 'Profile Settings Saved!'});
            }
        });
    });
