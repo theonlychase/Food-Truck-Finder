@@ -6,6 +6,7 @@ angular.module('food-truck-finder')
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
             $scope.truck = $scope.authedUser.user.truck;
+            $scope.id = $scope.authedUser.user._id;
         });
         
 //         var getAuthedUser = function () {
@@ -36,10 +37,10 @@ angular.module('food-truck-finder')
         //     description: ''
         // };
         
-        
+
         
         $scope.submitProfile = function () {
-            ProfileService.submitProfile($scope.authedUser.user._id, $scope.truck).then(function (msg) {
+            ProfileService.submitProfile($scope.id, $scope.truck).then(function (msg) {
                 var alertPopup = $ionicPopup.alert({
                     title: 'Profile Updated!',
                     template: msg
