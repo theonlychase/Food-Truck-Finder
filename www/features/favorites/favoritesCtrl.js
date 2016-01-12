@@ -32,4 +32,6 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
     getAuthedUser();
 
 
+
+
 });
