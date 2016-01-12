@@ -4,7 +4,8 @@
 angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService) {
     
         userService.getAuthedUser().then(function(data) {
-            $scope.authedUser = data;
+            $scope.authedUser = data.user;
+            console.log($scope.authedUser);
             
             console.log("This is the authed user ", $scope.authedUser);
             $scope.myFavorites = $scope.authedUser.favorites;
