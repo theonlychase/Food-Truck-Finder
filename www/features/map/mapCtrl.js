@@ -1,3 +1,6 @@
+(function() {
+    'use strict';
+
 angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
 
     $scope.getAuthedUserInfo = function () {
@@ -13,6 +16,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     };
 
     $scope.getAuthedUserInfo();
+
 
 
     var options = {
@@ -268,3 +272,4 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
 
 });
+})();

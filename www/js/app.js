@@ -7,77 +7,77 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider
-            .state('auth', {
-                url: '/auth',
-                abstract: true,
-                templateUrl: 'features/auth/home/auth.html',
-                controller: 'AuthController'
-            })
-            .state('auth.home', {
-                url: '/home',
-                templateUrl: 'features/auth/home/home.html'
-            })
-            .state('auth.login', {
-                url: '/login',
-                templateUrl: 'features/auth/login/login.html',
-                controller: 'LoginController'
-            })
-            .state('auth.register', {
-                url: '/register',
-                templateUrl: 'features/auth/register/register.html',
-                controller: 'RegisterController'
-            })
-            .state('auth.forgot-password', {
-                url: '/forgot-password',
-                templateUrl: 'features/auth/forgot-password/forgot-password.html',
-                controller: 'ForgotPasswordController'
-            })
-            .state('app', {
-                url: "/app",
-                abstract: true,
-                templateUrl: "features/side-menu/side-menu.html",
-                controller: 'AppController'
-            })
-            .state('app.maps', {
-                url: '/map',
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: 'features/map/mapView.html',
-                        controller: 'mapCtrl'
-                    }
+    $stateProvider
+        .state('auth', {
+            url: '/auth',
+            abstract: true,
+            templateUrl: 'features/auth/home/auth.html',
+            controller: 'AuthController'
+        })
+        .state('auth.home', {
+            url: '/home',
+            templateUrl: 'features/auth/home/home.html'
+        })
+        .state('auth.login', {
+            url: '/login',
+            templateUrl: 'features/auth/login/login.html',
+            controller: 'LoginController'
+        })
+        .state('auth.register', {
+            url: '/register',
+            templateUrl: 'features/auth/register/register.html',
+            controller: 'RegisterController'
+        })
+        .state('auth.forgot-password', {
+            url: '/forgot-password',
+            templateUrl: 'features/auth/forgot-password/forgot-password.html',
+            controller: 'ForgotPasswordController'
+        })
+        .state('app', {
+            url: "/app",
+            abstract: true,
+            templateUrl: "features/side-menu/side-menu.html",
+            controller: 'AppController'
+        })
+        .state('app.maps', {
+            url: '/map/',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: 'features/map/mapView.html',
+                    controller: 'mapCtrl'
                 }
-            })
-            .state('app.list', {
-                url: '/list/:id',
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: '/features/list/listView.html',
-                        controller: 'listCtrl'
-                    }
+            }
+        })
+        .state('app.list', {
+            url: '/list/:id',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: '/features/list/listView.html',
+                    controller: 'listCtrl'
                 }
-            })
-            .state('app.favorites', {
-                url: '/favorites/:id',
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: '/features/favorites/favoritesView.html',
-                        controller: 'favoritesCtrl'
-                    }
+            }
+        })
+        .state('app.favorites', {
+            url: '/favorites/:id',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: '/features/favorites/favoritesView.html',
+                    controller: 'favoritesCtrl'
                 }
-            })
-            .state('app.profile', {
-                url: '/profile/:id',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'features/profile/profile.html',
-                        controller: 'ProfileController'
-                    }
+            }
+        })
+        .state('app.profile', {
+            url: '/profile/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'features/profile/profile.html',
+                    controller: 'ProfileController'
                 }
-            });
+            }
+        });
 
         $urlRouterProvider
 
