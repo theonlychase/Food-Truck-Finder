@@ -17,7 +17,7 @@ angular.module('food-truck-finder')
 
 	this.udpateUser = function( id ) { 
 		// console.log("userService userId: ", id);
-		return $http.put('/api/user/' + id).then(function( response ) {
+		return $http.patch('/api/user/' + id).then(function( response ) {
 			console.log(response);
 			return response.data;
 		});

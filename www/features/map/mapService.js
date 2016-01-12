@@ -20,7 +20,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
 
     this.shareTruckLocation = function (myTruckData) {
         return $http({
-            method: 'PUT',
+            method: 'PATCH',
             url: API_ENDPOINT.url + '/users/' + myTruckData.truck.id,
             dataType: 'json',
             data: myTruckData
