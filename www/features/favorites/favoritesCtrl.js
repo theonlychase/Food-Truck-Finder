@@ -9,17 +9,17 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
                 $scope.myFavoritesList = $scope.user.favorites;
                 console.log($scope.user);
 
-                console.log($rootScope.truckInfoForFaves);
+                console.log($rootScope.truckInfo);
 
-                var truckIds = $rootScope.truckInfoForFaves.map(function (element) {
-                    return element._id;
+                var truckIds = $rootScope.truckInfo.map(function (element) {
+                    return element.id;
                 });
                 console.log('truckIds: ', truckIds);
 
                 $scope.myFavoritesList.forEach(function (element) {
                     var i = truckIds.indexOf(element._id);
                     if (i !== -1) {
-                        element.distanceFromCurrentUser = $rootScope.truckInfoForFaves[i].distanceFromCurrentUser;
+                        element.distanceFromCurrentUser = $rootScope.truckInfo[i].distanceFromCurrentUser;
                     } else {
                         console.log('truckId not found in listTrucks');
                     }
@@ -30,6 +30,5 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
     };
 
     getAuthedUser();
-
-
+    
 });
