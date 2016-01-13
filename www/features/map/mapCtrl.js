@@ -1,6 +1,12 @@
-angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService) {
+angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
 
-
+    userService.getAuthedUser().then(function(response) {
+        $scope.authedUser = response.user;
+        console.log("test", $scope.authedUser);
+    })
+    
+    $scope.myStatus = false;
+    
     var options = {
         timeout: 10000,
         enableHighAccuracy: true
@@ -121,6 +127,8 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
+        
+        console.log("My status on click = ", $scope.myStatus);
         
         var myTruckData = {
             truck: {
