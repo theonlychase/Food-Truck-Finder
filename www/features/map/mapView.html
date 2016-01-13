@@ -4,7 +4,7 @@
     <span>Map</span>
   </ion-nav-title>
   <ion-content>
-    <ion-toggle ng-model="myStatus" ng-change="toggleChange()" ng-click="toggleTruckLocation()" toggle-class="toggle-calm">Share My Location</ion-toggle>
+<!--    <ion-toggle ng-model="myStatus" ng-change="toggleChange()" ng-click="toggleTruckLocation()" toggle-class="toggle-calm">Share My Location</ion-toggle>-->
 
         <ion-content class="loading">
             <ion-content>
@@ -14,7 +14,7 @@
         </ion-content>
 
 
-        <ion-toggle ng-model="myStatus" ng-checked="myStatus" toggle-class="toggle-dark" ng-click="toggleTruckLocation()">
+        <ion-toggle ng-model="myStatus" ng-change="toggleChange()" ng-click="toggleTruckLocation()" toggle-class="toggle-dark">
             Share My Location
         </ion-toggle>
 

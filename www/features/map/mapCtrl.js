@@ -10,7 +10,7 @@
                 console.log('status of authed user: ', $scope.authedUser);
                 if ($scope.authedUser.truck.status === 'Active') {
                     $scope.myStatus = true;
-                } else {
+                } else if ($scope.authedUser.truck.status === 'Inactive') {
                     $scope.myStatus = false;
                 }
                 console.log('myStatus = ', $scope.myStatus);
@@ -22,7 +22,7 @@
         console.log('fast test ', $scope.authedUser);
 
         $scope.toggleChange = function () {
-            if ($scope.myStatus == false) {
+            if ($scope.myStatus === false) {
                 $scope.myStatus = true;
             } else
                 $scope.myStatus = false;
@@ -164,12 +164,12 @@
                 }
             };
 
-            if ($scope.myStatus === true) {
+            if ($scope.myStatus === false) {
                 myTruckData.truck.status = 'Active';
                 myTruckData.truck.address = $scope.address;
                 myTruckData.truck.currentLocation = [currentLocation[0], currentLocation[1]];
 
-            } else if ($scope.myStatus === false) {
+            } else if ($scope.myStatus === true) {
                 myTruckData.truck.status = 'Inactive';
                 myTruckData.truck.address = null;
                 myTruckData.truck.currentLocation = [undefined, undefined];

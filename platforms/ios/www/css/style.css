@@ -3,6 +3,25 @@
   height: 100%;
 }
 
+/* MAP LOADING */
+
+.loading {
+    height: 110px;
+    text-align: center;
+    margin: 20px;
+}
+
+ .loading h5 {
+     margin-top: -8px;
+     font-weight: 300;
+     font-size: 20px;
+ }
+
+.spinner svg {
+    width: 60px;
+    height: 60px;
+}
+
 #map {
   width: 100%;
   height: 100%;
@@ -197,9 +216,12 @@ margin-top: 0px; }
     background-color: #ff4c4c;
     color: #fff;
 }
-
 .profile-button {
     background-color: #FF4C4C !important;
+}
+.logo-button {
+    background-color: #FF4C4C !important;
+    padding-bottom: 20px;
 }
       
 .forms-view ion-content {
@@ -275,6 +297,9 @@ background-color: #FF4C4C; }
     height: 50px;
 
 }
+.list-padding {
+    padding-top: 50px;
+}
 
 .listView{
     background-color: #ff4c4c;
@@ -291,4 +316,14 @@ background-color: #FF4C4C; }
         font-size: 16px;
         font-weight: 400;
     }
+    
+    
+    
+.favoriteStar {
+   color: goldenrod;
+}
+
+.notFavoriteStar {
+   color: none;
+}
 
