@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
-=======
 (function() {
     'use strict';
 
@@ -17,7 +14,6 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
     $scope.getAuthedUserInfo();
 
 
->>>>>>> master
 
     userService.getAuthedUser().then(function(response) {
         $scope.authedUser = response.user;
@@ -145,13 +141,7 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
-<<<<<<< HEAD
-        
-        console.log("My status on click = ", $scope.myStatus);
-        
-=======
 
->>>>>>> master
         var myTruckData = {
             truck: {
                 truckName: $scope.authedUser.truck.truckName,
