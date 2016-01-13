@@ -3,6 +3,13 @@
         <span>Favorites</span>
     </ion-nav-title>
 
+    <ion-content class="loading">
+        <ion-content>
+            <ion-spinner icon="ripple"></ion-spinner>
+            <h5>Loading Favorites...</h5>
+        </ion-content>
+    </ion-content>
+
     <ion-content>
 
         <div class="list card" ng-repeat='user in myFavoritesList'>

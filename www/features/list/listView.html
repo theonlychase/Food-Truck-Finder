@@ -1,7 +1,15 @@
 <ion-view>
     <ion-nav-title>
-        <span>Food Trucks By Me</span>
+        <span>Nearby Food Trucks</span>
     </ion-nav-title>
+
+    <ion-content class="loading">
+        <ion-content>
+            <ion-spinner icon="ripple"></ion-spinner>
+            <h5>Loading Trucks...</h5>
+        </ion-content>
+    </ion-content>
+
     <ion-content>
         <div class="list card" ng-repeat='user in listTrucks track by $index'>
 
