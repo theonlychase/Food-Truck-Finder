@@ -19,16 +19,6 @@
 
         $scope.getAuthedUserInfo();
 
-        console.log('fast test ', $scope.authedUser);
-
-        $scope.toggleChange = function () {
-            if ($scope.myStatus == false) {
-                $scope.myStatus = true;
-            } else
-                $scope.myStatus = false;
-            console.log('testToggle changed to ' + $scope.myStatus);
-        };
-
         var options = {
             timeout: 10000,
             enableHighAccuracy: true
@@ -77,7 +67,7 @@
                 google.maps.event.addListener(marker, 'click', function () {
                     infoWindow.open($scope.map, marker);
                 });
-
+                $scope.toggleSlider = true;
                 $scope.updateMapOnLoad();
             });
 
@@ -152,7 +142,6 @@
                 truck: {
                     truckName: $scope.authedUser.truck.truckName,
                     id: $scope.authedUser._id,
-                    address: $scope.address,
                     updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma'),
                     imgUrl: $scope.authedUser.truck.imgUrl,
                     price: $scope.authedUser.truck.price,
@@ -164,24 +153,31 @@
                 }
             };
 
-            if ($scope.myStatus === true) {
+            if ($scope.myStatus === false) {
+                console.log('my status is false, i am sending active data');
                 myTruckData.truck.status = 'Active';
                 myTruckData.truck.address = $scope.address;
                 myTruckData.truck.currentLocation = [currentLocation[0], currentLocation[1]];
 
-            } else if ($scope.myStatus === false) {
+            } else if ($scope.myStatus === true) {
+                console.log('my status is true, i am sending inactive data');
                 myTruckData.truck.status = 'Inactive';
                 myTruckData.truck.address = null;
                 myTruckData.truck.currentLocation = [undefined, undefined];
             }
-            
-            console.log('myStatus after click = ', $scope.myStatus);
+
 
             console.log('sending auth user data to db for update ', myTruckData);
             mapService.shareTruckLocation(myTruckData).then(function (response) {
                 $scope.myUserId = response._id;
                 console.log('my data coming back from db', response);
                 console.log('NEW auth user status after update ', response.truck.status);
+                if (response.truck.status === 'Active') {
+                    $scope.myStatus = true;
+                } else {
+                    $scope.myStatus = false;
+                }
+
 
                 // SOCKET --> NEED TO SEND NOTICE THAT I UPDATED!
                 socketService.emit('notifyUpdatedTruck', $scope.myUserId);
