@@ -32,7 +32,7 @@ var UserSchema = new Schema({
         website: String,
         imgUrl: String,
         description: String, 
-        status: String
+        status: { type: String, default: 'Inactive' }
     }
 });
 

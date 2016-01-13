@@ -3,7 +3,7 @@
     <span>Map</span>
   </ion-nav-title>
   <ion-content>
-    <ion-toggle ng-model="myStatus" ng-checked="myStatus" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
+    <ion-toggle ng-model="myStatus" ng-change="toggleChange()" ng-click="toggleTruckLocation()" toggle-class="toggle-calm">Share My Location</ion-toggle>
 
 
         <div id="map" data-tap-disabled="true">
