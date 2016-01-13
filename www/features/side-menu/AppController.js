@@ -14,10 +14,13 @@ angular.module('food-truck-finder')
         // };
         
         // getAuthedUser();
-       
+        $scope.defaultImg = "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg";
+        
+       $rootScope.$on('profileChange', function(event, data) { $scope.profileImg = data.truck.imgUrl || $scope.defaultImg });
         
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
+            $scope.profileImg = $scope.authedUser.user.truck.imgUrl || $scope.defaultImg;
             $rootScope.authedUser = data.user;
             console.log("This is the authedUser", $scope.authedUser);
             // console.log("This is the root authedUser", $rootScope.authedUser);

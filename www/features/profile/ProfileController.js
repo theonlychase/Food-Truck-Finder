@@ -8,6 +8,7 @@ angular.module('food-truck-finder')
 
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;
+            $scope.profileImg = $scope.authedUser.user.truck.imgUrl || $scope.defaultImg;
             $scope.truck = $scope.authedUser.user.truck;
             $scope.id = $scope.authedUser.user._id; 
         });
@@ -40,6 +41,8 @@ angular.module('food-truck-finder')
         //     imgUrl: '',
         //     description: ''
         // };
+        
+        $rootScope.$on('profileChange', function(event, data) { $scope.profileImg = data.truck.imgUrl || $scope.defaultImg });
         
         $scope.submitProfile = function () {
             ProfileService.submitProfile($scope.id, $scope.truck).then(function (msg) {

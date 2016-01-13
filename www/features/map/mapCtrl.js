@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
+=======
+(function() {
+    'use strict';
+
+angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, $scope, $state, $cordovaGeolocation, mapService, socketService, favoritesService, userService) {
+
+    $scope.getAuthedUserInfo = function () {
+        userService.getAuthedUser().then(function (response) {
+            console.log('authed user: ', response.user);
+            $scope.authedUser = response.user;
+            console.log('status of authed user: ', $scope.authedUser);
+        })
+    };
+
+    $scope.getAuthedUserInfo();
+
+
+>>>>>>> master
 
     userService.getAuthedUser().then(function(response) {
         $scope.authedUser = response.user;
@@ -14,7 +33,6 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
     var currentLocation = [];
     $scope.myStatus = false;
-
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
         currentLocation[1] = position.coords.latitude;
@@ -127,22 +145,26 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
     // TOGGLE MY LOCATION SHARING (TRUCK) //
     $scope.toggleTruckLocation = function () {
+<<<<<<< HEAD
         
         console.log("My status on click = ", $scope.myStatus);
         
+=======
+
+>>>>>>> master
         var myTruckData = {
             truck: {
-                truckName: $rootScope.authedUser.truck.truckName,
-                id: $rootScope.authedUser._id,
+                truckName: $scope.authedUser.truck.truckName,
+                id: $scope.authedUser._id,
                 address: $scope.address,
                 updatedAt_readable: moment().format('ddd, MMM D YYYY, h:mma'),
-                imgUrl: $rootScope.authedUser.truck.imgUrl,
-                price: $rootScope.authedUser.truck.price,
-                genre: $rootScope.authedUser.truck.genre,
-                phone: $rootScope.authedUser.truck.phone,
-                createdAt: $rootScope.authedUser.truck.createdAt,
-                website: $rootScope.authedUser.truck.website,
-                description: $rootScope.authedUser.truck.description
+                imgUrl: $scope.authedUser.truck.imgUrl,
+                price: $scope.authedUser.truck.price,
+                genre: $scope.authedUser.truck.genre,
+                phone: $scope.authedUser.truck.phone,
+                createdAt: $scope.authedUser.truck.createdAt,
+                website: $scope.authedUser.truck.website,
+                description: $scope.authedUser.truck.description
             }
         };
 
@@ -263,3 +285,4 @@ angular.module('food-truck-finder').controller('mapCtrl', function ($rootScope, 
 
 
 });
+})();

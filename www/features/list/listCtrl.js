@@ -37,6 +37,7 @@
             });
             
             console.log('listTrucks ', $scope.listTrucks);
+            $rootScope.truckInfoForFaves = $scope.listTrucks;
         });
 
 
