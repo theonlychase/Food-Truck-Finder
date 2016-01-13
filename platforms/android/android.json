@@ -27,15 +27,15 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -57,24 +57,18 @@
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
         },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
-        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.foodtruckfinder667741"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-            "id": "cordova-plugin-whitelist.whitelist",
-            "pluginId": "cordova-plugin-whitelist",
-            "runs": true
-        },
         {
             "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
             "id": "cordova-plugin-file.DirectoryEntry",
@@ -257,12 +251,18 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+            "id": "cordova-plugin-whitelist.whitelist",
+            "pluginId": "cordova-plugin-whitelist",
+            "runs": true
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-geolocation": "1.0.1",
-        "cordova-plugin-whitelist": "1.2.0",
         "cordova-plugin-file": "3.0.0",
-        "cordova-plugin-file-transfer": "1.4.0"
+        "cordova-plugin-file-transfer": "1.4.0",
+        "cordova-plugin-whitelist": "1.2.1-dev"
     }
 }

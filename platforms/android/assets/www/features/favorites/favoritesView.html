@@ -1,0 +1,23 @@
+<ion-view>
+    <ion-nav-title>
+        <span>Favorites</span>
+    </ion-nav-title>
+
+    <ion-content>
+
+        <div class="list card" ng-repeat='user in myFavoritesList'>
+
+            <div class="item item-avatar listView">
+                <img ng-src="{{user.truck.imgUrl}}">
+                <h2 class="list-font-color">{{user.truck.truckName}}</h2>
+                <h3>Appx address: {{user.truck.address}}</h3>
+                <h3>Appx distance: {{user.distanceFromCurrentUser}} miles</h3>
+                <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
+                <p class="list-font-color">Price: {{user.truck.price}}</p>
+            </div>
+
+        </div>
+
+        <ion-content>
+
+</ion-view>
