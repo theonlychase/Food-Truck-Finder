@@ -11,16 +11,17 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
+  <ion-side-menu side="left" class="main-menu" expose-aside-when="large" width="300">
     <ion-content>
       <ion-list>
         <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile({ id: authedUser.user._id })">
           <div class="user-image-container">
             <pre-img ratio="_1_1" helper-class="rounded-image">
-              <img class="user-image" ng-src="{{profileImg}}" spinner-on-load>
+              <img class="user-image img-size" ng-src="{{profileImg}}" spinner-on-load>
           	</pre-img>
           </div>
-          <h3 class="greeting">Hi {{authedUser.user.name}}</h3>
+          <h3 class="greeting">Hello</h3>
+          <h3 class="greeting">{{authedUser.user.truck.truckName}}</h3>
           <p class="message">Welcome back</p>
         </ion-item>
         <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps">
