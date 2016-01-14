@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService, $rootScope) {
-
+        $scope.loadingTrucksListView = true;
         userService.getAuthedUser().then(function (data) {
             $scope.authedUser = data.user;
             console.log($scope.authedUser);
@@ -35,13 +35,14 @@
                 }
 
             });
-            
+
             console.log('listTrucks ', $scope.listTrucks);
             $rootScope.truckInfoForFaves = $scope.listTrucks;
         });
 
 
         mapService.getTrucks().then(function (response) {
+            $scope.loadingTrucksListView = false;
             $scope.listTrucks = response;
             console.log("These are the list of trucks", $scope.listTrucks);
         });
@@ -88,18 +89,18 @@
             });
         };
 
-        $scope.removeFromFavorites = function (favId, index) {
-            var truckId = {
-                id: favId
-            };
-            mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
-                console.log(response);
-                $scope.listTrucks[index].favStatus = false;
+        // $scope.removeFromFavorites = function (favId, index) {
+        //     var truckId = {
+        //         id: favId
+        //     };
+        //     mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
+        //         console.log(response);
+        //         $scope.listTrucks[index].favStatus = false;
 
-            }, function (err) {
-                $scope.listTrucks[index].favStatus = true;
-            });
-        };
+        //     }, function (err) {
+        //         $scope.listTrucks[index].favStatus = true;
+        //     });
+        // };
 
 
     });
