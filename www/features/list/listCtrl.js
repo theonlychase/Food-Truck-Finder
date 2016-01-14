@@ -88,21 +88,6 @@
                 $scope.listTrucks[index].favStatus = true;
             });
         };
-
-        // $scope.removeFromFavorites = function (favId, index) {
-        //     var truckId = {
-        //         id: favId
-        //     };
-        //     mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
-        //         console.log(response);
-        //         $scope.listTrucks[index].favStatus = false;
-
-        //     }, function (err) {
-        //         $scope.listTrucks[index].favStatus = true;
-        //     });
-        // };
-
-
     });
 
 })();
