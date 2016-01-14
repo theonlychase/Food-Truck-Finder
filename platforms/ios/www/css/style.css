@@ -197,9 +197,12 @@ margin-top: 0px; }
     background-color: #ff4c4c;
     color: #fff;
 }
-
 .profile-button {
     background-color: #FF4C4C !important;
+}
+.logo-button {
+    background-color: #FF4C4C !important;
+    padding-bottom: 20px;
 }
       
 .forms-view ion-content {
@@ -275,6 +278,9 @@ background-color: #FF4C4C; }
     height: 50px;
 
 }
+.list-padding {
+    padding-top: 50px;
+}
 
 .listView{
     background-color: #ff4c4c;
@@ -291,4 +297,14 @@ background-color: #FF4C4C; }
         font-size: 16px;
         font-weight: 400;
     }
+    
+    
+    
+.favoriteStar {
+   color: goldenrod;
+}
+
+.notFavoriteStar {
+   color: none;
+}
 

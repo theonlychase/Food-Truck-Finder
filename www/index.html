@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * data:; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -18,7 +19,7 @@
 
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="/lib/ng-cordova/dist/ng-cordova.js"></script>
+    <script src="lib/ng-cordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -35,21 +36,21 @@
     <script src="features/auth/authService.js"></script>
     <script src="features/favorites/favoritesCtrl.js"></script>
     <script src="features/favorites/favoritesService.js"></script>
-    <script src="/features/profile/profileService.js"></script>
-    <script src="/js/userService.js"></script>
+    <script src="features/profile/profileService.js"></script>
+    <script src="js/userService.js"></script>
 
     <!-- MAP STUFF -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyDnhPr25tudojFwOcZNgALIpjiby8EGN8U&libraries=geometry"></script>
-    <script src="/features/map/mapCtrl.js"></script>
-    <script src="/features/list/listCtrl.js"></script>
-    <script src="/features/map/mapService.js"></script>
+    <script src="features/map/mapCtrl.js"></script>
+    <script src="features/list/listCtrl.js"></script>
+    <script src="features/map/mapService.js"></script>
 
     <!-- MOMENT.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 
     <!-- SOCKET.IO -->
     <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
-    <script src="/features/socket/socketService.js"></script>
+    <script src="features/socket/socketService.js"></script>
 
 
 </head>
