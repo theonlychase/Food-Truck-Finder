@@ -27,6 +27,29 @@
   height: 100%;
 }
 
+/* MAP POPUP WINDOWS */
+
+
+.info-window-popup-row {
+    /*border: 1px solid purple;*/
+    margin-bottom: 3px;
+    }
+
+    .info-window-popup-row h5 {
+        font-size: 17px;
+        color: #333;
+        margin: 0;
+    }
+    
+    .info-window-popup-row h6 {
+        font-size: 13px;
+        font-weight: 400;
+        color: #333;
+        margin: 0;
+    }
+    
+    /* END MAP POPUP WINDOWS */
+
 .auth-outer {
   background-color: transparent !important; }
   .auth-outer ion-view {
