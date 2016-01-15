@@ -21,8 +21,7 @@ var UserSchema = new Schema({
     }],
     role: {
         type: String,
-        enum: ['Truck', 'User', 'Admin'],
-        default: 'Truck'
+        enum: ['Truck', 'User', 'Admin']
     },
 
     truck: {
