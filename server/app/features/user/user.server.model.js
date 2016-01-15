@@ -22,7 +22,7 @@ var UserSchema = new Schema({
     role: {
         type: String,
         enum: ['Truck', 'User', 'Admin'],
-        default: 'Truck'
+        default: 'User'
     },
 
     truck: {
