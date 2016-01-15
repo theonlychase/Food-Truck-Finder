@@ -1,21 +1,40 @@
 <ion-view>
-    <ion-content class='listView'>
-        <div class="list" ng-repeat='user in listTrucks'>
+    <ion-nav-title>
+        <span>Food Trucks By Me</span>
+    </ion-nav-title>
+    <ion-content>
+        <div class="list card" ng-repeat='user in listTrucks track by $index'>
 
-            <a class="item item-thumbnail-left listColor" href="#">
-                <img ng-src="{{user.truck.imgUrl}}"></img>
-                <h2>{{user.truck.truckName}}</h2>
-                <h3>Type of Food: {{user.truck.genre}}</h3>
-                <h3>Price {{user.truck.price}}</h3>
-                <h3>Appx address:</h3>
-                <h3>Appx distance:</h3>
+            <div class="item item-avatar listView">
+                <img ng-src="{{user.truck.imgUrl}}">
+                <h2 class="list-font-color list-title">{{user.truck.truckName}}</h2>
+                <h2 class="list-font-color">Type of Food: {{user.truck.genre}}</h2>
+                <h2 class="list-font-color">Price: {{user.truck.price}}</h2>
+            </div>
 
-                    <i class="icon ion-star star" ng-click="addToFavorites(user._id)"></i>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{user.truck.imgUrl}}">
+                <h2>Address of Current Location:</h2>
+                <p>{{user.truck.address}}</p>
+                <h2>Distance From Me:</h2>
+                <p>{{user.distanceFromCurrentUser}} miles</p>
+                <h2>Description:</h2> 
+                <p>{{user.truck.description}}</p>
+                
+            </div>
 
-            </a>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-star" ng-click="toggleFavorites(user._id, user.favStatus, $index)" ng-class="user.favStatus ? 'favoriteStar' : 'notFavoriteStar'"></i>Favorite
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i> Comment
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i> Share
+                </a>
+            </div>
 
         </div>
-
-
-    </ion-content>
+        <ion-content>
 </ion-view>

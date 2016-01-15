@@ -7,7 +7,7 @@
       <div class="profile-container">
         <div class="user-image-container">
           <pre-img ratio="_1_1" helper-class="rounded-image">
-            <img class="user-image" ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" spinner-on-load>
+            <img class="user-image profile-size" ng-src="{{profileImg}}" spinner-on-load>
           </pre-img>
         </div>
       </div>
@@ -17,16 +17,13 @@
     </div>
     <div class="bottom-content">
       <div class="user-bio">
-        <ul class="list">
+        <ul class="list list-padding">
             <div class="item item-divider profile-header-color">Food Truck Profile</div>
-
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Food Truck Name</span>
-                <input type="text" name="truckName" required placeholder="Enter The Name Of Your Food Truck" ng-model="truck.truckName">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label input-padding-left">Address</span>
-                <input type="text" name="address" required placeholder="Enter Your Address" ng-model="truck.address">
+                <!--<input type="text" name="truckName" required placeholder="Enter The Name Of Your Food Truck" ng-model="truck.truckName">-->
+                <input type="text" name="truckName" required placeholder="Enter The Name Of Your Food Truck" ng-model="truck.truckName">             
+            
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label input-padding-left">Business Phone</span>

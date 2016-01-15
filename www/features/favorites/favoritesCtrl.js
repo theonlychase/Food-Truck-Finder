@@ -2,6 +2,7 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
 
 
     var getAuthedUser = function () {
+        $scope.loadingFavorites = true;
         $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
             $scope.authedUser = result.data.user;
             console.log("This is the authed user ", $scope.authedUser);
@@ -11,6 +12,8 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
                 console.log($scope.user);
 
                 console.log($rootScope.truckInfo);
+
+                $scope.loadingFavorites = false;
 
                 var truckIds = $rootScope.truckInfo.map(function (element) {
                     return element.id;
@@ -27,9 +30,9 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
 
                 });
             });
-        });  
+        });
     };
 
     getAuthedUser();
-    
+
 });
