@@ -1,27 +1,44 @@
-<ion-view class="signup-view auth-view" cache-view="false">
+<ion-view class="login-view auth-view" cache-view="false">
   <ion-content scroll="false">
     <div class="row">
       <div class="col col-center">
-        <div class="card sign-up-container">
-          <form name="signup_form" class="" novalidate>
-            <div class="item item-body">
-              <label class="item item-input">
-                <input type="email" placeholder="Email" name="user_email" ng-model="user.name" required>
-              </label>
-              <label class="item item-input" show-hide-container>
-                <input type="password" placeholder="Password" name="user_password" ng-model="user.password" required show-hide-input>
-              </label>
-            </div>
+        <div class="card login-container" content-tabs tabsdata='tabsdata'>
+          <form name="signup_form" class="" novalidate ng-cloak>
+            <my-tabs>
+              <my-tab title="User Signup">
+                <div class="list">
+                  <label class="item item-input">
+                    <input type="email" placeholder="Email" name="user_email" ng-model="user.name" required>
+                  </label>
+                  <label class="item item-input" show-hide-container>
+                    <input type="password" placeholder="Password" name="user_password" ng-model="user.password" required show-hide-input>
+                  </label>
+                </div>
+              </my-tab>
+              <my-tab title="Food Truck Signup">
+                <div class="list">
+                  <label class="item item-input">
+                    <input type="email" placeholder="Email" name="user_email" ng-model="user.name" required>
+                  </label>
+                  <label class="item item-input" show-hide-container>
+                    <input type="password" placeholder="Password" name="user_password" ng-model="user.password" required show-hide-input>
+                  </label>
+                </div>
+              </my-tab>
+            </my-tabs>
             <div class="item item-body bottom-content">
-              <button type="submit" class="button button-assertive button-block" ng-click="signup()" ng-disabled="signup_form.$invalid">
+              <button type="submit" class="button button-positive button-block" ng-click="signup()" ng-disabled="(selected_tab=='User Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : ((selected_tab=='Food Truck Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : false)">
                 Sign Up
               </button>
             </div>
           </form>
         </div>
         <div class="alternative-actions">
-          <a class="log-in button button-small button-clear button-dark" ui-sref="auth.login">
-            Log In
+          <a class="forgot-password button button-small button-clear button-dark" ui-sref="auth.forgot-password">
+            Forgot Password?
+          </a>
+          <a class="sign-up button button-small button-clear button-dark" ui-sref="auth.login">
+            Login
           </a>
         </div>
       </div>
