@@ -19,6 +19,11 @@ var UserSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'User',
         unique: true
     }],
+    role: {
+        type: String,
+        enum: ['Truck', 'User', 'Admin'],
+        default: 'Truck'
+    },
 
     truck: {
         truckName: String,
