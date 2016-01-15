@@ -15,19 +15,9 @@
                   </label>
                 </div>
               </my-tab>
-              <my-tab title="Food Truck Login">
-                <div class="list">
-                  <label class="item item-input">
-                    <input type="email" placeholder="Email" name="user_email" ng-model="user.name" required>
-                  </label>
-                  <label class="item item-input" show-hide-container>
-                    <input type="password" placeholder="Password" name="user_password" ng-model="user.password" required show-hide-input>
-                  </label>
-                </div>
-              </my-tab>
             </my-tabs>
             <div class="item item-body bottom-content">
-              <button type="submit" class="button button-positive button-block" ng-click="login()" ng-disabled="(selected_tab=='User Login') ? (login_form.user_email.$invalid || login_form.user_password.$invalid) : ((selected_tab=='Food Truck Login') ? (login_form.user_email.$invalid || login_form.user_password.$invalid) : false)">
+              <button type="submit" class="button button-positive button-block" ng-click="login()" ng-disabled="((selected_tab=='User Login') ? (login_form.user_email.$invalid || login_form.user_password.$invalid) : false)">
                 Log In
               </button>
             </div>
