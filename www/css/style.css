@@ -196,6 +196,9 @@ margin-top: 0px; }
           font-weight: 500; }
         ion-side-menu .heading-item .message {
           color: #999999; }
+.center-text {
+    text-align: center;
+}
           
 .profile-view {
   background-color: #FFFFFF !important; }
@@ -219,7 +222,7 @@ margin-top: 0px; }
     border-bottom: 1px solid #444444;
     position: relative;
     height: 20vh;
-    margin-bottom: 25vh; }
+    margin-bottom: 20vh; }
   .profile-view .user-background-image-outer {
     height: 20vh;
     position: absolute;
@@ -234,13 +237,21 @@ margin-top: 0px; }
     .profile-view .bottom-content .user-bio {
       text-align: center;
       margin: 6px 30px;
-      padding: 50px 0px; }
+      padding: 0px 0px; }
 .profile-header-color {
     background-color: #ff4c4c;
     color: #fff;
 }
 .profile-button {
     background-color: #FF4C4C !important;
+}
+.img-size {
+    height: 90px;
+    width: 90px;
+}
+.profile-size {
+    height: 190px;
+    width: 250px;
 }
 .logo-button {
     background-color: #FF4C4C !important;
@@ -320,12 +331,16 @@ background-color: #FF4C4C; }
     height: 50px;
 
 }
-.list-padding {
-    padding-top: 50px;
-}
+/*.list-padding {
+    padding-top: 25px;
+}*/
 
 .listView{
     background-color: #ff4c4c;
+}
+
+.list-title {
+    font-size: 1.4em !important;
 }
 
 .list-font-color {
@@ -349,4 +364,3 @@ background-color: #FF4C4C; }
 .notFavoriteStar {
    color: none;
 }
-
