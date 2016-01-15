@@ -207,7 +207,7 @@ margin-top: 0px; }
     margin-top: 6vh;
     text-align: center; }
   .profile-view .user-image-container {
-    width: 46vw; }
+    width: 52vw; }
     .profile-view .user-image-container .user-image {
       border-top: 1px solid #444444;
       padding: 8px;
@@ -239,11 +239,11 @@ margin-top: 0px; }
       margin: 6px 30px;
       padding: 0px 0px; }
 .profile-header-color {
-    background-color: #ff4c4c;
+    background-color: #2196F3;
     color: #fff;
 }
 .profile-button {
-    background-color: #FF4C4C !important;
+    background-color: #2196F3 !important;
 }
 .img-size {
     height: 90px;
@@ -254,7 +254,7 @@ margin-top: 0px; }
     width: 250px;
 }
 .logo-button {
-    background-color: #FF4C4C !important;
+    background-color: #2196F3 !important;
     padding-bottom: 20px;
 }
       
@@ -280,7 +280,7 @@ margin-top: 0px; }
 }
           
 .bar.app-top-bar {
-background-color: #FF4C4C; }
+background-color: #2196F3; }
 .bar.app-top-bar .title {
     color: #FFFFFF !important; }
     .bar.app-top-bar .title * {
@@ -336,7 +336,7 @@ background-color: #FF4C4C; }
 }*/
 
 .listView{
-    background-color: #ff4c4c;
+    background-color: #2196F3;
 }
 
 .list-title {
