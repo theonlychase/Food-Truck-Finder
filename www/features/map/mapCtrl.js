@@ -68,7 +68,7 @@
                 });
 
                 // CHECK IF A USER IS TRUCK TO SHOW/HIDE LOCATION SHARING TOGGLE //
-                if ($scope.authedUser.truck.currentLocation.length !== 0) {
+                if ($scope.authedUser.role === "Truck" || $scope.authedUser.role === "Admin") {
                     $scope.toggleSlider = true;
                 } else {
                     $scope.toggleSlider = false;
