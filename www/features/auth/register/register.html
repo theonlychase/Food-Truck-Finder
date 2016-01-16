@@ -1,4 +1,4 @@
-<ion-view class="login-view auth-view" cache-view="false">
+<ion-view class="signup-view auth-view" cache-view="false">
   <ion-content scroll="false">
     <div class="row">
       <div class="col col-center">
@@ -27,7 +27,7 @@
               </my-tab>
             </my-tabs>
             <div class="item item-body bottom-content">
-              <button type="submit" class="button button-positive button-block" ng-click="signup()" ng-disabled="(selected_tab=='User Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : ((selected_tab=='Food Truck Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : false)">
+              <button type="submit" class="button button-positive button-block signup-button" ng-click="signup()" ng-disabled="(selected_tab=='User Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : ((selected_tab=='Food Truck Signup') ? (signup_form.user_email.$invalid || signup_form.user_password.$invalid) : false)">
                 Sign Up
               </button>
             </div>
