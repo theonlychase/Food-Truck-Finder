@@ -3,7 +3,7 @@
 
 angular.module('food-truck-finder')
 
-    .controller('AppController', function($rootScope, $scope, $state, $http, $ionicPopup, AuthService, AUTH_EVENTS, userService) {
+    .controller('AppController', function($rootScope, $scope, $ionicNavBarDelegate, $state, $http, $ionicPopup, AuthService, AUTH_EVENTS, userService) {
         
         // var getAuthedUser = function() {
         //     $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
@@ -17,6 +17,10 @@ angular.module('food-truck-finder')
         $scope.defaultImg = "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg";
         
        $rootScope.$on('profileChange', function(event, data) { $scope.profileImg = data.truck.imgUrl || $scope.defaultImg });
+       
+       $scope.$on('$ionicView.enter', function(e) {
+            $ionicNavBarDelegate.showBar(true);
+        });
         
         userService.getAuthedUser().then(function(data) {
             $scope.authedUser = data;

@@ -36,6 +36,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
         .state('app', {
             url: "/app",
             abstract: true,
+            cache: false,
             templateUrl: "features/side-menu/side-menu.html",
             controller: 'AppController'
         })
