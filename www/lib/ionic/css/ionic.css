@@ -8032,8 +8032,8 @@ input:checked + .checkbox-icon:after {
   background-color: #387ef5; }
 
 .toggle.toggle-calm input:checked + .track {
-  border-color: #11c1f3;
-  background-color: #11c1f3; }
+  border-color: #2196F3;
+  background-color: #2196F3; }
 
 .toggle.toggle-assertive input:checked + .track {
   border-color: #ef473a;
@@ -8175,7 +8175,7 @@ input:checked + .checkbox-icon:after {
   background-color: rgba(17, 193, 243, 0.5); }
 
 .toggle-small .toggle-calm input:checked + .track .handle {
-  background-color: #11c1f3; }
+  background-color: #2196F3; }
 
 .toggle-small .toggle-assertive input:checked + .track {
   background-color: rgba(239, 71, 58, 0.5); }
