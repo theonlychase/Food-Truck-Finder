@@ -1,13 +1,21 @@
 <ion-view>
+
   <ion-nav-title>
     <span>Map</span>
   </ion-nav-title>
   <ion-content>
-    <ion-toggle ng-model="myStatus" ng-checked="myStatus" toggle-class="toggle-calm" ng-click="toggleTruckLocation()">Share My Location</ion-toggle>
+   
+    <ion-toggle ng-model="myStatus" ng-click="toggleTruckLocation()" toggle-class="toggle-dark" ng-show="toggleSlider"> Share My Location</ion-toggle>
 
+        <ion-content class="loading">
+            <ion-content>
+                <ion-spinner icon="ripple"></ion-spinner>
+                <h5>Finding your location...</h5>
+            </ion-content>
+        </ion-content>
 
         <div id="map" data-tap-disabled="true">
-
         </div>
-  </ion-content>
+
+    </ion-content>
 </ion-view>

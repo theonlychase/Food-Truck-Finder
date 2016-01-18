@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./server/config/database'); // get db config file
 var User = require('./server/app/features/user/user.server.model'); // get the USER model
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 var jwt = require('jwt-simple');
 
 
@@ -64,7 +64,8 @@ apiRoutes.post('/signup', function(req, res) {
   } else {
     var newUser = new User({
       name: req.body.name,
-      password: req.body.password
+      password: req.body.password,
+      role: req.body.role
     });
     newUser.save(function(err) {
       if (err) {

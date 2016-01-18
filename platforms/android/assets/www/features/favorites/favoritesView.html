@@ -5,7 +5,7 @@
 
     <ion-content>
 
-        <div class="list card" ng-repeat='user in myFavoritesList'>
+        <!--<div class="list card" ng-repeat='user in myFavoritesList'>
 
             <div class="item item-avatar listView">
                 <img ng-src="{{user.truck.imgUrl}}">
@@ -16,8 +16,36 @@
                 <p class="list-font-color">Price: {{user.truck.price}}</p>
             </div>
 
-        </div>
+        </div>-->
+        
+            <ion-slide-box show-pager="true">
+                <ion-slide ng-repeat="user in myFavoritesList">
+                    <div class="list card">
 
-        <ion-content>
+                        <div class="item item-avatar listView">
+                            <img ng-src="{{user.truck.imgUrl}}">
+                            <h2 class="list-font-color list-title">{{user.truck.truckName}}</h2>
+                            <h2 class="list-font-color">Type of Food: {{user.truck.genre}}</h2>
+                            <h2 class="list-font-color">Price: {{user.truck.price}}</h2>
+                        </div>
+
+                        <div class="item item-body">
+                            <img class="full-image" ng-src="{{user.truck.imgUrl}}">
+                            <h2>Address of Current Location:</h2>
+                            <p>{{user.truck.address}}</p>
+                            <h2>Distance From Me:</h2>
+                            <p>{{user.distanceFromCurrentUser}} miles</p>
+                            <h2>Description:</h2> 
+                            <p>{{user.truck.description}}</p>
+                            
+                        </div>
+
+                        
+
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+
+       </ion-content>
 
 </ion-view>
