@@ -17,7 +17,565 @@ $dark:                            #444 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
+
 @import "www/lib/ionic/scss/ionic";
 
+$primary-color: #2196F3; //login button, app bar, profile view
+$color2: #23262a; //black
+$color3: #F44336; //red
+$color4: #e6e6e6; //light grey
+$color5: #848484; //medium grey
+$color6: #3E454C; //dark grey
+$color7: #555e68; //medium-dark grey
+$favorite-star: goldenrod;
+$not-favorite-star: none;
+
+.scroll {
+    height: 100%;
+}
+
+
+/* MAP LOADING */
+
+.loading {
+    height: 110px;
+    text-align: center;
+    margin: 20px;
+}
+
+.loading h5 {
+    margin-top: -8px;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.spinner svg {
+    width: 60px;
+    height: 60px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* MAP POPUP WINDOWS */
+
+.info-window-popup-row {
+    /*border: 1px solid purple;*/
+    margin-bottom: 3px;
+}
+
+.info-window-popup-row h5 {
+    font-size: 17px;
+    color: $color2;
+    margin: 0;
+}
+
+.info-window-popup-row h6 {
+    font-size: 13px;
+    font-weight: 400;
+    color: $color2;
+    margin: 0;
+}
+
+
+/* END MAP POPUP WINDOWS */
+
+.auth-outer {
+    background-color: transparent !important;
+}
+
+.auth-outer ion-view {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+.auth-outer ion-header-bar {
+    background-color: transparent;
+}
+
+.auth-outer ion-header-bar * {
+    color: $light;
+}
+
+.auth-home {
+    background-color: transparent !important;
+}
+
+.walkthrough-view .top-content {
+    height: 75%;
+    text-align: center;
+}
+
+.walkthrough-view .top-content h1 {
+    color: $light;
+}
+
+.walkthrough-view .bottom-content {
+    height: 25%;
+    padding-top: 5px;
+    margin-top: 0px;
+}
+
+.walkthrough-view .bottom-content .button {
+    border: none;
+    color: $light;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.walkthrough-view .bottom-content .login.button {
+    background-color: $primary-color;
+}
+
+.walkthrough-view .bottom-content .sign-up.button {
+    background-color: $color3;
+}
+
+.auth-view .row {
+    height: 100%;
+}
+
+.auth-view .bottom-content {
+    padding-top: 0px;
+    border: none;
+}
+
+.auth-view .bottom-content .button {
+    margin: 0px;
+    font-weight: bold;
+}
+
+.auth-view .alternative-actions {
+    margin: 0px 10px;
+}
+
+.auth-view .alternative-actions .button {
+    padding: 0px;
+    font-size: 14px;
+}
+
+.auth-view .alternative-actions .sign-up {
+    float: right;
+}
+
+.toggle-view-anchor {
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    right: 0px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 500;
+    color: $color5;
+}
+
+.toggle-view-anchor * {
+    color: $color5;
+}
+
+.login-view [ng\:cloak],
+.login-view [ng-cloak],
+.login-view [data-ng-cloak],
+.login-view [x-ng-cloak],
+.login-view .ng-cloak,
+.login-view .x-ng-cloak {
+    display: none !important;
+}
+
+.login-view .tab-content.ng-hide {
+    display: none !important;
+}
+
+.login-view .tab-content.ng-hide-add.ng-hide-add-active,
+.login-view .tab-content.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all 0s ease;
+    transition: all 0s ease;
+}
+
+.login-view .tabs .tab-item {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: $color6;
+    color: $color4;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+
+.login-view .tabs .tab-item.active,
+.login-view .tabs .tab-item.activated {
+    margin-top: 0;
+    margin-bottom: -2px;
+    border-width: 0px 0px 4px 0px !important;
+    border-color: $primary-color !important;
+    border-style: solid;
+}
+
+.login-view .login-container {
+    margin-bottom: 0px;
+}
+
+.login-view .login-container .card-heding {
+    padding: 0px;
+    height: 49px;
+}
+
+.login-view .login-container .card-heding .tabs {
+    top: 0px;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+.login-view .login-container .card-heding .tab-item {
+    max-width: none;
+}
+
+.signup-view [ng\:cloak],
+.signup-view [ng-cloak],
+.signup-view [data-ng-cloak],
+.signup-view [x-ng-cloak],
+.signup-view .ng-cloak,
+.signup-view .x-ng-cloak {
+    display: none !important;
+}
+
+.signup-view .tab-content.ng-hide {
+    display: none !important;
+}
+
+.signup-view .tab-content.ng-hide-add.ng-hide-add-active,
+.signup-view .tab-content.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all 0s ease;
+    transition: all 0s ease;
+}
+
+.signup-view .tabs .tab-item {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: $color6;
+    color: $color4;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+
+.signup-view .tabs .tab-item.active,
+.signup-view .tabs .tab-item.activated {
+    margin-top: 0;
+    margin-bottom: -2px;
+    border-width: 0px 0px 4px 0px !important;
+    border-color: $color3 !important;
+    border-style: solid;
+}
+
+.signup-view .login-container {
+    margin-bottom: 0px;
+}
+
+.signup-view .login-container .card-heding {
+    padding: 0px;
+    height: 49px;
+}
+
+.signup-view .login-container .card-heding .tabs {
+    top: 0px;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+.signup-view .login-container .card-heding .tab-item {
+    max-width: none;
+}
+
+.signup-view .sign-up-container {
+    margin-bottom: 0px;
+}
+
+.signup-button {
+    background-color: $color3 !important;
+}
+
+.forgot-password-view .forgot-password-container {
+    margin-bottom: 0px;
+}
+
+ion-side-menu ion-content {
+    background-color: $color2;
+}
+
+ion-side-menu ion-item.item {
+    border-right: none;
+    border-left: none;
+    border-color: $color7;
+}
+
+ion-side-menu ion-item.item .item-content {
+    background-color: $color2;
+}
+
+ion-side-menu ion-item.item .item-content .icon:before {
+    background-color: $color7;
+    color: $light;
+    border-radius: 50%;
+    font-size: 22px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+}
+
+ion-side-menu ion-item.item .item-content.activated {
+    background-color: $color7;
+}
+
+ion-side-menu ion-item.item .menu-text {
+    color: $color4;
+    font-weight: 500;
+}
+
+ion-side-menu ion-item.item:first-child {
+    border-top: none;
+}
+
+
+/*ion-side-menu ion-item.item:last-child {
+          border-bottom: none; }*/
+
+ion-side-menu .heading-item .item-content {
+    height: 120px;
+    padding-top: 45px;
+    padding-left: 115px;
+    background-color: $color2;
+    padding-bottom: 0px;
+}
+
+ion-side-menu .heading-item .user-image-container {
+    width: 90px;
+    position: absolute;
+    top: 16px;
+    left: 12px;
+}
+
+ion-side-menu .heading-item .user-image-container .user-image {
+    border-radius: 50%;
+    padding: 8px;
+    border: 1px solid $color5;
+    width: 100%;
+}
+
+ion-side-menu .heading-item .greeting {
+    color: $light;
+    font-weight: 500;
+}
+
+ion-side-menu .heading-item .message {
+    color: $color5;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.profile-view {
+    background-color: $light !important;
+}
+
+.profile-view .profile-container {
+    margin: 0px auto;
+    margin-top: 6vh;
+    text-align: center;
+}
+
+.profile-view .user-image-container {
+    width: 52vw;
+}
+
+.profile-view .user-image-container .user-image {
+    border-top: 1px solid #444444;
+    padding: 8px;
+    background-color: $light;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile-view .user-name {
+    font-size: 20px;
+}
+
+.profile-view .user-twitter {
+    margin-top: 5px;
+}
+
+.profile-view .top-content {
+    border-bottom: 1px solid $color5;
+    position: relative;
+    height: 20vh;
+    margin-bottom: 20vh;
+}
+
+.profile-view .user-background-image-outer {
+    height: 20vh;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.profile-view .bottom-content {
+    padding: 0px;
+    background-color: $light;
+    min-height: 55vh;
+    position: relative;
+}
+
+.profile-view .bottom-content .user-bio {
+    text-align: center;
+    margin: 6px 30px;
+    padding: 0px 0px;
+}
+
+.profile-header-color {
+    background-color: $primary-color;
+    color: $light;
+}
+
+.profile-button {
+    background-color: $primary-color !important;
+}
+
+.img-size {
+    height: 90px;
+    width: 90px;
+}
+
+.profile-size {
+    height: 190px;
+    width: 250px;
+}
+
+.logo-button {
+    background-color: $primary-color !important;
+    padding-bottom: 20px;
+}
+
+.forms-view ion-content {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: scroll !important;
+}
+
+#sm-bg-color {
+    background-color: $color2;
+}
+
+.icon-bg-color {
+    color: $light !important;
+}
+
+.input-padding-left {
+    width: 0 !important;
+}
+
+.input-padding {
+    width: 0 !important;
+    padding: 20px 0 20px 0;
+}
+
+.bar.app-top-bar {
+    background-color: $primary-color;
+}
+
+.bar.app-top-bar .title {
+    color: $light !important;
+}
+
+.bar.app-top-bar .title * {
+    color: $light !important;
+}
+
+.bar.app-top-bar .button {
+    color: $light !important;
+}
+
+.bar.app-top-bar .button * {
+    color: $light !important;
+}
+
+.item-toggle {
+    margin: 20px 20px 0 0;
+    /*height: 120px;*/
+    width: 230px;
+    position: fixed;
+    right: 0;
+    z-index: 999;
+    background: $light;
+    border: 1px solid $color2;
+    border-radius: 20px;
+}
+
+.toggle {
+    top: 10px;
+    right: 16px;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.list-view-btn {
+    margin: 100px 20px 0 0;
+    position: fixed;
+    background: $light;
+    border: 1px solid $color2;
+    border-radius: 18px;
+    z-index: 999;
+    right: 0;
+    width: 110px;
+    height: 45px;
+    cursor: pointer;
+}
+
+
+/*///////////////LIST VIEW PAGE/////////////////*/
+
+.star {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 40px;
+    height: 50px;
+}
+
+
+/*.list-padding {
+    padding-top: 25px;
+}*/
+
+.listView {
+    background-color: $primary-color;
+}
+
+.list-title {
+    font-size: 1.4em !important;
+}
+
+.list-font-color {
+    color: $light !important;
+}
+
+.list-view-btn h5 {
+    text-align: center;
+    margin: 12px 0 0 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.favoriteStar {
+    color: $favorite-star;
+}
+
+.notFavoriteStar {
+    color: $not-favorite-star;
+}
