@@ -11,6 +11,8 @@
                     $scope.myStatus = true;
                 } else if ($scope.authedUser.truck.status === 'Inactive') {
                     $scope.myStatus = false;
+                } else if ($scope.authedUser.truck.status === undefined) {
+                    $scope.myStatus = false;
                 }
                 console.log('myStatus = ', $scope.myStatus);
             })
@@ -68,7 +70,7 @@
                 });
 
                 // CHECK IF A USER IS TRUCK TO SHOW/HIDE LOCATION SHARING TOGGLE //
-                if ($scope.authedUser.truck.currentLocation.length !== 0) {
+                if ($scope.authedUser.role === "Truck" || $scope.authedUser.role === "Admin") {
                     $scope.toggleSlider = true;
                 } else {
                     $scope.toggleSlider = false;

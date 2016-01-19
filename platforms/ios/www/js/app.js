@@ -36,11 +36,12 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
         .state('app', {
             url: "/app",
             abstract: true,
+            cache: false,
             templateUrl: "features/side-menu/side-menu.html",
             controller: 'AppController'
         })
         .state('app.maps', {
-            url: '/map/',
+            url: '/map',
             cache: false,
             views: {
                 'menuContent': {
@@ -54,7 +55,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             cache: false,
             views: {
                 'menuContent': {
-                    templateUrl: '/features/list/listView.html',
+                    templateUrl: 'features/list/listView.html',
                     controller: 'listCtrl'
                 }
             }
@@ -64,7 +65,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             cache: false,
             views: {
                 'menuContent': {
-                    templateUrl: '/features/favorites/favoritesView.html',
+                    templateUrl: 'features/favorites/favoritesView.html',
                     controller: 'favoritesCtrl'
                 }
             }
