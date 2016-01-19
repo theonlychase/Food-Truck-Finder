@@ -9753,7 +9753,12 @@ a.button {
   width: 100%;
   height: 100%; }
 
-/* MAP POPUP WINDOWS */
+/*.home-bg{
+    background-color: $primary-color;
+    background-size: contain;
+    background-position: center; 
+    margin: auto;
+}*/
 .info-window-popup-row {
   /*border: 1px solid purple;*/
   margin-bottom: 3px; }
@@ -10122,11 +10127,8 @@ ion-side-menu .heading-item .message {
   border: 1px solid #23262a;
   border-radius: 20px; }
 
-.toggle {
-  top: 10px;
-  right: 16px;
-  z-index: 99999;
-  cursor: pointer; }
+.toggle-button {
+  margin: 8px 5px 0 0 !important; }
 
 .list-view-btn {
   margin: 100px 20px 0 0;
