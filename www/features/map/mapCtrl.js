@@ -11,6 +11,8 @@
                     $scope.myStatus = true;
                 } else if ($scope.authedUser.truck.status === 'Inactive') {
                     $scope.myStatus = false;
+                } else if ($scope.authedUser.truck.status === undefined) {
+                    $scope.myStatus = false;
                 }
                 console.log('myStatus = ', $scope.myStatus);
             })
