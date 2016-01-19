@@ -559,6 +559,14 @@ ion-side-menu .heading-item .message {
     background-color: $primary-color;
 }
 
+.truckActive {
+    background-color: $primary-color;
+}
+
+.truckInactive {
+    background-color: $color5;
+}
+
 .list-title {
     font-size: 1.4em !important;
 }
