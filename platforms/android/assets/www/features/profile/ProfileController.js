@@ -42,9 +42,19 @@ angular.module('food-truck-finder')
         //     description: ''
         // };
         
+        $scope.sayLink = function(url) {
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'http://' + url;
+            }   
+            return url;
+        };
+        
         $rootScope.$on('profileChange', function(event, data) { $scope.profileImg = data.truck.imgUrl || $scope.defaultImg });
         
         $scope.submitProfile = function () {
+            
+            $scope.truck.website = $scope.sayLink($scope.truck.website);
+            
             ProfileService.submitProfile($scope.id, $scope.truck).then(function (msg) {
                 var alertPopup = $ionicPopup.alert({
                     title: 'Profile Updated!',

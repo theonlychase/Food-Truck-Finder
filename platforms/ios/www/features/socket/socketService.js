@@ -1,5 +1,6 @@
 angular.module('food-truck-finder').factory('socketService', ['$rootScope', function ($rootScope) {
-    var socket = io.connect('http://localhost:8080');
+    // var socket = io.connect('http://localhost:8080');
+    var socket = io.connect('http://45.55.33.203:80');
 
     return {
         removeAllListeners: function (eventName, callback) {
