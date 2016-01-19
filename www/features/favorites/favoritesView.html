@@ -24,27 +24,8 @@
             </div>
 
         </div>-->
-        
-            <div class="list card" ng-repeat='user in myFavoritesList'>
 
-                <div class="item item-avatar listView">       
-                    <img ng-src="{{user.truck.imgUrl}}">
-                    <h2 class="list-font-color">{{user.truck.truckName}}</h2>
-                    <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
-                    <p class="list-font-color">Price: {{user.truck.price}}</p>
-                </div>
-                
-                <div class="item item-body">
-                    <img class="full-image" ng-src="{{user.truck.imgUrl}}">
-                    <h2>Address of Current Location:</h2>
-                    <p>{{user.truck.address}}</p>
-                    <h2>Distance From Me:</h2>
-                    <p>{{user.distanceFromCurrentUser}} miles</p>
-                    <h2>Description:</h2> 
-                    <p>{{user.truck.description}}</p>
-                    <h2>Website:</h2> 
-                    <a target="_blank" ng-href="{{user.truck.website}}">{{user.truck.website}}</a>
-                </div>
+        <div class="list card" ng-repeat='user in myFavoritesList'>
 
             <div class="item item-avatar listView" ng-class="user.truckStatus ? 'truckActive' : 'truckInactive'">
                 <img ng-src="{{user.truck.imgUrl}}">
@@ -54,7 +35,20 @@
                 <p class="list-font-color">Current Status: {{user.truck.status}}</p>
 
             </div>
-            <div class="nofavs" ng-hide='user.favorites.length'>      
+
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{user.truck.imgUrl}}">
+                <h2>Address of Current Location:</h2>
+                <p>{{user.truck.address}}</p>
+                <h2>Distance From Me:</h2>
+                <p>{{user.distanceFromCurrentUser}} miles</p>
+                <h2>Description:</h2>
+                <p>{{user.truck.description}}</p>
+                <h2>Website:</h2>
+                <a target="_blank" ng-href="{{user.truck.website}}">{{user.truck.website}}</a>
+            </div>
+
+            <div class="nofavs" ng-hide='user.favorites.length'>
                 <br>Loading favorites...
                 <h5>
                     <br>No favorites selected.
@@ -63,8 +57,6 @@
                 </h5>
             </div>
 
-       </ion-content>
+    </ion-content>
 
 </ion-view>
-
-
