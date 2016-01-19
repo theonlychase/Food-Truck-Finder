@@ -26,15 +26,15 @@ angular.module('food-truck-finder')
             $scope.authedUser = data;
             $scope.profileImg = $scope.authedUser.user.truck.imgUrl || $scope.defaultImg;
             $rootScope.authedUser = data.user;
-            console.log("This is the authedUser", $scope.authedUser);
-            // console.log("This is the root authedUser", $rootScope.authedUser);
+//            console.log("This is the authedUser", $scope.authedUser);
+//            console.log("This is the root authedUser", $rootScope.authedUser);
             if ($scope.authedUser.user.role === "Truck") {
                 $scope.role = true;
             } else {
                 $scope.role = false;
             }
-            console.log("authedUser.role = ", $scope.authedUser.user.role);
-            console.log("scope role = ", $scope.role)
+//            console.log("authedUser.role = ", $scope.authedUser.user.role);
+//            console.log("scope role = ", $scope.role)
         });
         
        $scope.logout = function() {

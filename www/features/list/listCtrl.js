@@ -5,22 +5,16 @@
         $scope.loadingTrucksListView = true;
         userService.getAuthedUser().then(function (data) {
             $scope.authedUser = data.user;
-            console.log($scope.authedUser);
 
-            console.log("This is the authed user ", $scope.authedUser);
             $scope.myFavorites = $scope.authedUser.favorites;
-            console.log('myfaves', $scope.myFavorites);
 
             $scope.listTrucks.forEach(function (element) {
-                // console.log(element._id);
                 if ($scope.myFavorites.indexOf(element._id) !== -1) {
                     element.favStatus = true;
                 } else {
                     element.favStatus = false;
                 }
             });
-
-            console.log('truckInfo', $rootScope.truckInfo);
 
             var truckIds = $rootScope.truckInfo.map(function (element) {
                 return element.id;
@@ -36,15 +30,13 @@
 
             });
 
-            console.log('listTrucks ', $scope.listTrucks);
             $rootScope.truckInfoForFaves = $scope.listTrucks;
         });
 
 
-        mapService.getTrucks().then(function (response) {
+        mapService.getActiveTrucks().then(function (response) {
             $scope.loadingTrucksListView = false;
             $scope.listTrucks = response;
-            console.log("These are the list of trucks", $scope.listTrucks);
         });
 
         $scope.toggleFavorites = function (favId, favStatus, index) {
@@ -67,7 +59,6 @@
                 id: favId
             };
             mapService.addFavorite($scope.authedUser._id, truckId).then(function (response) {
-                console.log(response);
                 $scope.listTrucks[index].favStatus = true;
             }, function (err) {
                 $scope.listTrucks[index].favStatus = false;
@@ -80,7 +71,6 @@
                 id: favId
             };
             mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
-                console.log(response);
                 $scope.listTrucks[index].favStatus = false;
 
 

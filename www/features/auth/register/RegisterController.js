@@ -12,7 +12,6 @@ angular.module('food-truck-finder')
 
       $scope.$on('my-tabs-changed', function (event, data) {
     		$scope.selected_tab = data.title;
-            console.log("this is tab", $scope.selected_tab);
     	});
         
       $scope.setUserRole = function(userRole) {
@@ -22,13 +21,11 @@ angular.module('food-truck-finder')
             userRole = "Truck";
           }
         return userRole;
-        console.log("this is userrole", userRole);
       }
 
       $scope.signup = function() {
           
-        $scope.user.role = $scope.setUserRole($scope.user.role); 
-        console.log("this is he new role", $scope.user); 
+        $scope.user.role = $scope.setUserRole($scope.user.role);
         
         AuthService.register($scope.user).then(function(msg) {
             console.log("what happens first");
