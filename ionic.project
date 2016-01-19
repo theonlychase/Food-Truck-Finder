@@ -1,4 +1,12 @@
 {
   "name": "FoodTruckFinder",
-  "app_id": ""
+  "app_id": "47e078d2",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

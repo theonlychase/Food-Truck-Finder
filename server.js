@@ -64,7 +64,8 @@ apiRoutes.post('/signup', function(req, res) {
   } else {
     var newUser = new User({
       name: req.body.name,
-      password: req.body.password
+      password: req.body.password,
+      role: req.body.role
     });
     newUser.save(function(err) {
       if (err) {

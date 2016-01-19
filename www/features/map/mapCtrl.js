@@ -9,7 +9,7 @@
                 console.log('AUTHED USER ON mapCtrl: ', $scope.authedUser);
                 if ($scope.authedUser.truck.status === 'Active') {
                     $scope.myStatus = true;
-                } else {
+                } else if ($scope.authedUser.truck.status === 'Inactive') {
                     $scope.myStatus = false;
                 }
                 console.log('myStatus = ', $scope.myStatus);
@@ -68,7 +68,7 @@
                 });
 
                 // CHECK IF A USER IS TRUCK TO SHOW/HIDE LOCATION SHARING TOGGLE //
-                if ($scope.authedUser.truck.currentLocation.length !== 0) {
+                if ($scope.authedUser.role === "Truck" || $scope.authedUser.role === "Admin") {
                     $scope.toggleSlider = true;
                 } else {
                     $scope.toggleSlider = false;
@@ -160,13 +160,17 @@
             };
 
             if ($scope.myStatus === false) {
+
                 console.log('my status is false, i am sending active data');
+
                 myTruckData.truck.status = 'Active';
                 myTruckData.truck.address = $scope.address;
                 myTruckData.truck.currentLocation = [currentLocation[0], currentLocation[1]];
 
             } else if ($scope.myStatus === true) {
+
                 console.log('my status is true, i am sending inactive data');
+
                 myTruckData.truck.status = 'Inactive';
                 myTruckData.truck.address = null;
                 myTruckData.truck.currentLocation = [undefined, undefined];

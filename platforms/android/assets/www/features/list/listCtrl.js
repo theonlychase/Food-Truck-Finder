@@ -35,7 +35,7 @@
                 }
 
             });
-
+            
             console.log('listTrucks ', $scope.listTrucks);
             $rootScope.truckInfoForFaves = $scope.listTrucks;
         });
@@ -47,7 +47,6 @@
         });
 
         $scope.toggleFavorites = function (favId, favStatus, index) {
-
             $scope.listTrucks[index].favStatus = !favStatus;
             if ($scope.listTrucks[index].favStatus === true) {
                 console.log('add');
@@ -74,6 +73,7 @@
             });
         };
 
+
         $scope.removeFromFavorites = function (favId, index) {
             var truckId = {
                 id: favId
@@ -81,6 +81,7 @@
             mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
                 console.log(response);
                 $scope.listTrucks[index].favStatus = false;
+
 
             }, function (err) {
                 $scope.listTrucks[index].favStatus = true;
@@ -99,11 +100,8 @@
                 $scope.listTrucks[index].favStatus = true;
             });
         };
+
 
     });
 
 })();
-
-
-
-

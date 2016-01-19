@@ -7,22 +7,20 @@
 
             <div class="item item-avatar listView">
                 <img ng-src="{{user.truck.imgUrl}}">
-                <h2 class="list-font-color">{{user.truck.truckName}}</h2>
-                <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
-                <p class="list-font-color">Price: {{user.truck.price}}</p>
+                <h2 class="list-font-color list-title">{{user.truck.truckName}}</h2>
+                <h2 class="list-font-color">Type of Food: {{user.truck.genre}}</h2>
+                <h2 class="list-font-color">Price: {{user.truck.price}}</h2>
             </div>
 
             <div class="item item-body">
                 <img class="full-image" ng-src="{{user.truck.imgUrl}}">
-                <h3>Appx address: {{user.truck.address}}</h3>
-                <h3>Appx distance: {{user.distanceFromCurrentUser}} miles</h3>
-                <p>
-                    This is where the description of the Food Truck will be {{user.truck.description}}
-                </p>
-                <p>
-                    <a href="#" class="subdued">1 Favorite</a>
-                    <a href="#" class="subdued">5 Comments</a>
-                </p>
+                <h2>Address of Current Location:</h2>
+                <p>{{user.truck.address}}</p>
+                <h2>Distance From Me:</h2>
+                <p>{{user.distanceFromCurrentUser}} miles</p>
+                <h2>Description:</h2> 
+                <p>{{user.truck.description}}</p>
+                
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
