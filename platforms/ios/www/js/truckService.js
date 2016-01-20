@@ -10,24 +10,24 @@ angular.module('food-truck-finder')
 	}
 
 	this.udpateTruck = function( truckId ) { 
-		// console.log("truckService truckId: ", id);
+//		console.log("truckService truckId: ", id);
 		return $http.put('/api/trucks/' + id).then(function( response ) {
-			// console.log(response);
+//			console.log(response);
 			return response.data;
 		});
 	}
 
 
 	this.deleteTruck = function( truckId ) {
-		// console.log("truckService truckId: ", id);
+//		console.log("truckService truckId: ", id);
 		return $http.delete('/api/trucks/' + id).then(function( response ) {
-			// console.log(response);
+//			console.log(response);
 			return response.data;
 		});
 	}
 
 	this.createTruck = function(truck) {
-		// console.log("servcie", event);
+//		console.log("servcie", event);
 		return $http.post('/api/trucks', truck).then(function( response ) {
 			return response.data;
 		});		

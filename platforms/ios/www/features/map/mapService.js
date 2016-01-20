@@ -53,7 +53,7 @@ angular.module('food-truck-finder').service('mapService', function ($http, $q, A
             'latLng': point
         }, function (results, status) {
             if (status !== google.maps.GeocoderStatus.OK) {
-                console.log(status);
+//                console.log(status);
             }
             // This is checking to see if the Geoeode Status is OK before proceeding
             if (status == google.maps.GeocoderStatus.OK) {

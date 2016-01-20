@@ -9753,6 +9753,23 @@ a.button {
   width: 100%;
   height: 100%; }
 
+.no-trucks {
+  background: #fff;
+  border: 1px solid #23262a;
+  border-radius: 20px;
+  z-index: 999999;
+  width: 260px;
+  height: 30px;
+  margin: 10px auto;
+  text-align: center; }
+
+.no-trucks h5 {
+  color: #3E454C;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 28px;
+  margin: 0; }
+
 /*.home-bg{
     background-color: $primary-color;
     background-size: contain;
@@ -10165,7 +10182,9 @@ ion-side-menu .heading-item .message {
 .list-title {
   font-size: 1.4em !important; }
 
-.list-font-color {
+.list-font-color,
+.remove-fav,
+.no-favs h5 {
   color: #fff !important; }
 
 .list-view-btn h5 {
@@ -10179,3 +10198,15 @@ ion-side-menu .heading-item .message {
 
 .notFavoriteStar {
   color: none; }
+
+.remove-fav {
+  cursor: pointer; }
+
+.no-favs {
+  height: 90px;
+  text-align: center;
+  background-color: #2196F3;
+  margin-top: 20px; }
+
+.favorite {
+  text-align: center; }

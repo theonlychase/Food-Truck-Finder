@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('food-truck-finder').controller('listCtrl', function ($scope, $state, $cordovaGeolocation, mapService, userService, $rootScope) {
+        
         $scope.loadingTrucksListView = true;
         userService.getAuthedUser().then(function (data) {
             $scope.authedUser = data.user;
@@ -37,6 +38,10 @@
         mapService.getActiveTrucks().then(function (response) {
             $scope.loadingTrucksListView = false;
             $scope.listTrucks = response;
+            if ($scope.listTrucks.length === 0) {
+                console.log('NO TRUCKS SHARING LOCATION');
+                    $scope.noTrucksSharing = true;
+            }
         });
 
         $scope.toggleFavorites = function (favId, favStatus, index) {
