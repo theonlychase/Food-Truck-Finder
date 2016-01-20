@@ -28,6 +28,7 @@ angular.module('food-truck-finder')
         $scope.user.role = $scope.setUserRole($scope.user.role);
         
         AuthService.register($scope.user).then(function(msg) {
+            console.log("what happens first");
           $state.go('auth.login');
           var alertPopup = $ionicPopup.alert({
             title: 'Register success!',

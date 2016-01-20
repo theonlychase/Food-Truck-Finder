@@ -1,15 +1,23 @@
 <ion-view>
     <ion-nav-title>
-        <span>Food Trucks By Me</span>
+        <span>Nearby Food Trucks</span>
     </ion-nav-title>
+
+    <ion-content class="loading" ng-show="loadingTrucksListView">
+        <ion-content>
+            <ion-spinner icon="ripple"></ion-spinner>
+            <h5>Loading Trucks...</h5>
+        </ion-content>
+    </ion-content>
+
     <ion-content>
         <div class="list card" ng-repeat='user in listTrucks track by $index'>
 
             <div class="item item-avatar listView">
                 <img ng-src="{{user.truck.imgUrl}}">
-                <h2 class="list-font-color list-title">{{user.truck.truckName}}</h2>
-                <h2 class="list-font-color">Type of Food: {{user.truck.genre}}</h2>
-                <h2 class="list-font-color">Price: {{user.truck.price}}</h2>
+                <h2 class="list-font-color">{{user.truck.truckName}}</h2>
+                <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
+                <p class="list-font-color">Price: {{user.truck.price}}</p>
             </div>
 
             <div class="item item-body">
@@ -20,6 +28,8 @@
                 <p>{{user.distanceFromCurrentUser}} miles</p>
                 <h2>Description:</h2> 
                 <p>{{user.truck.description}}</p>
+                <h2>Website:</h2> 
+                <a target="_blank" ng-href="{{user.truck.website}}">{{user.truck.website}}</a>
                 
             </div>
 

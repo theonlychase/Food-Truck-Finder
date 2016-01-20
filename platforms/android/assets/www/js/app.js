@@ -36,6 +36,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
         .state('app', {
             url: "/app",
             abstract: true,
+            cache: false,
             templateUrl: "features/side-menu/side-menu.html",
             controller: 'AppController'
         })
@@ -87,7 +88,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
     .run(function ($rootScope, $state, AuthService, AUTH_EVENTS, $ionicPlatform) {
         $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
             if (!AuthService.isAuthenticated()) {
-                console.log(next.name);
+//                console.log(next.name);
                 if (next.name !== 'auth.login' && next.name !== 'auth.register' && next.name !== 'auth.home' && next.name !== 'auth.forgot-password') {
                     event.preventDefault();
                     $state.go('auth.home');
