@@ -18,9 +18,7 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
-
 @import "www/lib/ionic/scss/ionic";
-
 $primary-color: #2196F3; //login button, app bar, profile view
 $color2: #23262a; //black
 $color3: #F44336; //red
@@ -30,7 +28,6 @@ $color6: #3E454C; //dark grey
 $color7: #555e68; //medium-dark grey
 $favorite-star: goldenrod;
 $not-favorite-star: none;
-
 .scroll {
     height: 100%;
 }
@@ -523,7 +520,7 @@ ion-side-menu .heading-item .message {
 }
 
 .toggle-button {
-   margin: 8px 5px 0 0 !important;
+    margin: 8px 5px 0 0 !important;
 }
 
 .list-view-btn {
@@ -571,7 +568,9 @@ ion-side-menu .heading-item .message {
     font-size: 1.4em !important;
 }
 
-.list-font-color {
+.list-font-color,
+.remove-fav,
+.no-favs h5 {
     color: $light !important;
 }
 
@@ -588,4 +587,15 @@ ion-side-menu .heading-item .message {
 
 .notFavoriteStar {
     color: $not-favorite-star;
+}
+
+.remove-fav {
+    cursor: pointer;
+}
+
+.no-favs {
+    height: 90px;
+    text-align: center;
+    background-color: $primary-color;
+    margin-top: 20px;
 }
