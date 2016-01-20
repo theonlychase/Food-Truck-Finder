@@ -24,7 +24,7 @@
             </div>
 
         </div>-->
-        
+
         <div class="list card" ng-repeat='user in myFavoritesList'>
 
             <div class="item item-avatar listView" ng-class="user.truckStatus ? 'truckActive' : 'truckInactive'">
@@ -33,6 +33,7 @@
                 <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
                 <p class="list-font-color">Price: {{user.truck.price}}</p>
                 <p class="list-font-color">Current Status: {{user.truck.status}}</p>
+
             </div>
 
             <div class="item item-body">
@@ -41,17 +42,23 @@
                 <p>{{user.truck.address}}</p>
                 <h2>Distance From Me:</h2>
                 <p>{{user.distanceFromCurrentUser}} miles</p>
-                <h2>Description:</h2> 
+                <h2>Description:</h2>
                 <p>{{user.truck.description}}</p>
-                <h2>Website:</h2> 
+                <h2>Website:</h2>
                 <a target="_blank" ng-href="{{user.truck.website}}">{{user.truck.website}}</a>
             </div>
 
+
         </div>
 
+        <div class="nofavs" ng-show="emptyFavs">
+            <h5>
+                    <br>No favorites selected.
+                    <br>
+                    <br>Please select favorites from 'Nearby Food Trucks'
+                </h5>
+        </div>
 
-       </ion-content>
+    </ion-content>
 
 </ion-view>
-
-
