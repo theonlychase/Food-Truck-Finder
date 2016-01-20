@@ -33,6 +33,7 @@
                 <p class="list-font-color">Type of Food: {{user.truck.genre}}</p>
                 <p class="list-font-color">Price: {{user.truck.price}}</p>
                 <p class="list-font-color">Current Status: {{user.truck.status}}</p>
+                <p class="remove-fav" ng-click="removeFromFavorites(user._id)">Remove From Favorites</p>
 
             </div>
 
@@ -51,7 +52,7 @@
 
         </div>
 
-        <div class="noFavs" ng-show="emptyFavs">
+        <div class="no-favs" ng-show="emptyFavs">
             <h5>
                 <br>No favorites selected.
                 <br>

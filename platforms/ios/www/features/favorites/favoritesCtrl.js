@@ -1,4 +1,4 @@
-angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootScope, $scope, userService, favoritesService, $http, API_ENDPOINT) {
+angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootScope, $scope, userService, favoritesService, mapService, $http, API_ENDPOINT) {
 
 
     var getAuthedUser = function () {
@@ -49,6 +49,16 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
     };
 
     getAuthedUser();
+    
+    $scope.removeFromFavorites = function (favId) {
+        var truckId = {
+            id: favId
+        };
+            mapService.removeFavorite($scope.authedUser._id, truckId).then(function (response) {
+            getAuthedUser();
+        })
+    };
+                                                                        
     
 
 });
