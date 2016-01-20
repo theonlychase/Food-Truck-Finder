@@ -92,6 +92,10 @@
             mapService.getActiveTrucks().then(function (activeTrucks) {
 
                 console.log('activeTrucks', activeTrucks);
+                if(activeTrucks.length === 0 ){
+                    console.log('NO TRUCKS SHARING LOCATION');
+                    $scope.noTrucksSharing = true;
+                }
 
                 for (var i = 0; i < activeTrucks.length; i++) {
                     var truck = activeTrucks[i];
