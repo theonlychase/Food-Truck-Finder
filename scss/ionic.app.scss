@@ -60,6 +60,28 @@ $not-favorite-star: none;
     height: 100%;
 }
 
+// IF NO TRUCKS //
+
+.no-trucks {
+    // position: fixed;
+    background: #fff;
+    border: 1px solid $color2;
+    border-radius: 20px;
+    z-index: 999999;
+    width: 260px;
+    height: 30px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+    .no-trucks h5 {
+        color: $color6;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 28px;
+        margin: 0;
+    }
+
 
 /*.home-bg{
     background-color: $primary-color;
