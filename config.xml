@@ -1,59 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.foodtruckfinder667741" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-<!-- Allow links to example.com -->
-<allow-navigation href="http://example.com/*" />
-
-<!-- Wildcards are allowed for the protocol, as a prefix
-     to the host, or as a suffix to the path -->
-<allow-navigation href="*://*.example.com/*" />
-
-<!-- A wildcard can be used to whitelist the entire network,
-     over HTTP and HTTPS.
-     *NOT RECOMMENDED* -->
-<allow-navigation href="*" />
-
-<!-- The above is equivalent to these three declarations -->
-<allow-navigation href="http://*/*" />
-<allow-navigation href="https://*/*" />
-<allow-navigation href="data:*" />
-<!-- Allow links to web pages to open in a browser -->
-<allow-intent href="http://*/*" />
-<allow-intent href="https://*/*" />
-
-<!-- Allow links to example.com to open in a browser -->
-<allow-intent href="http://example.com/*" />
-
-<!-- Wildcards are allowed for the protocol, as a prefix
-     to the host, or as a suffix to the path -->
-<allow-intent href="*://*.example.com/*" />
-
-<!-- Allow SMS links to open messaging app -->
-<allow-intent href="sms:*" />
-
-<!-- Allow tel: links to open the dialer -->
-<allow-intent href="tel:*" />
-
-<!-- Allow geo: links to open maps -->
-<allow-intent href="geo:*" />
-
-<!-- Allow all unrecognized URLs to open installed apps
-     *NOT RECOMMENDED* -->
-<allow-intent href="*" />
-<!-- Allow images, xhrs, etc. to google.com -->
-<access origin="http://google.com" />
-<access origin="https://google.com" />
-
-<!-- Access to the subdomain maps.google.com -->
-<access origin="http://maps.google.com" />
-
-<!-- Access to all the subdomains on google.com -->
-<access origin="http://*.google.com" />
-
-<!-- Enable requests to content: URLs -->
-<access origin="content:///*" />
-
-<!-- Don't block any requests -->
-<access origin="*" />
+  <allow-navigation href="http://example.com/*"/>
+  <allow-navigation href="*://*.example.com/*"/>
+  <allow-navigation href="*"/>
+  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="https://*/*"/>
+  <allow-navigation href="data:*"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="http://example.com/*"/>
+  <allow-intent href="*://*.example.com/*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="geo:*"/>
+  <allow-intent href="*"/>
+  <access origin="http://google.com"/>
+  <access origin="https://google.com"/>
+  <access origin="http://maps.google.com"/>
+  <access origin="http://*.google.com"/>
+  <access origin="content:///*"/>
+  <access origin="*"/>
+  <access origin="*"/>
   <description>&#xD;
         An Ionic Framework and Cordova project.&#xD;
     </description>
@@ -61,7 +28,6 @@
       Your Name Here&#xD;
     </author>
   <content src="index.html"/>
-  <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -91,5 +57,33 @@
     <splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+  </platform>
+  <platform name="ios">
+    <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
+    <icon src="resources/ios/icon/icon@2x.png" width="114" height="114"/>
+    <icon src="resources/ios/icon/icon-40.png" width="40" height="40"/>
+    <icon src="resources/ios/icon/icon-40@2x.png" width="80" height="80"/>
+    <icon src="resources/ios/icon/icon-50.png" width="50" height="50"/>
+    <icon src="resources/ios/icon/icon-50@2x.png" width="100" height="100"/>
+    <icon src="resources/ios/icon/icon-60.png" width="60" height="60"/>
+    <icon src="resources/ios/icon/icon-60@2x.png" width="120" height="120"/>
+    <icon src="resources/ios/icon/icon-60@3x.png" width="180" height="180"/>
+    <icon src="resources/ios/icon/icon-72.png" width="72" height="72"/>
+    <icon src="resources/ios/icon/icon-72@2x.png" width="144" height="144"/>
+    <icon src="resources/ios/icon/icon-76.png" width="76" height="76"/>
+    <icon src="resources/ios/icon/icon-76@2x.png" width="152" height="152"/>
+    <icon src="resources/ios/icon/icon-small.png" width="29" height="29"/>
+    <icon src="resources/ios/icon/icon-small@2x.png" width="58" height="58"/>
+    <icon src="resources/ios/icon/icon-small@3x.png" width="87" height="87"/>
+    <splash src="resources/ios/splash/Default-568h@2x~iphone.png" height="1136" width="640"/>
+    <splash src="resources/ios/splash/Default-667h.png" height="1334" width="750"/>
+    <splash src="resources/ios/splash/Default-736h.png" height="2208" width="1242"/>
+    <splash src="resources/ios/splash/Default-Landscape-736h.png" height="1242" width="2208"/>
+    <splash src="resources/ios/splash/Default-Landscape@2x~ipad.png" height="1536" width="2048"/>
+    <splash src="resources/ios/splash/Default-Landscape~ipad.png" height="768" width="1024"/>
+    <splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" height="2048" width="1536"/>
+    <splash src="resources/ios/splash/Default-Portrait~ipad.png" height="1024" width="768"/>
+    <splash src="resources/ios/splash/Default@2x~iphone.png" height="960" width="640"/>
+    <splash src="resources/ios/splash/Default~iphone.png" height="480" width="320"/>
   </platform>
 </widget>
