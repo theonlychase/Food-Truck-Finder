@@ -5,20 +5,23 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
         $scope.loadingFavorites = true;
         $http.get(API_ENDPOINT.url + '/memberinfo').then(function (result) {
             $scope.authedUser = result.data.user;
-            console.log("This is the authed user ", $scope.authedUser);
             favoritesService.getSpecificUser($scope.authedUser._id).then(function (user) {
                 $scope.user = user;
                 $scope.myFavoritesList = $scope.user.favorites;
-                console.log($scope.user);
-
-                console.log($rootScope.truckInfo);
 
                 $scope.loadingFavorites = false;
+                
+                $scope.myFavoritesList.forEach(function (element) {
+                    if (element.truck.status === 'Active') {
+                        element.truckStatus = true;
+                    } else {
+                        element.truckStatus = false;
+                    }
+                });
 
                 var truckIds = $rootScope.truckInfo.map(function (element) {
                     return element.id;
                 });
-                console.log('truckIds: ', truckIds);
 
                 $scope.myFavoritesList.forEach(function (element) {
                     var i = truckIds.indexOf(element._id);
@@ -27,12 +30,13 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
                     } else {
                         console.log('truckId not found in listTrucks');
                     }
-
+                    
                 });
             });
         });
     };
 
     getAuthedUser();
+    
 
 });

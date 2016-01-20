@@ -36,11 +36,12 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
         .state('app', {
             url: "/app",
             abstract: true,
+            cache: false,
             templateUrl: "features/side-menu/side-menu.html",
             controller: 'AppController'
         })
         .state('app.maps', {
-            url: '/map/',
+            url: '/map',
             cache: false,
             views: {
                 'menuContent': {
@@ -54,7 +55,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             cache: false,
             views: {
                 'menuContent': {
-                    templateUrl: '/features/list/listView.html',
+                    templateUrl: 'features/list/listView.html',
                     controller: 'listCtrl'
                 }
             }
@@ -64,7 +65,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
             cache: false,
             views: {
                 'menuContent': {
-                    templateUrl: '/features/favorites/favoritesView.html',
+                    templateUrl: 'features/favorites/favoritesView.html',
                     controller: 'favoritesCtrl'
                 }
             }
@@ -87,7 +88,7 @@ angular.module('food-truck-finder', ['ionic', 'food-truck-finder.directives', 'n
     .run(function ($rootScope, $state, AuthService, AUTH_EVENTS, $ionicPlatform) {
         $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
             if (!AuthService.isAuthenticated()) {
-                console.log(next.name);
+//                console.log(next.name);
                 if (next.name !== 'auth.login' && next.name !== 'auth.register' && next.name !== 'auth.home' && next.name !== 'auth.forgot-password') {
                     event.preventDefault();
                     $state.go('auth.home');

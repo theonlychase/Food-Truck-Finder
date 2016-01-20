@@ -1,45 +1,50 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content class="post-size-14px">
-    <ion-nav-bar class="bar app-top-bar">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+    <ion-side-menu-content class="post-size-14px">
+        <ion-nav-bar class="bar app-top-bar">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
 
-  <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
-    <ion-content>
-      <ion-list>
-        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile({ id: authedUser.user._id })">
-          <div class="user-image-container">
-            <pre-img ratio="_1_1" helper-class="rounded-image">
-              <img class="user-image" ng-src="{{profileImg}}" spinner-on-load>
-          	</pre-img>
-          </div>
-          <h3 class="greeting">Hi {{authedUser.user.name}}</h3>
-          <p class="message">Welcome back</p>
-        </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
-          <i class="icon ion-map"></i>
-          <h2 class="menu-text">Map</h2>
-        </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.list({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
-          <i class="icon ion-pinpoint"></i>
-          <h2 class="menu-text">Food Trucks By Me</h2>
-        </ion-item>
-        <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ui-sref="app.favorites({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
-          <i class="icon ion-star"></i>
-          <h2 class="menu-text">Favorites</h2>
-        </ion-item>
-        <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ng-click="logout()">
-          <i class="icon ion-arrow-return-right icon-bg-color"></i>
-          <h2 class="menu-text">Logout</h2>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+    <ion-side-menu side="left" class="main-menu" expose-aside-when="large" width="300">
+        <ion-content>
+            <ion-list>
+                <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile({ id: authedUser.user._id })" ng-if="role">
+                    <div class="user-image-container">
+                        <pre-img ratio="_1_1" helper-class="rounded-image">
+                            <img class="user-image img-size" ng-src="{{profileImg}}" spinner-on-load>
+                        </pre-img>
+                    </div>
+                    <h3 class="greeting">Hello</h3>
+                    <h3 class="greeting">{{authedUser.user.truck.truckName}}</h3>
+                    <p class="message">Welcome back</p>
+                </ion-item>
+                <ion-item class="item-icon-left" nav-clear menu-close ui-sref="#" ng-if="!role">
+                    <h3 class="menu-text">Hello,</h3>
+                    <h3 class="menu-text">{{authedUser.user.name}}</h3>
+                </ion-item>
+                <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.maps">
+                    <i class="icon ion-map"></i>
+                    <h2 class="menu-text">Map</h2>
+                </ion-item>
+                <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.list({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
+                    <i class="icon ion-pinpoint"></i>
+                    <h2 class="menu-text">Nearby Food Trucks</h2>
+                </ion-item>
+                <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ui-sref="app.favorites({ id: authedUser.user._id })" ui-sref-opts="{reload: true}">
+                    <i class="icon ion-star"></i>
+                    <h2 class="menu-text">Favorites</h2>
+                </ion-item>
+                <ion-item class="item-icon-left" id="sm-bg-color" nav-clear menu-close ng-click="logout(); toResults()">
+                    <i class="icon ion-arrow-return-right icon-bg-color"></i>
+                    <h2 class="menu-text">Logout</h2>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>
