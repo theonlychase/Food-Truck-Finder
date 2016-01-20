@@ -18,6 +18,18 @@ angular.module('food-truck-finder').controller('favoritesCtrl', function ($rootS
                         element.truckStatus = false;
                     }
                 });
+                
+                $scope.emptyFavsList = function() {
+                    console.log('test', $scope.authedUser.favorites.length);
+                    if ($scope.authedUser.favorites.length > 0) {
+                        $scope.emptyFavs = false;
+                    } else {
+                        $scope.emptyFavs = true;
+                    }
+                    console.log("empty favs = ", $scope.emptyFavs);
+                };
+                
+                $scope.emptyFavsList();
 
                 var truckIds = $rootScope.truckInfo.map(function (element) {
                     return element.id;

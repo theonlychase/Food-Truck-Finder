@@ -48,14 +48,16 @@
                 <a target="_blank" ng-href="{{user.truck.website}}">{{user.truck.website}}</a>
             </div>
 
-            <div class="nofavs" ng-hide='user.favorites.length'>
-                <br>Loading favorites...
-                <h5>
+
+        </div>
+
+        <div class="nofavs" ng-show="emptyFavs">
+            <h5>
                     <br>No favorites selected.
                     <br>
                     <br>Please select favorites from 'Nearby Food Trucks'
                 </h5>
-            </div>
+        </div>
 
     </ion-content>
 
