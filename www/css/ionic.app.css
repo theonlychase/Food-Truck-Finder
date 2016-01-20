@@ -10173,6 +10173,12 @@ ion-side-menu .heading-item .message {
 .listView {
   background-color: #2196F3; }
 
+.truckActive {
+  background-color: #2196F3; }
+
+.truckInactive {
+  background-color: #848484; }
+
 .list-title {
   font-size: 1.4em !important; }
 

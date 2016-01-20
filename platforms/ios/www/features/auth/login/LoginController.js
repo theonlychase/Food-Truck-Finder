@@ -1,6 +1,18 @@
 angular.module('food-truck-finder')
 
     .controller('LoginController', function($scope, AuthService, $ionicPopup, $state) {
+      
+      $scope.login = function() {
+        AuthService.login($scope.user).then(function(msg) {
+          $state.go('app.maps');
+        }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Login failed!',
+            template: errMsg
+          });
+        });
+      };
+      
       $scope.user = {
         name: '',
         password: ''
@@ -12,14 +24,5 @@ angular.module('food-truck-finder')
     		$scope.selected_tab = data.title;
     	});
 
-      $scope.login = function() {
-        AuthService.login($scope.user).then(function(msg) {
-          $state.go('app.maps');
-        }, function(errMsg) {
-          var alertPopup = $ionicPopup.alert({
-            title: 'Login failed!',
-            template: errMsg
-          });
-        });
-      };
+      
     });
