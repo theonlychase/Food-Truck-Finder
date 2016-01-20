@@ -10196,3 +10196,6 @@ ion-side-menu .heading-item .message {
 
 .notFavoriteStar {
   color: none; }
+
+.favorite {
+  text-align: center; }
