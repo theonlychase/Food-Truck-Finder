@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.foodtruckfinder667741" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<name>Food Truck Finder</name>
   <allow-navigation href="http://example.com/*"/>
   <allow-navigation href="*://*.example.com/*"/>
   <allow-navigation href="*"/>

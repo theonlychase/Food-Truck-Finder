@@ -16,17 +16,17 @@ angular.module('food-truck-finder')
 	}
 
 	this.udpateUser = function( id ) { 
-		// console.log("userService userId: ", id);
+//		console.log("userService userId: ", id);
 		return $http.put('/api/user/' + id).then(function( response ) {
-			console.log(response);
+//			console.log(response);
 			return response.data;
 		});
 	}
 
 	this.deleteUser = function( id ) {
-		// console.log("userService userId: ", id);
+//		console.log("userService userId: ", id);
 		return $http.delete('/api/user/' + id).then(function( response ) {
-			console.log(response);
+//			console.log(response);
 			return response.data;
 		});
 	}
