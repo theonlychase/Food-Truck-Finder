@@ -10182,7 +10182,9 @@ ion-side-menu .heading-item .message {
 .list-title {
   font-size: 1.4em !important; }
 
-.list-font-color {
+.list-font-color,
+.remove-fav,
+.no-favs h5 {
   color: #fff !important; }
 
 .list-view-btn h5 {
@@ -10196,6 +10198,15 @@ ion-side-menu .heading-item .message {
 
 .notFavoriteStar {
   color: none; }
+
+.remove-fav {
+  cursor: pointer; }
+
+.no-favs {
+  height: 90px;
+  text-align: center;
+  background-color: #2196F3;
+  margin-top: 20px; }
 
 .favorite {
   text-align: center; }
